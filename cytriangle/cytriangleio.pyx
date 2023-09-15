@@ -14,6 +14,32 @@ cdef class TriangleIO:
             # add all the allocation releases
             if self._io.pointlist is not NULL:
                 free(self._io.pointlist)
+            if self._io.pointattributelist is not NULL:
+                free(self._io.pointattributelist)
+            if self._io.pointmarkerlist is not NULL:
+                free(self._io.pointmarkerlist)
+            if self._io.trianglelist is not NULL:
+                free(self._io.trianglelist)
+            if self._io.triangleattributelist is not NULL:
+                free(self._io.triangleattributelist)
+            if self._io.trianglearealist is not NULL:
+                free(self._io.trianglearealist)
+            if self._io.neighborlist is not NULL:
+                free(self._io.neighborlist)
+            if self._io.segmentlist is not NULL:
+                free(self._io.segmentlist)
+            if self._io.segmentmarkerlist is not NULL:
+                free(self._io.segmentmarkerlist)
+            if self._io.holelist is not NULL:
+                free(self._io.holelist)
+            if self._io.regionlist is not NULL:
+                free(self._io.regionlist)
+            if self._io.edgelist is not NULL:
+                free(self._io.edgelist)
+            if self._io.edgemarkerlist is not NULL:
+                free(self._io.edgemarkerlist)
+            if self._io.normlist is not NULL:
+                free(self._io.normlist)
             free(self._io)
 
     def __init__(self, input_dict=None):
@@ -72,8 +98,12 @@ cdef class TriangleIO:
         num_points = self._io.numberofpoints
         num_attrs = self._io.numberofpointattributes
         num_triangles = self._io.numberoftriangles
+        num_neighbors = self._io.numberofcorners
         num_triangle_attrs = self._io.numberoftriangleattributes
         num_segments = self._io.numberofsegments
+        num_holes = self._io.numberofholes
+        num_regions = self._io.numberofregions
+        num_edges = self._io.numberofedges
 
         if self._io.pointlist is not NULL:
             output_dict['point_list'] = [[self._io.pointlist[2*i], self._io.pointlist[2*i + 1]] for i in range(num_points)]
@@ -103,6 +133,13 @@ cdef class TriangleIO:
         if self._io.trianglearealist is not NULL:
             output_dict['triangle_area_list'] = [self.trianglearealist[i] for i in range(num_triangles)]
 
+        if self._io.neighborlist is not NULL:
+            neighbor_list = []
+            for i in range(num_triangles):
+                neighbors = [self._io.neighborlist[i*num_neighbors + j] for j in range(num_neighbors)]
+                neighbor_list.append(neighbors)
+            output_dict['neighbor_list'] = neighbor_list
+
         if self._io.segmentlist is not NULL:
             output_dict['segment_list'] = []
             for i in range(num_segments):
@@ -113,10 +150,40 @@ cdef class TriangleIO:
         if self._io.segmentmarkerlist is not NULL:
             output_dict['segment_marker_list'] = [self._io.segmentmarkerlist[i] for i in range(num_segments)]
 
+        if self._io.holelist is not NULL:
+            output_dict['hole_list'] = [[self._io.holelist[2*i], self._io.holelist[2*i + 1]] for i in range(num_holes)]
+
+        if self._io.regionlist is not NULL:
+            output_dict['region_list'] = []
+
+            for i in range(num_regions):
+                region_info = {}
+                region_info['points'] = [self._io.regionlist[4*i], self._io.regionlist[4*i + 1]]
+                region_info['max_area'] = self.io.regionlist[4*i + 2]
+                region_info['attribute'] = self._io.regionlist[4*i + 3]
+
+            output_dict['region_list'].append(region_info)
+
+        if self._io.edgelist is not NULL:
+            output_dict['edge_list'] = []
+
+            for i in range(num_edges):
+                edge_info = {}
+                edge_info['points'] = [self._io.edgelist[2*i], self._io.edgelist[2*i + 1]]
+                edge_info['marker'] = self._io.edgemarkerlist[i]
+
+            output_dict['edge_list'].append(edge_info)
+
+        if self._io.edgemarkerlist is not NULL:
+            output_dict['edge_marker_list'] = [self._io.edgemarkerlist[i] for i in range(num_edges)]
+
+        if self._io.normlist is not NULL:
+            output_dict['norm_list'] = [[self._io.normlist[4*i], self._io.normlist[4*i + 1], self._io.normlist[4*i + 2], self._io.normlist[4*i + 3]] for i in range(num_edges)]
+
         return output_dict
 
     def set_points(self, points):
-        # Set the points in the triangulateio struct
+        # Set/reset the points in the triangulateio struct after instantiation
         if not points:
             raise ValueError('Valid input requires a list of points')
         num_points = len(points)
