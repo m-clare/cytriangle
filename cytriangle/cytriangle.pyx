@@ -38,6 +38,6 @@ cdef class CyTriangle:
         return self._vorout.to_dict()
 
     cpdef triangulate(self, triswitches=None):
-        opts = "Qz".encode('utf-8')
+        opts = f"Qz{triswitches}".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
             raise RuntimeError('Triangulation failed')
