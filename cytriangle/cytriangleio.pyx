@@ -182,10 +182,15 @@ cdef class TriangleIO:
 
         return output_dict
 
+    @property
+    def point_list(self):
+        return [[self._io.pointlist[2*i], self._io.pointlist[2*i + 1]] for i in range(self._io.numberofpoints)]
+
+    @point_list.setter
+    def point_list(self, points):
+        self.set_points(points)
+
     def set_points(self, points):
-        # Set/reset the points in the triangulateio struct after instantiation
-        if not points:
-            raise ValueError('Valid input requires a list of points')
         num_points = len(points)
         self._io.numberofpoints = num_points
         if num_points < 3:

@@ -28,6 +28,18 @@ cdef class CyTriangle:
         """
         return self._in._io.numberofpoints
 
+    @property
+    def in_(self):
+        return self._in
+
+    @property
+    def out(self):
+        return self._out
+
+    @property
+    def vorout(self):
+        return self._vorout
+
     def get_input(self):
         return self._in.to_dict()
 
