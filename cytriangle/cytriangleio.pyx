@@ -90,8 +90,15 @@ cdef class TriangleIO:
 
         # Populate based on input_dict
         if input_dict is not None:
-            if input_dict['point_list']:
+            if 'point_list' in input_dict:
+                num_points = len(input_dict['point_list'])
                 self.set_points(input_dict['point_list'])
+                # set other point related optional fields
+                if 'point_attribute_list' in input_dict:
+                    num_attr = len(input_dict['point_attribute_list']) // num_points
+                    self.set_point_attributes(input_dict['point_attribute_list'], num_points, num_attr)
+                if 'point_marker_list' in input_dict:
+                    self.set_point_markers(input_dict['point_marker_list'])
 
     def to_dict(self):
         output_dict = {}
@@ -190,8 +197,23 @@ cdef class TriangleIO:
     def point_list(self, points):
         self.set_points(points)
 
-    def set_points(self, points):
-        num_points = len(points)
+    @property
+    def point_attribute_list(self):
+        point_attribute_list = []
+        for i in range(self._io.numberofpoints):
+            point_attr = []
+            for j in range(self._io.numberofpointattributes):
+                point_attr.append(self._io.pointattributelist[i*self._io.numberofpointattributes + j ])
+            point_attribute_list.append(point_attr)
+        return point_attribute_list
+
+    @point_attribute_list.setter
+    def point_attribute_list(self, points):
+        self.set_point_attributes(points)
+
+    def set_points(self, points, num_points=None):
+        if num_points is None:
+            num_points = len(points)
         self._io.numberofpoints = num_points
         if num_points < 3:
             raise ValueError('Valid input requires three or more points')
@@ -200,3 +222,16 @@ cdef class TriangleIO:
         for i in range(num_points):
             self._io.pointlist[2 * i] = point_list[i, 0]
             self._io.pointlist[2 * i + 1] = point_list[i, 1]
+
+    def set_point_attributes(self, point_attributes, num_points, num_attr):
+        point_attribute_list = np.ascontiguousarray(point_attributes, dtype=np.double)
+        self._io.pointattributelist = <double*>malloc(num_attr * num_points * sizeof(double))
+        for i in range(num_points):
+            for j in range(num_attr):
+                self._io.pointattributelist[i * num_attr + j] = point_attribute_list[i, j]
+
+    def set_point_markers(self, point_markers):
+        point_marker_list = np.ascontiguousarray(point_markers, dtype=np.int)
+        self._io.pointmarkerlist = <int*>malloc(len(point_markers) * sizeof(int))
+        for i in range(len(point_markers)):
+            self._io.pointmarkerlist[i] = point_marker_list[i]
