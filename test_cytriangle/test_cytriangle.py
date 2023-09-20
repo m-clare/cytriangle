@@ -1,3 +1,4 @@
+import pytest
 from cytriangle import CyTriangle
 
 simple_input = {'point_list': [[0, 0], [0, 1], [1, 1], [1, 0]]}
@@ -17,6 +18,13 @@ def test_simple_triangle_area():
 def test_point_list_get():
     test = CyTriangle(input_dict=simple_input)
     assert test.in_.point_list == [[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]]
+
+def test_validate_input_flags():
+    test = CyTriangle(input_dict=simple_input)
+    with pytest.raises(ValueError):
+        test.triangulate('r')
+    with pytest.raises(ValueError):
+        test.triangulate('p')
 
 def test_memory_deallocation():
     test = CyTriangle(input_dict=simple_input)

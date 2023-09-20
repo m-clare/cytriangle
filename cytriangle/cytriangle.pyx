@@ -37,8 +37,17 @@ cdef class CyTriangle:
     def get_voronoi_as_dict(self):
         return self._vorout.to_dict()
 
+    def validate_input_flags(self, opts):
+        if "r" in opts:
+            if not 'triangle_list' in self._in.to_dict():
+                raise ValueError("Triangle list must be provided when using 'r' flag")
+        if "p" in opts:
+            if not 'segment_list' in self._in.to_dict():
+                raise ValueError("Segment list must be provided when using 'p' flag")
+
     # generic triangulation that accepts any switch
     cpdef triangulate(self, triswitches=None):
+        self.validate_input_flags(triswitches)
         opts = f"Qz{triswitches}".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
             raise RuntimeError('Triangulation failed')

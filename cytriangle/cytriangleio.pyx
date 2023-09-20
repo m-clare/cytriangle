@@ -113,18 +113,13 @@ cdef class TriangleIO:
         num_edges = self._io.numberofedges
 
         if self._io.pointlist is not NULL:
-            output_dict['point_list'] = [[self._io.pointlist[2*i], self._io.pointlist[2*i + 1]] for i in range(num_points)]
+            output_dict['point_list'] = self.point_list
 
         if self._io.pointattributelist is not NULL:
-            output_dict['point_attribute_list'] = []
-            for i in range(num_points):
-                point_attr = []
-                for j in range(num_attrs):
-                    point_attr.append(self._io.pointattributelist[i*num_attrs + j ])
-                output_dict['point_attribute_list'].append(point_attr)
+            output_dict['point_attribute_list'] = self.point_attribute_list
 
         if self._io.pointmarkerlist is not NULL:
-            output_dict['point_marker_list'] = [self._io.pointmarkerlist[i] for i in range(num_points)]
+            output_dict['point_marker_list'] = self.point_marker_list
 
         if self._io.trianglelist is not NULL:
             output_dict['triangle_list'] = [self._io.trianglelist[i] for i in range(num_triangles)]
@@ -208,8 +203,18 @@ cdef class TriangleIO:
         return point_attribute_list
 
     @point_attribute_list.setter
-    def point_attribute_list(self, points):
-        self.set_point_attributes(points)
+    def point_attribute_list(self, point_attributes):
+        num_points = self._io.numberofpoints
+        num_attr = self._io.numberofpointattributes
+        self.set_point_attributes(point_attributes, num_points, num_attr)
+
+    @property
+    def point_marker_list(self):
+        return [self._io.pointmarkerlist[i] for i in range(self._io.numberofpoints)]
+
+    @point_marker_list.setter
+    def point_marker_list(self, point_markers):
+        self.set_point_markers(point_markers)
 
     def set_points(self, points, num_points=None):
         if num_points is None:
