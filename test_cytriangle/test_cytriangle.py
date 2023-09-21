@@ -26,6 +26,17 @@ def test_validate_input_flags():
     with pytest.raises(ValueError):
         test.triangulate('p')
 
+def test_optional_point_fields():
+    additional_input = {**simple_input, 'point_attribute_list': [[0, 1], [2, 3], [4, 5], [6, 7]], 'point_marker_list': [1, 2, 3, 4]}
+    test = CyTriangle(additional_input)
+    assert test.in_.point_attribute_list == [[0, 1], [2, 3], [4, 5], [6, 7]]
+    assert test.in_.point_marker_list == [1, 2, 3, 4]
+
+def test_optional_triangle_fields():
+    additional_input = {**simple_input, 'triangle_list': [1, 1], 'triangle_attribute_list': [[0, 1], [2, 3]]}
+    test = CyTriangle(additional_input)
+    assert test.in_.triangle_attribute_list == [[0, 1], [2, 3]]
+
 def test_memory_deallocation():
     test = CyTriangle(input_dict=simple_input)
     del test  # Deallocate memory without errors

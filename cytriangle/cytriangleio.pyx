@@ -2,6 +2,12 @@ from libc.stdlib cimport free, malloc
 import numpy as np
 from cytriangle.ctriangle cimport triangulateio
 
+def validate_input_attributes(attribute_list):
+    num_attr = list(set([len(sublist) for sublist in attribute_list]))
+    if len(num_attr) > 1:
+        raise ValueError("Attribute lists must have the same number of attributes for each element")
+    return num_attr[0]
+
 cdef class TriangleIO:
 
     def __cinit__(self):
@@ -48,15 +54,11 @@ cdef class TriangleIO:
             self._io = <triangulateio*> malloc(sizeof(triangulateio))
 
         # Allocate null fields
-        # input - always set
-        # output - initialized unless N
         self._io.pointlist = <double*> NULL
         self._io.numberofpoints = 0
 
-        # input - optional
         self._io.pointattributelist = <double*> NULL
         self._io.numberofpointattributes = 0
-        # output - not N and nonzero numberofpointattributes
         self._io.pointmarkerlist = <int*> NULL
 
         # input - r switch
@@ -95,10 +97,16 @@ cdef class TriangleIO:
                 self.set_points(input_dict['point_list'])
                 # set other point related optional fields
                 if 'point_attribute_list' in input_dict:
-                    num_attr = len(input_dict['point_attribute_list']) // num_points
+                    num_attr = validate_input_attributes(input_dict['point_attribute_list'])
                     self.set_point_attributes(input_dict['point_attribute_list'], num_points, num_attr)
                 if 'point_marker_list' in input_dict:
                     self.set_point_markers(input_dict['point_marker_list'])
+            if 'triangle_list' in input_dict:
+                num_triangles = len(input_dict['triangle_list'])
+                self.set_triangles(input_dict['triangle_list'])
+                if 'triangle_attribute_list' in input_dict:
+                    num_attr = validate_input_attributes(input_dict['triangle_attribute_list'])
+                    self.set_triangle_attributes(input_dict['triangle_attribute_list'], num_triangles, num_attr)
 
     def to_dict(self):
         output_dict = {}
@@ -122,15 +130,10 @@ cdef class TriangleIO:
             output_dict['point_marker_list'] = self.point_marker_list
 
         if self._io.trianglelist is not NULL:
-            output_dict['triangle_list'] = [self._io.trianglelist[i] for i in range(num_triangles)]
+            output_dict['triangle_list'] = self.triangle_list
 
         if self._io.triangleattributelist is not NULL:
-            output_dict['triangle_attribute_list'] = []
-            for i in range(num_triangles):
-                triangle_attr = []
-                for j in range(num_attrs):
-                    triangle_attr.append(self._io.triangleattributelist[i*num_attrs + j ])
-                output_dict['triangle_attribute_list'].append(triangle_attr)
+            output_dict['triangle_attribute_list'] = self.triangle_attribute_list
 
         if self._io.trianglearealist is not NULL:
             output_dict['triangle_area_list'] = [self.trianglearealist[i] for i in range(num_triangles)]
@@ -216,6 +219,24 @@ cdef class TriangleIO:
     def point_marker_list(self, point_markers):
         self.set_point_markers(point_markers)
 
+    @property
+    def triangle_list(self):
+        return [self._io.trianglelist[i] for i in range(self._io.numberoftriangles)]
+
+    @triangle_list.setter
+    def triangle_list(self, triangles):
+        self.set_triangles(triangles)
+
+    @property
+    def triangle_attribute_list(self):
+        triangle_attribute_list = []
+        for i in range(self._io.numberoftriangles):
+            triangle_attr = []
+            for j in range(self._io.numberoftriangleattributes):
+                triangle_attr.append(self._io.triangleattributelist[i*self._io.numberoftriangleattributes + j ])
+            triangle_attribute_list.append(triangle_attr)
+        return triangle_attribute_list
+
     def set_points(self, points, num_points=None):
         if num_points is None:
             num_points = len(points)
@@ -231,12 +252,28 @@ cdef class TriangleIO:
     def set_point_attributes(self, point_attributes, num_points, num_attr):
         point_attribute_list = np.ascontiguousarray(point_attributes, dtype=np.double)
         self._io.pointattributelist = <double*>malloc(num_attr * num_points * sizeof(double))
+        self._io.numberofpointattributes = num_attr
         for i in range(num_points):
             for j in range(num_attr):
                 self._io.pointattributelist[i * num_attr + j] = point_attribute_list[i, j]
 
     def set_point_markers(self, point_markers):
-        point_marker_list = np.ascontiguousarray(point_markers, dtype=np.int)
+        point_marker_list = np.ascontiguousarray(point_markers, dtype=int)
         self._io.pointmarkerlist = <int*>malloc(len(point_markers) * sizeof(int))
         for i in range(len(point_markers)):
             self._io.pointmarkerlist[i] = point_marker_list[i]
+
+    def set_triangles(self, triangles):
+        triangle_list = np.ascontiguousarray(triangles, dtype=int)
+        self._io.trianglelist = <int*>malloc(len(triangles) * sizeof(int))
+        self._io.numberoftriangles = len(triangles)
+        for i in range(len(triangles)):
+            self._io.trianglelist[i] = triangles[i]
+
+    def set_triangle_attributes(self, triangle_attributes, num_triangles, num_attr):
+        triangle_attribute_list = np.ascontiguousarray(triangle_attributes, dtype=np.double)
+        self._io.triangleattributelist = <double*>malloc(num_attr * num_triangles * sizeof(double))
+        self._io.numberoftriangleattributes = num_attr
+        for i in range(num_triangles):
+            for j in range(num_attr):
+                self._io.triangleattributelist[i * num_attr + j] = triangle_attribute_list[i, j]
