@@ -30,7 +30,7 @@ packages = ['cytriangle']
 # Define the setup
 setup(
     name='cytriangle',
-    version='0.1',
+    version='0.0.1',
     author='Maryanne Wachter',
     author_email='mclare@utsv.net',
     description="Object oriented Cython wrapper of Shewchuk's C Triangle Library",
