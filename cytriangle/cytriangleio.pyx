@@ -130,13 +130,8 @@ cdef class TriangleIO:
             output_dict['triangle_attribute_list'] = self.triangle_attribute_list
         if self.triangle_area_list:
             output_dict['triangle_area_list'] = self.triangle_area_list
-
-        if self._io.neighborlist is not NULL:
-            neighbor_list = []
-            for i in range(num_triangles):
-                neighbors = [self._io.neighborlist[i*num_neighbors + j] for j in range(num_neighbors)]
-                neighbor_list.append(neighbors)
-            output_dict['neighbor_list'] = neighbor_list
+        if self.neighbor_list:
+            output_dict['neighbor_list'] = self.neighbor_list
 
         if self._io.segmentlist is not NULL:
             output_dict['segment_list'] = []
@@ -253,6 +248,18 @@ cdef class TriangleIO:
     @triangle_area_list.setter
     def triangle_area_list(self, triangle_areas):
         self.set_triangle_areas(triangle_areas, self._io.numberoftriangles)
+
+    @property
+    def neighbor_list(self):
+        max_neighbors = 3
+        if self._io.neighborlist is not NULL:
+            neighbor_list = []
+            for i in range(self._io.numberoftriangles):
+                neighbors = [self._io.neighborlist[i*max_neighbors + j] for j in range(max_neighbors)]
+                # remove sentinel values (-1)
+                neighbors = [neighbor for neighbor in neighbors if neighbor != -1]
+                neighbor_list.append(neighbors)
+            return neighbor_list
 
     def set_points(self, points):
         num_points = len(points)

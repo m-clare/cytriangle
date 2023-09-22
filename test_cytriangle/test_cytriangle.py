@@ -44,6 +44,12 @@ def test_optional_triangle_fields():
     test = CyTriangle(additional_input)
     assert test.in_.triangle_attribute_list == [[0, 1], [2, 3]]
 
+def test_output_neighbor_field():
+    test = CyTriangle(input_dict=simple_input)
+    test.triangulate('na0.2')
+    output = test.get_output_as_dict()
+    assert output['neighbor_list'] == [[7, 6], [4, 3], [3, 7], [1, 2], [5, 1], [6, 4], [0, 5], [2, 0]]
+
 def test_memory_deallocation():
     test = CyTriangle(input_dict=simple_input)
     del test  # Deallocate memory without errors
