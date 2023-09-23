@@ -141,9 +141,6 @@ cdef class TriangleIO:
         if self.segment_marker_list:
             output_dict['segment_marker_list'] = self.segment_marker_list
 
-        if self._io.segmentmarkerlist is not NULL:
-            output_dict['segment_marker_list'] = [self._io.segmentmarkerlist[i] for i in range(num_segments)]
-
         if self._io.holelist is not NULL:
             output_dict['hole_list'] = [[self._io.holelist[2*i], self._io.holelist[2*i + 1]] for i in range(num_holes)]
 
