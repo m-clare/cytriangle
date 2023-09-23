@@ -105,6 +105,10 @@ cdef class TriangleIO:
                     self.set_triangle_attributes(input_dict['triangle_attribute_list'])
                 if 'triangle_area_list' in input_dict:
                     self.set_triangle_areas(input_dict['triangle_area_list'])
+            if 'segment_list' in input_dict:
+                self.set_segments(input_dict['segment_list'])
+                if 'segment_marker_list' in input_dict:
+                    self.set_segment_markers(input_dict['segment_marker_list'])
 
     def to_dict(self):
         output_dict = {}
@@ -132,13 +136,10 @@ cdef class TriangleIO:
             output_dict['triangle_area_list'] = self.triangle_area_list
         if self.neighbor_list:
             output_dict['neighbor_list'] = self.neighbor_list
-
-        if self._io.segmentlist is not NULL:
-            output_dict['segment_list'] = []
-            for i in range(num_segments):
-                start_pt_index = self._io.segmentlist[2*i]
-                end_pt_index = self._io.segmentlist[2*i + 1]
-                output_dict['segment_list'].append([start_pt_index, end_pt_index])
+        if self.segment_list:
+            output_dict['segment_list'] = self.segment_list
+        if self.segment_marker_list:
+            output_dict['segment_marker_list'] = self.segment_marker_list
 
         if self._io.segmentmarkerlist is not NULL:
             output_dict['segment_marker_list'] = [self._io.segmentmarkerlist[i] for i in range(num_segments)]
@@ -261,6 +262,33 @@ cdef class TriangleIO:
                 neighbor_list.append(neighbors)
             return neighbor_list
 
+    @property
+    def segment_list(self):
+        if self._io.segmentlist is not NULL:
+            segment_list = []
+            for i in range(self._io.numberofsegments):
+                start_pt_index = self._io.segmentlist[2 * i]
+                end_pt_index = self._io.segmentlist[2 * i + 1]
+                segment_list.append([start_pt_index, end_pt_index])
+            return segment_list
+
+    @segment_list.setter
+    def segment_list(self, segments):
+        self.set_segments(segments)
+
+    # unmarked segments have a value of 0
+    @property
+    def segment_marker_list(self):
+        if self._io.segmentmarkerlist is not NULL:
+            segment_marker_list = []
+            for i in range(self._io.numberofsegments):
+                segment_marker_list.append(self._io.segmentmarkerlist[i])
+            return segment_marker_list
+
+    @segment_marker_list.setter
+    def segment_marker_list(self, segment_markers):
+        self.set_segment_markers(segment_markers)
+
     def set_points(self, points):
         num_points = len(points)
         self._io.numberofpoints = num_points
@@ -316,3 +344,18 @@ cdef class TriangleIO:
         self._io.trianglearealist = <double*>malloc(num_triangles * sizeof(double))
         for i in range(num_triangles):
             self._io.trianglearealist[i] = triangle_areas[i]
+
+    def set_segments(self, segments):
+        num_segments = len(segments)
+        self._io.numberofsegments = num_segments
+        segment_list = np.ascontiguousarray(segments, dtype=int)
+        self._io.segmentlist = <int*>malloc(num_segments * 2 * sizeof(int))
+        for i in range(num_segments):
+            self._io.segmentlist[i * 2] = segment_list[i, 0]
+            self._io.segmentlist[i * 2 + 1] = segment_list[i, 1]
+
+    def set_segment_markers(self, segment_markers):
+        segment_marker_list = np.ascontiguousarray(segment_markers, dtype=int)
+        self._io.segmentmarkerlist = <int*>malloc(self._io.numberofsegments * sizeof(int))
+        for i in range(self._io.numberofsegments):
+            self._io.segmentmarkerlist[i] = segment_marker_list[i]

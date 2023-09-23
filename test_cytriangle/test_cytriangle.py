@@ -15,7 +15,7 @@ def test_simple_triangle_area():
     assert output['point_marker_list'] == [1, 1, 1, 1, 0, 1, 1, 1, 1]
     assert output['triangle_list'] == [[7, 2, 4], [5, 0, 4], [4, 8, 1], [4, 1, 5], [4, 0, 6], [6, 3, 4], [4, 3, 7], [4, 2, 8]]
 
-def test_point_list_get():
+def test_input_point_list():
     test = CyTriangle(input_dict=simple_input)
     assert test.in_.point_list == [[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]]
 
@@ -33,22 +33,28 @@ def test_validate_missing_input_elements():
         additional_input = {**simple_input, 'triangle_list': [[0, 1, 2], [2, 3, 0]], 'triangle_attribute_list': [[2, 3]]}
         test = CyTriangle(additional_input)
 
-def test_optional_point_fields():
+def test_input_optional_point_fields():
     additional_input = {**simple_input, 'point_attribute_list': [[0, 1], [2, 3], [4, 5], [6, 7]], 'point_marker_list': [1, 2, 3, 4]}
     test = CyTriangle(additional_input)
     assert test.in_.point_attribute_list == [[0, 1], [2, 3], [4, 5], [6, 7]]
     assert test.in_.point_marker_list == [1, 2, 3, 4]
 
-def test_optional_triangle_fields():
+def test_input_optional_triangle_fields():
     additional_input = {**simple_input, 'triangle_list': [[0, 1, 2], [2, 3, 0]], 'triangle_attribute_list': [[0, 1], [2, 3]]}
     test = CyTriangle(additional_input)
     assert test.in_.triangle_attribute_list == [[0, 1], [2, 3]]
 
-def test_output_neighbor_field():
+def test_input_output_neighbor_field():
     test = CyTriangle(input_dict=simple_input)
     test.triangulate('na0.2')
     output = test.get_output_as_dict()
     assert output['neighbor_list'] == [[7, 6], [4, 3], [3, 7], [1, 2], [5, 1], [6, 4], [0, 5], [2, 0]]
+
+def test_input_segment_fields():
+    simple_input = {'point_list': [[0, 0], [0, 1], [1, 1], [1, 0]]}
+    test = CyTriangle(input_dict={**simple_input, 'segment_list': [[0, 1], [1, 2]], 'segment_marker_list': [0, 1]})
+    assert test.in_.segment_list == [[0, 1], [1, 2]]
+    assert test.in_.segment_marker_list == [0, 1]
 
 def test_memory_deallocation():
     test = CyTriangle(input_dict=simple_input)
