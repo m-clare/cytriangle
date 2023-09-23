@@ -53,7 +53,7 @@ cdef class TriangleIO:
             free(self._io)
 
     def __init__(self, input_dict=None):
-        # Assemble the triangulateio struct from a Python dictionary
+        # Assemble the triangulateio struct from a Python dictionary (default)
         if self._io is NULL:
             self._io = <triangulateio*> malloc(sizeof(triangulateio))
 
@@ -111,10 +111,11 @@ cdef class TriangleIO:
                     self.set_segment_markers(input_dict['segment_marker_list'])
             if 'hole_list' in input_dict:
                 self.set_holes(input_dict['hole_list'])
+            if 'region_list' in input_dict:
+                self.set_regions(input_dict['region_list'])
 
     def to_dict(self):
         output_dict = {}
-        num_regions = self._io.numberofregions
         num_edges = self._io.numberofedges
 
         if self.point_list:
@@ -137,17 +138,8 @@ cdef class TriangleIO:
             output_dict['segment_marker_list'] = self.segment_marker_list
         if self.hole_list:
             output_dict['hole_list'] = self.hole_list
-
-        if self._io.regionlist is not NULL:
-            output_dict['region_list'] = []
-
-            for i in range(num_regions):
-                region_info = {}
-                region_info['points'] = [self._io.regionlist[4*i], self._io.regionlist[4*i + 1]]
-                region_info['max_area'] = self.io.regionlist[4*i + 2]
-                region_info['attribute'] = self._io.regionlist[4*i + 3]
-
-            output_dict['region_list'].append(region_info)
+        if self.region_list:
+            output_dict['region_list'] = self.region_list
 
         if self._io.edgelist is not NULL:
             output_dict['edge_list'] = []
@@ -289,6 +281,22 @@ cdef class TriangleIO:
     def segment_marker_list(self, segment_markers):
         self.set_segment_markers(segment_markers)
 
+    @property
+    def region_list(self):
+        if self._io.regionlist is not NULL:
+            region_list = []
+            for i in range(self._io.numberofregions):
+                region = {}
+                region['point'] = [self._io.regionlist[4*i], self._io.regionlist[4*i + 1]]
+                region['max_area'] = self._io.regionlist[4*i + 2]
+                region['marker'] = self._io.regionlist[4*i + 3]
+                region_list.append(region)
+            return region_list
+
+    @region_list.setter
+    def region_list(self, regions):
+        self.set_regions(regions)
+
     def set_points(self, points):
         num_points = len(points)
         self._io.numberofpoints = num_points
@@ -368,3 +376,14 @@ cdef class TriangleIO:
         for i in range(num_holes):
             self._io.holelist[2 * i] = hole_list[i, 0]
             self._io.holelist[2 * i + 1] = hole_list[i, 1]
+
+    def set_regions(self, regions):
+        # unpack region dict
+        region_array = [[region['point'][0], region['point'][1], region['max_area'], region['marker']] for region in regions]
+        region_list = np.ascontiguousarray(region_array, dtype=np.double)
+        num_regions = len(regions)
+        self._io.numberofregions = num_regions
+        self._io.regionlist = <double*>malloc(num_regions * 4 * sizeof(double))
+        for i in range(num_regions):
+            for j in range(4):
+                self._io.regionlist[i * 4 + j] = region_list[i, j]

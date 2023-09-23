@@ -59,6 +59,10 @@ def test_input_hole_field():
     test = CyTriangle(input_dict={**simple_input, 'hole_list': [[0.5, 0.5]]})
     assert test.in_.hole_list == [[0.5, 0.5]]
 
+def test_input_region_field():
+    test = CyTriangle(input_dict={**simple_input, 'region_list': [{'point': [0.5, 0.5], 'max_area': 0.2, 'marker': 1}]})
+    assert test.in_.region_list == [{'point': [0.5, 0.5], 'max_area': 0.2, 'marker': 1}]
+
 def test_memory_deallocation():
     test = CyTriangle(input_dict=simple_input)
     del test  # Deallocate memory without errors
