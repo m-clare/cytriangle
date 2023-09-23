@@ -109,16 +109,11 @@ cdef class TriangleIO:
                 self.set_segments(input_dict['segment_list'])
                 if 'segment_marker_list' in input_dict:
                     self.set_segment_markers(input_dict['segment_marker_list'])
+            if 'hole_list' in input_dict:
+                self.set_holes(input_dict['hole_list'])
 
     def to_dict(self):
         output_dict = {}
-        num_points = self._io.numberofpoints
-        num_attrs = self._io.numberofpointattributes
-        num_triangles = self._io.numberoftriangles
-        num_neighbors = self._io.numberofcorners
-        num_triangle_attrs = self._io.numberoftriangleattributes
-        num_segments = self._io.numberofsegments
-        num_holes = self._io.numberofholes
         num_regions = self._io.numberofregions
         num_edges = self._io.numberofedges
 
@@ -140,9 +135,8 @@ cdef class TriangleIO:
             output_dict['segment_list'] = self.segment_list
         if self.segment_marker_list:
             output_dict['segment_marker_list'] = self.segment_marker_list
-
-        if self._io.holelist is not NULL:
-            output_dict['hole_list'] = [[self._io.holelist[2*i], self._io.holelist[2*i + 1]] for i in range(num_holes)]
+        if self.hole_list:
+            output_dict['hole_list'] = self.hole_list
 
         if self._io.regionlist is not NULL:
             output_dict['region_list'] = []
@@ -273,6 +267,15 @@ cdef class TriangleIO:
     def segment_list(self, segments):
         self.set_segments(segments)
 
+    @property
+    def hole_list(self):
+        if self._io.holelist is not NULL:
+            return [[self._io.holelist[2*i], self._io.holelist[2*i + 1]] for i in range(self._io.numberofholes)]
+
+    @hole_list.setter
+    def hole_list(self, holes):
+        self.set_holes(holes)
+
     # unmarked segments have a value of 0
     @property
     def segment_marker_list(self):
@@ -356,3 +359,12 @@ cdef class TriangleIO:
         self._io.segmentmarkerlist = <int*>malloc(self._io.numberofsegments * sizeof(int))
         for i in range(self._io.numberofsegments):
             self._io.segmentmarkerlist[i] = segment_marker_list[i]
+
+    def set_holes(self, holes):
+        hole_list = np.ascontiguousarray(holes, dtype=np.double)
+        num_holes = len(holes)
+        self._io.numberofholes = num_holes
+        self._io.holelist = <double*>malloc(num_holes * sizeof(double))
+        for i in range(num_holes):
+            self._io.holelist[2 * i] = hole_list[i, 0]
+            self._io.holelist[2 * i + 1] = hole_list[i, 1]

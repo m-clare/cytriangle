@@ -51,10 +51,13 @@ def test_input_output_neighbor_field():
     assert output['neighbor_list'] == [[7, 6], [4, 3], [3, 7], [1, 2], [5, 1], [6, 4], [0, 5], [2, 0]]
 
 def test_input_segment_fields():
-    simple_input = {'point_list': [[0, 0], [0, 1], [1, 1], [1, 0]]}
     test = CyTriangle(input_dict={**simple_input, 'segment_list': [[0, 1], [1, 2]], 'segment_marker_list': [0, 1]})
     assert test.in_.segment_list == [[0, 1], [1, 2]]
     assert test.in_.segment_marker_list == [0, 1]
+
+def test_input_hole_field():
+    test = CyTriangle(input_dict={**simple_input, 'hole_list': [[0.5, 0.5]]})
+    assert test.in_.hole_list == [[0.5, 0.5]]
 
 def test_memory_deallocation():
     test = CyTriangle(input_dict=simple_input)
