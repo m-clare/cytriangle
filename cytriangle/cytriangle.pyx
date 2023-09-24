@@ -40,13 +40,13 @@ cdef class CyTriangle:
 
     def validate_input_flags(self, opts):
         if "r" in opts:
-            if not 'triangle_list' in self._in.to_dict():
+            if not 'triangles' in self._in.to_dict():
                 raise ValueError("Triangle list must be provided when using 'r' flag")
         if "p" in opts:
-            if not 'segment_list' in self._in.to_dict():
+            if not 'segments' in self._in.to_dict():
                 raise ValueError("Segment list must be provided when using 'p' flag")
         if "a" in opts:
-            if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
+            if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
 
     # generic triangulation that accepts any switch

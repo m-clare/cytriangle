@@ -2,14 +2,14 @@ from libc.stdlib cimport free, malloc
 import numpy as np
 from cytriangle.ctriangle cimport triangulateio
 
-def validate_input_attributes(attribute_list):
-    num_attr = list(set([len(sublist) for sublist in attribute_list]))
+def validate_input_attributes(attributes):
+    num_attr = list(set([len(sublist) for sublist in attributes]))
     if len(num_attr) > 1:
         raise ValueError("Attribute lists must have the same number of attributes for each element")
     return num_attr[0]
 
-def validate_attribute_number(attribute_list, base_quantity):
-    if len(attribute_list) != base_quantity:
+def validate_attribute_number(attributes, base_quantity):
+    if len(attributes) != base_quantity:
         raise ValueError("Attribute list must have the same number of elements as the input it decorates")
 
 cdef class TriangleIO:
@@ -92,136 +92,136 @@ cdef class TriangleIO:
 
         # Populate based on input_dict
         if input_dict is not None:
-            if 'point_list' in input_dict:
-                self.set_points(input_dict['point_list'])
-                # set other point related optional fields
-                if 'point_attribute_list' in input_dict:
-                    self.set_point_attributes(input_dict['point_attribute_list'])
-                if 'point_marker_list' in input_dict:
-                    self.set_point_markers(input_dict['point_marker_list'])
-            if 'triangle_list' in input_dict:
-                self.set_triangles(input_dict['triangle_list'])
-                if 'triangle_attribute_list' in input_dict:
-                    self.set_triangle_attributes(input_dict['triangle_attribute_list'])
-                if 'triangle_area_list' in input_dict:
-                    self.set_triangle_areas(input_dict['triangle_area_list'])
-            if 'segment_list' in input_dict:
-                self.set_segments(input_dict['segment_list'])
-                if 'segment_marker_list' in input_dict:
-                    self.set_segment_markers(input_dict['segment_marker_list'])
-            if 'hole_list' in input_dict:
-                self.set_holes(input_dict['hole_list'])
-            if 'region_list' in input_dict:
-                self.set_regions(input_dict['region_list'])
+            if 'vertices' in input_dict:
+                self.set_vertices(input_dict['vertices'])
+                # set other vertex related optional fields
+                if 'vertex_attributes' in input_dict:
+                    self.set_vertex_attributes(input_dict['vertex_attributes'])
+                if 'vertex_markers' in input_dict:
+                    self.set_vertex_markers(input_dict['vertex_markers'])
+            if 'triangles' in input_dict:
+                self.set_triangles(input_dict['triangles'])
+                if 'triangle_attributes' in input_dict:
+                    self.set_triangle_attributes(input_dict['triangle_attributes'])
+                if 'triangle_max_area' in input_dict:
+                    self.set_triangle_areas(input_dict['triangle_max_area'])
+            if 'segments' in input_dict:
+                self.set_segments(input_dict['segments'])
+                if 'segment_markers' in input_dict:
+                    self.set_segment_markers(input_dict['segment_markers'])
+            if 'holes' in input_dict:
+                self.set_holes(input_dict['holes'])
+            if 'regions' in input_dict:
+                self.set_regions(input_dict['regions'])
 
     def to_dict(self):
         output_dict = {}
 
-        if self.point_list:
-            output_dict['point_list'] = self.point_list
-        if self.point_attribute_list:
-            output_dict['point_attribute_list'] = self.point_attribute_list
-        if self.point_marker_list:
-            output_dict['point_marker_list'] = self.point_marker_list
-        if self.triangle_list:
-            output_dict['triangle_list'] = self.triangle_list
-        if self.triangle_attribute_list:
-            output_dict['triangle_attribute_list'] = self.triangle_attribute_list
-        if self.triangle_area_list:
-            output_dict['triangle_area_list'] = self.triangle_area_list
-        if self.neighbor_list:
-            output_dict['neighbor_list'] = self.neighbor_list
-        if self.segment_list:
-            output_dict['segment_list'] = self.segment_list
-        if self.segment_marker_list:
-            output_dict['segment_marker_list'] = self.segment_marker_list
-        if self.hole_list:
-            output_dict['hole_list'] = self.hole_list
-        if self.region_list:
-            output_dict['region_list'] = self.region_list
-        if self.edge_list:
-            output_dict['edge_list'] = self.edge_list
-        if self.edge_marker_list:
-            output_dict['edge_marker_list'] = self.edge_marker_list
-        if self.norm_list:
-            output_dict['norm_list'] = self.norm_list
+        if self.vertices:
+            output_dict['vertices'] = self.vertices
+        if self.vertex_attributes:
+            output_dict['vertex_attributes'] = self.vertex_attributes
+        if self.vertex_markers:
+            output_dict['vertex_markers'] = self.vertex_markers
+        if self.triangles:
+            output_dict['triangles'] = self.triangles
+        if self.triangle_attributes:
+            output_dict['triangle_attributes'] = self.triangle_attributes
+        if self.triangle_max_area:
+            output_dict['triangle_max_area'] = self.triangle_max_area
+        if self.neighbors:
+            output_dict['neighbors'] = self.neighbors
+        if self.segments:
+            output_dict['segments'] = self.segments
+        if self.segment_markers:
+            output_dict['segment_markers'] = self.segment_markers
+        if self.holes:
+            output_dict['holes'] = self.holes
+        if self.regions:
+            output_dict['regions'] = self.regions
+        if self.edges:
+            output_dict['edges'] = self.edges
+        if self.edge_markers:
+            output_dict['edge_markers'] = self.edge_markers
+        if self.norms:
+            output_dict['norms'] = self.norms
 
         return output_dict
 
     @property
-    def point_list(self):
+    def vertices(self):
         if self._io.pointlist is not NULL:
             return [[self._io.pointlist[2*i], self._io.pointlist[2*i + 1]] for i in range(self._io.numberofpoints)]
 
-    @point_list.setter
-    def point_list(self, points):
-        self.set_points(points)
+    @vertices.setter
+    def vertices(self, vertices):
+        self.set_vertices(vertices)
 
     @property
-    def point_attribute_list(self):
+    def vertex_attributes(self):
         if self._io.pointattributelist is not NULL:
-            point_attribute_list = []
+            vertex_attributes = []
             for i in range(self._io.numberofpoints):
-                point_attr = []
+                vertex_attr = []
                 for j in range(self._io.numberofpointattributes):
-                    point_attr.append(self._io.pointattributelist[i*self._io.numberofpointattributes + j ])
-                point_attribute_list.append(point_attr)
-            return point_attribute_list
+                    vertex_attr.append(self._io.pointattributelist[i*self._io.numberofpointattributes + j ])
+                vertex_attributes.append(vertex_attr)
+            return vertex_attributes
 
-    @point_attribute_list.setter
-    def point_attribute_list(self, point_attributes):
-        self.set_point_attributes(point_attributes)
+    @vertex_attributes.setter
+    def vertex_attributes(self, vertex_attributes):
+        self.set_vertex_attributes(vertex_attributes)
 
     @property
-    def point_marker_list(self):
+    def vertex_markers(self):
         if self._io.pointmarkerlist is not NULL:
             return [self._io.pointmarkerlist[i] for i in range(self._io.numberofpoints)]
 
-    @point_marker_list.setter
-    def point_marker_list(self, point_markers):
-        self.set_point_markers(point_markers)
+    @vertex_markers.setter
+    def vertex_markers(self, vertex_markers):
+        self.set_vertex_markers(vertex_markers)
 
     @property
-    def triangle_list(self):
+    def triangles(self):
         if self._io.trianglelist is not NULL:
-            triangle_list = []
+            triangles = []
             for i in range(self._io.numberoftriangles):
                 tri_order = []
                 for j in range(self._io.numberofcorners):
                     tri_order.append(self._io.trianglelist[i * 3 + j])
-                triangle_list.append(tri_order)
-            return triangle_list
+                triangles.append(tri_order)
+            return triangles
 
-    @triangle_list.setter
-    def triangle_list(self, triangles):
+    @triangles.setter
+    def triangles(self, triangles):
         self.set_triangles(triangles)
 
     @property
-    def triangle_attribute_list(self):
+    def triangle_attributes(self):
         if self._io.triangleattributelist is not NULL:
-            triangle_attribute_list = []
+            triangle_attributes = []
             for i in range(self._io.numberoftriangles):
                 triangle_attr = []
                 for j in range(self._io.numberoftriangleattributes):
                     triangle_attr.append(self._io.triangleattributelist[i*self._io.numberoftriangleattributes + j ])
-                triangle_attribute_list.append(triangle_attr)
-            return triangle_attribute_list
+                triangle_attributes.append(triangle_attr)
+            return triangle_attributes
 
-    @triangle_attribute_list.setter
-    def triangle_attribute_list(self, triangle_attributes):
+    @triangle_attributes.setter
+    def triangle_attributes(self, triangle_attributes):
         self.set_triangle_attributes(triangle_attributes)
 
     @property
-    def triangle_area_list(self):
+    def triangle_max_area(self):
         if self._io.trianglearealist is not NULL:
             return [self._io.trianglearealist[i] for i in range(self._io.numberoftriangles)]
 
-    @triangle_area_list.setter
-    def triangle_area_list(self, triangle_areas):
+    @triangle_max_area.setter
+    def triangle_max_area(self, triangle_areas):
         self.set_triangle_areas(triangle_areas)
 
     @property
-    def neighbor_list(self):
+    def neighbors(self):
         max_neighbors = 3
         if self._io.neighborlist is not NULL:
             neighbor_list = []
@@ -233,166 +233,166 @@ cdef class TriangleIO:
             return neighbor_list
 
     @property
-    def segment_list(self):
+    def segments(self):
         if self._io.segmentlist is not NULL:
-            segment_list = []
+            segments = []
             for i in range(self._io.numberofsegments):
                 start_pt_index = self._io.segmentlist[2 * i]
                 end_pt_index = self._io.segmentlist[2 * i + 1]
-                segment_list.append([start_pt_index, end_pt_index])
-            return segment_list
+                segments.append([start_pt_index, end_pt_index])
+            return segments
 
-    @segment_list.setter
-    def segment_list(self, segments):
+    @segments.setter
+    def segments(self, segments):
         self.set_segments(segments)
 
     @property
-    def hole_list(self):
+    def holes(self):
         if self._io.holelist is not NULL:
             return [[self._io.holelist[2*i], self._io.holelist[2*i + 1]] for i in range(self._io.numberofholes)]
 
-    @hole_list.setter
-    def hole_list(self, holes):
+    @holes.setter
+    def holes(self, holes):
         self.set_holes(holes)
 
     # unmarked segments have a value of 0
     @property
-    def segment_marker_list(self):
+    def segment_markers(self):
         if self._io.segmentmarkerlist is not NULL:
-            segment_marker_list = []
+            segment_markers = []
             for i in range(self._io.numberofsegments):
-                segment_marker_list.append(self._io.segmentmarkerlist[i])
-            return segment_marker_list
+                segment_markers.append(self._io.segmentmarkerlist[i])
+            return segment_markers
 
-    @segment_marker_list.setter
-    def segment_marker_list(self, segment_markers):
+    @segment_markers.setter
+    def segment_markers(self, segment_markers):
         self.set_segment_markers(segment_markers)
 
     @property
-    def region_list(self):
+    def regions(self):
         if self._io.regionlist is not NULL:
-            region_list = []
+            regions = []
             for i in range(self._io.numberofregions):
                 region = {}
-                region['point'] = [self._io.regionlist[4*i], self._io.regionlist[4*i + 1]]
+                region['vertex'] = [self._io.regionlist[4*i], self._io.regionlist[4*i + 1]]
                 region['marker'] = self._io.regionlist[4*i + 2]
                 region['max_area'] = self._io.regionlist[4*i + 3]
-                region_list.append(region)
-            return region_list
+                regions.append(region)
+            return regions
+
+    @regions.setter
+    def regions(self, regions):
+        self.set_regions(regions)
 
     @property
-    def edge_list(self):
+    def edges(self):
         if self._io.edgelist is not NULL:
-            edge_list = []
+            edges = []
             for i in range(self._io.numberofedges):
-                edge_list.append([self._io.edgelist[i * 2], self._io.edgelist[i * 2 + 1]])
-            return edge_list
+                edges.append([self._io.edgelist[i * 2], self._io.edgelist[i * 2 + 1]])
+            return edges
 
     @property
-    def edge_marker_list(self):
+    def edge_markers(self):
         if self._io.edgemarkerlist is not NULL:
             return [self._io.edgemarkerlist[i] for i in range(self._io.numberofedges)]
 
     @property
-    def norm_list(self):
+    def norms(self):
         if self._io.normlist is not NULL:
             norm_list = []
             for i in range(self._io.numberofedges):
-                norm_list.append({'start': [self._io.normlist[i * 4], self._io.normlist[i * 4 + 1]], 'end': [self._io.normlist[i * 4 + 2], self._io.normlist[i * 4 + 3]]})
+                norm_list.append({'ray_origin': [self._io.normlist[i * 4], self._io.normlist[i * 4 + 1]], 'ray_direction': [self._io.normlist[i * 4 + 2], self._io.normlist[i * 4 + 3]]})
             return norm_list
 
-    @region_list.setter
-    def region_list(self, regions):
-        self.set_regions(regions)
+    def set_vertices(self, vertices):
+        num_vertices = len(vertices)
+        self._io.numberofpoints = num_vertices
+        if num_vertices < 3:
+            raise ValueError('Valid input requires three or more vertices')
+        vertices = np.ascontiguousarray(vertices, dtype=np.double)
+        self._io.pointlist = <double*>malloc(2 * num_vertices * sizeof(double))
+        for i in range(num_vertices):
+            self._io.pointlist[2 * i] = vertices[i, 0]
+            self._io.pointlist[2 * i + 1] = vertices[i, 1]
 
-    def set_points(self, points):
-        num_points = len(points)
-        self._io.numberofpoints = num_points
-        if num_points < 3:
-            raise ValueError('Valid input requires three or more points')
-        point_list = np.ascontiguousarray(points, dtype=np.double)
-        self._io.pointlist = <double*>malloc(2 * num_points * sizeof(double))
-        for i in range(num_points):
-            self._io.pointlist[2 * i] = point_list[i, 0]
-            self._io.pointlist[2 * i + 1] = point_list[i, 1]
-
-    def set_point_attributes(self, point_attributes):
-        num_attr = validate_input_attributes(point_attributes)
-        num_points = self._io.numberofpoints
-        validate_attribute_number(point_attributes, num_points)
-        point_attribute_list = np.ascontiguousarray(point_attributes, dtype=np.double)
-        self._io.pointattributelist = <double*>malloc(num_attr * num_points * sizeof(double))
+    def set_vertex_attributes(self, vertex_attributes):
+        num_attr = validate_input_attributes(vertex_attributes)
+        num_vertices = self._io.numberofpoints
+        validate_attribute_number(vertex_attributes, num_vertices)
+        vertex_attributes = np.ascontiguousarray(vertex_attributes, dtype=np.double)
+        self._io.pointattributelist = <double*>malloc(num_attr * num_vertices * sizeof(double))
         self._io.numberofpointattributes = num_attr
-        for i in range(num_points):
+        for i in range(num_vertices):
             for j in range(num_attr):
-                self._io.pointattributelist[i * num_attr + j] = point_attribute_list[i, j]
+                self._io.pointattributelist[i * num_attr + j] = vertex_attributes[i, j]
 
-    def set_point_markers(self, point_markers):
-        point_marker_list = np.ascontiguousarray(point_markers, dtype=int)
-        self._io.pointmarkerlist = <int*>malloc(len(point_markers) * sizeof(int))
-        for i in range(len(point_markers)):
-            self._io.pointmarkerlist[i] = point_marker_list[i]
+    def set_vertex_markers(self, vertex_markers):
+        vertex_markers = np.ascontiguousarray(vertex_markers, dtype=int)
+        self._io.pointmarkerlist = <int*>malloc(len(vertex_markers) * sizeof(int))
+        for i in range(len(vertex_markers)):
+            self._io.pointmarkerlist[i] = vertex_markers[i]
 
     def set_triangles(self, triangles):
         num_triangles = len(triangles)
-        triangle_list = np.ascontiguousarray(triangles, dtype=int)
+        triangles = np.ascontiguousarray(triangles, dtype=int)
 
         self._io.trianglelist = <int*>malloc(num_triangles * 3 * sizeof(int))
         self._io.numberoftriangles = num_triangles
         for i in range(num_triangles):
             for j in range(3):
-                self._io.trianglelist[i*3 + j] = triangle_list[i, j]
+                self._io.trianglelist[i*3 + j] = triangles[i, j]
 
     def set_triangle_attributes(self, triangle_attributes):
         num_attr = validate_input_attributes(triangle_attributes)
         num_triangles = self._io.numberoftriangles
         validate_attribute_number(triangle_attributes, num_triangles)
-        triangle_attribute_list = np.ascontiguousarray(triangle_attributes, dtype=np.double)
+        triangle_attributes = np.ascontiguousarray(triangle_attributes, dtype=np.double)
         self._io.triangleattributelist = <double*>malloc(num_attr * num_triangles * sizeof(double))
         self._io.numberoftriangleattributes = num_attr
         for i in range(num_triangles):
             for j in range(num_attr):
-                self._io.triangleattributelist[i * num_attr + j] = triangle_attribute_list[i, j]
+                self._io.triangleattributelist[i * num_attr + j] = triangle_attributes[i, j]
 
     def set_triangle_areas(self, triangle_areas):
         num_triangles = self._io.numberoftriangles
         validate_attribute_number(triangle_areas, num_triangles)
-        triangle_area_list = np.ascontiguousarray(triangle_areas, dtype=np.double)
+        triangle_max_area = np.ascontiguousarray(triangle_areas, dtype=np.double)
         self._io.trianglearealist = <double*>malloc(num_triangles * sizeof(double))
         for i in range(num_triangles):
-            self._io.trianglearealist[i] = triangle_area_list[i]
+            self._io.trianglearealist[i] = triangle_max_area[i]
 
     def set_segments(self, segments):
         num_segments = len(segments)
         self._io.numberofsegments = num_segments
-        segment_list = np.ascontiguousarray(segments, dtype=int)
+        segments = np.ascontiguousarray(segments, dtype=int)
         self._io.segmentlist = <int*>malloc(num_segments * 2 * sizeof(int))
         for i in range(num_segments):
-            self._io.segmentlist[i * 2] = segment_list[i, 0]
-            self._io.segmentlist[i * 2 + 1] = segment_list[i, 1]
+            self._io.segmentlist[i * 2] = segments[i, 0]
+            self._io.segmentlist[i * 2 + 1] = segments[i, 1]
 
     def set_segment_markers(self, segment_markers):
-        segment_marker_list = np.ascontiguousarray(segment_markers, dtype=int)
+        segment_markers = np.ascontiguousarray(segment_markers, dtype=int)
         self._io.segmentmarkerlist = <int*>malloc(self._io.numberofsegments * sizeof(int))
         for i in range(self._io.numberofsegments):
-            self._io.segmentmarkerlist[i] = segment_marker_list[i]
+            self._io.segmentmarkerlist[i] = segment_markers[i]
 
     def set_holes(self, holes):
-        hole_list = np.ascontiguousarray(holes, dtype=np.double)
+        holes = np.ascontiguousarray(holes, dtype=np.double)
         num_holes = len(holes)
         self._io.numberofholes = num_holes
         self._io.holelist = <double*>malloc(num_holes * sizeof(double))
         for i in range(num_holes):
-            self._io.holelist[2 * i] = hole_list[i, 0]
-            self._io.holelist[2 * i + 1] = hole_list[i, 1]
+            self._io.holelist[2 * i] = holes[i, 0]
+            self._io.holelist[2 * i + 1] = holes[i, 1]
 
     def set_regions(self, regions):
         # unpack region dict
-        region_array = [[region['point'][0], region['point'][1], region['marker'], region['max_area']] for region in regions]
-        region_list = np.ascontiguousarray(region_array, dtype=np.double)
+        region_array = [[region['vertex'][0], region['vertex'][1], region['marker'], region['max_area']] for region in regions]
+        regions = np.ascontiguousarray(region_array, dtype=np.double)
         num_regions = len(regions)
         self._io.numberofregions = num_regions
         self._io.regionlist = <double*>malloc(num_regions * 4 * sizeof(double))
         for i in range(num_regions):
             for j in range(4):
-                self._io.regionlist[i * 4 + j] = region_list[i, j]
+                self._io.regionlist[i * 4 + j] = regions[i, j]
