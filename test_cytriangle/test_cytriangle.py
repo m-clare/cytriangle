@@ -59,6 +59,8 @@ def test_validate_input_flags():
         test.triangulate("p")
     with pytest.raises(ValueError):
         test.triangulate("a")
+    with pytest.raises(ValueError):
+        test.triangulate("q")
 
 
 def test_validate_missing_input_elements():
