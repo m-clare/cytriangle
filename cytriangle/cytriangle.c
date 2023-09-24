@@ -1396,7 +1396,7 @@ struct __pyx_obj_12cytriangleio_TriangleIO;
 struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle;
 struct __pyx_opt_args_10cytriangle_10cytriangle_10CyTriangle_triangulate;
 
-/* "cytriangle/cytriangle.pyx":49
+/* "cytriangle/cytriangle.pyx":53
  * 
  *     # generic triangulation that accepts any switch
  *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
@@ -1420,8 +1420,8 @@ struct __pyx_obj_12cytriangleio_TriangleIO {
 };
 
 
-/* "cytriangle/cytriangle.pyx":6
- * from cytriangleio  cimport TriangleIO
+/* "cytriangle/cytriangle.pyx":7
+ * import re
  * 
  * cdef class CyTriangle:             # <<<<<<<<<<<<<<
  *     cdef TriangleIO _in
@@ -1740,6 +1740,27 @@ static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UIN
 #define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
 #endif
 
+/* GetModuleGlobalName.proto */
+#if CYTHON_USE_DICT_VERSIONS
+#define __Pyx_GetModuleGlobalName(var, name)  do {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_d))) ?\
+        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
+        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+} while(0)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  do {\
+    PY_UINT64_T __pyx_dict_version;\
+    PyObject *__pyx_dict_cached_value;\
+    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+} while(0)
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
+#else
+#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+#endif
+
 /* PyObjectFormatSimple.proto */
 #if CYTHON_COMPILING_IN_PYPY
     #define __Pyx_PyObject_FormatSimple(s, f) (\
@@ -1764,27 +1785,6 @@ static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UIN
 
 /* GetAttr3.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *, PyObject *, PyObject *);
-
-/* GetModuleGlobalName.proto */
-#if CYTHON_USE_DICT_VERSIONS
-#define __Pyx_GetModuleGlobalName(var, name)  do {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_d))) ?\
-        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
-        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  do {\
-    PY_UINT64_T __pyx_dict_version;\
-    PyObject *__pyx_dict_cached_value;\
-    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
-#else
-#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
-#endif
 
 /* RaiseUnexpectedTypeError.proto */
 static int __Pyx_RaiseUnexpectedTypeError(const char *expected, PyObject *obj);
@@ -1895,6 +1895,12 @@ enum __Pyx_ImportType_CheckSize_3_0_0 {
    __Pyx_ImportType_CheckSize_Ignore_3_0_0 = 2
 };
 static PyTypeObject *__Pyx_ImportType_3_0_0(PyObject* module, const char *module_name, const char *class_name, size_t size, size_t alignment, enum __Pyx_ImportType_CheckSize_3_0_0 check_size);
+#endif
+
+/* ImportDottedModule.proto */
+static PyObject *__Pyx_ImportDottedModule(PyObject *name, PyObject *parts_tuple);
+#if PY_MAJOR_VERSION >= 3
+static PyObject *__Pyx_ImportDottedModule_WalkParts(PyObject *module, PyObject *name, PyObject *parts_tuple);
 #endif
 
 /* FetchSharedCythonModule.proto */
@@ -2122,20 +2128,25 @@ int __pyx_module_is_main_cytriangle__cytriangle = 0;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
 /* #### Code section: string_decls ### */
+static const char __pyx_k_a[] = "a";
 static const char __pyx_k_p[] = "p";
 static const char __pyx_k_r[] = "r";
 static const char __pyx_k_Qz[] = "Qz";
-static const char __pyx_k__8[] = ".";
+static const char __pyx_k__9[] = ".";
 static const char __pyx_k_gc[] = "gc";
+static const char __pyx_k_re[] = "re";
 static const char __pyx_k_Qzc[] = "Qzc";
 static const char __pyx_k_Qzv[] = "Qzv";
-static const char __pyx_k__27[] = "?";
+static const char __pyx_k__10[] = "*";
+static const char __pyx_k__29[] = "?";
+static const char __pyx_k_d_d[] = "[\\d.*.]+\\d.*";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_dict[] = "__dict__";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_opts[] = "opts";
 static const char __pyx_k_self[] = "self";
+static const char __pyx_k_spec[] = "__spec__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_state[] = "state";
 static const char __pyx_k_utf_8[] = "utf-8";
@@ -2145,6 +2156,7 @@ static const char __pyx_k_encode[] = "encode";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reduce[] = "__reduce__";
+static const char __pyx_k_search[] = "search";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_disable[] = "disable";
 static const char __pyx_k_to_dict[] = "to_dict";
@@ -2166,6 +2178,7 @@ static const char __pyx_k_convex_hull[] = "convex_hull";
 static const char __pyx_k_triangulate[] = "triangulate";
 static const char __pyx_k_triswitches[] = "triswitches";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
+static const char __pyx_k_initializing[] = "_initializing";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_segment_list[] = "segment_list";
@@ -2180,6 +2193,7 @@ static const char __pyx_k_CyTriangle_voronoi[] = "CyTriangle.voronoi";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_get_output_as_dict[] = "get_output_as_dict";
+static const char __pyx_k_triangle_area_list[] = "triangle_area_list";
 static const char __pyx_k_CyTriangle_delaunay[] = "CyTriangle.delaunay";
 static const char __pyx_k_get_voronoi_as_dict[] = "get_voronoi_as_dict";
 static const char __pyx_k_Triangulation_failed[] = "Triangulation failed";
@@ -2201,6 +2215,7 @@ static const char __pyx_k_Generation_of_voronoi_diagram_fa[] = "Generation of vo
 static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0xfa5e81c, 0xcb7eaaa, 0xa10a831) = (_in, _out, _vorout))";
 static const char __pyx_k_Segment_list_must_be_provided_wh[] = "Segment list must be provided when using 'p' flag";
 static const char __pyx_k_Triangle_list_must_be_provided_w[] = "Triangle list must be provided when using 'r' flag";
+static const char __pyx_k_When_using_a_flag_for_area_const[] = "When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided";
 /* #### Code section: decls ### */
 static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *__pyx_v_self, PyObject *__pyx_v_input_dict); /* proto */
 static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *__pyx_v_self); /* proto */
@@ -2285,13 +2300,17 @@ typedef struct {
   PyObject *__pyx_kp_s_Triangle_list_must_be_provided_w;
   PyObject *__pyx_kp_s_Triangulation_failed;
   PyObject *__pyx_n_s_ValueError;
-  PyObject *__pyx_n_s__27;
-  PyObject *__pyx_kp_u__8;
+  PyObject *__pyx_kp_s_When_using_a_flag_for_area_const;
+  PyObject *__pyx_n_s__10;
+  PyObject *__pyx_n_s__29;
+  PyObject *__pyx_kp_u__9;
+  PyObject *__pyx_n_s_a;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_convex_hull;
   PyObject *__pyx_n_s_cytriangle_cytriangle;
   PyObject *__pyx_kp_s_cytriangle_cytriangle_pyx;
+  PyObject *__pyx_kp_s_d_d;
   PyObject *__pyx_n_s_delaunay;
   PyObject *__pyx_n_s_dict;
   PyObject *__pyx_n_s_dict_2;
@@ -2304,6 +2323,7 @@ typedef struct {
   PyObject *__pyx_n_s_get_voronoi_as_dict;
   PyObject *__pyx_n_s_getstate;
   PyObject *__pyx_n_s_import;
+  PyObject *__pyx_n_s_initializing;
   PyObject *__pyx_n_s_input_dict;
   PyObject *__pyx_n_s_is_coroutine;
   PyObject *__pyx_kp_u_isenabled;
@@ -2321,17 +2341,21 @@ typedef struct {
   PyObject *__pyx_n_s_pyx_unpickle_CyTriangle;
   PyObject *__pyx_n_s_pyx_vtable;
   PyObject *__pyx_n_s_r;
+  PyObject *__pyx_n_s_re;
   PyObject *__pyx_n_s_reduce;
   PyObject *__pyx_n_s_reduce_cython;
   PyObject *__pyx_n_s_reduce_ex;
+  PyObject *__pyx_n_s_search;
   PyObject *__pyx_n_s_segment_list;
   PyObject *__pyx_n_s_self;
   PyObject *__pyx_n_s_setstate;
   PyObject *__pyx_n_s_setstate_cython;
+  PyObject *__pyx_n_s_spec;
   PyObject *__pyx_n_s_state;
   PyObject *__pyx_kp_s_stringsource;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_s_to_dict;
+  PyObject *__pyx_n_s_triangle_area_list;
   PyObject *__pyx_n_s_triangle_list;
   PyObject *__pyx_n_s_triangulate;
   PyObject *__pyx_n_s_triswitches;
@@ -2350,24 +2374,25 @@ typedef struct {
   PyObject *__pyx_tuple__5;
   PyObject *__pyx_tuple__6;
   PyObject *__pyx_tuple__7;
-  PyObject *__pyx_tuple__9;
-  PyObject *__pyx_tuple__13;
+  PyObject *__pyx_tuple__8;
+  PyObject *__pyx_tuple__11;
   PyObject *__pyx_tuple__15;
   PyObject *__pyx_tuple__17;
-  PyObject *__pyx_tuple__21;
+  PyObject *__pyx_tuple__19;
   PyObject *__pyx_tuple__23;
   PyObject *__pyx_tuple__25;
-  PyObject *__pyx_codeobj__10;
-  PyObject *__pyx_codeobj__11;
+  PyObject *__pyx_tuple__27;
   PyObject *__pyx_codeobj__12;
+  PyObject *__pyx_codeobj__13;
   PyObject *__pyx_codeobj__14;
   PyObject *__pyx_codeobj__16;
   PyObject *__pyx_codeobj__18;
-  PyObject *__pyx_codeobj__19;
   PyObject *__pyx_codeobj__20;
+  PyObject *__pyx_codeobj__21;
   PyObject *__pyx_codeobj__22;
   PyObject *__pyx_codeobj__24;
   PyObject *__pyx_codeobj__26;
+  PyObject *__pyx_codeobj__28;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -2438,13 +2463,17 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_s_Triangle_list_must_be_provided_w);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Triangulation_failed);
   Py_CLEAR(clear_module_state->__pyx_n_s_ValueError);
-  Py_CLEAR(clear_module_state->__pyx_n_s__27);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__8);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_When_using_a_flag_for_area_const);
+  Py_CLEAR(clear_module_state->__pyx_n_s__10);
+  Py_CLEAR(clear_module_state->__pyx_n_s__29);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__9);
+  Py_CLEAR(clear_module_state->__pyx_n_s_a);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_convex_hull);
   Py_CLEAR(clear_module_state->__pyx_n_s_cytriangle_cytriangle);
   Py_CLEAR(clear_module_state->__pyx_kp_s_cytriangle_cytriangle_pyx);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_d_d);
   Py_CLEAR(clear_module_state->__pyx_n_s_delaunay);
   Py_CLEAR(clear_module_state->__pyx_n_s_dict);
   Py_CLEAR(clear_module_state->__pyx_n_s_dict_2);
@@ -2457,6 +2486,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_get_voronoi_as_dict);
   Py_CLEAR(clear_module_state->__pyx_n_s_getstate);
   Py_CLEAR(clear_module_state->__pyx_n_s_import);
+  Py_CLEAR(clear_module_state->__pyx_n_s_initializing);
   Py_CLEAR(clear_module_state->__pyx_n_s_input_dict);
   Py_CLEAR(clear_module_state->__pyx_n_s_is_coroutine);
   Py_CLEAR(clear_module_state->__pyx_kp_u_isenabled);
@@ -2474,17 +2504,21 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_pyx_unpickle_CyTriangle);
   Py_CLEAR(clear_module_state->__pyx_n_s_pyx_vtable);
   Py_CLEAR(clear_module_state->__pyx_n_s_r);
+  Py_CLEAR(clear_module_state->__pyx_n_s_re);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce_ex);
+  Py_CLEAR(clear_module_state->__pyx_n_s_search);
   Py_CLEAR(clear_module_state->__pyx_n_s_segment_list);
   Py_CLEAR(clear_module_state->__pyx_n_s_self);
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate);
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate_cython);
+  Py_CLEAR(clear_module_state->__pyx_n_s_spec);
   Py_CLEAR(clear_module_state->__pyx_n_s_state);
   Py_CLEAR(clear_module_state->__pyx_kp_s_stringsource);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_s_to_dict);
+  Py_CLEAR(clear_module_state->__pyx_n_s_triangle_area_list);
   Py_CLEAR(clear_module_state->__pyx_n_s_triangle_list);
   Py_CLEAR(clear_module_state->__pyx_n_s_triangulate);
   Py_CLEAR(clear_module_state->__pyx_n_s_triswitches);
@@ -2503,24 +2537,25 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_tuple__5);
   Py_CLEAR(clear_module_state->__pyx_tuple__6);
   Py_CLEAR(clear_module_state->__pyx_tuple__7);
-  Py_CLEAR(clear_module_state->__pyx_tuple__9);
-  Py_CLEAR(clear_module_state->__pyx_tuple__13);
+  Py_CLEAR(clear_module_state->__pyx_tuple__8);
+  Py_CLEAR(clear_module_state->__pyx_tuple__11);
   Py_CLEAR(clear_module_state->__pyx_tuple__15);
   Py_CLEAR(clear_module_state->__pyx_tuple__17);
-  Py_CLEAR(clear_module_state->__pyx_tuple__21);
+  Py_CLEAR(clear_module_state->__pyx_tuple__19);
   Py_CLEAR(clear_module_state->__pyx_tuple__23);
   Py_CLEAR(clear_module_state->__pyx_tuple__25);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__10);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__11);
+  Py_CLEAR(clear_module_state->__pyx_tuple__27);
   Py_CLEAR(clear_module_state->__pyx_codeobj__12);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__13);
   Py_CLEAR(clear_module_state->__pyx_codeobj__14);
   Py_CLEAR(clear_module_state->__pyx_codeobj__16);
   Py_CLEAR(clear_module_state->__pyx_codeobj__18);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__19);
   Py_CLEAR(clear_module_state->__pyx_codeobj__20);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__21);
   Py_CLEAR(clear_module_state->__pyx_codeobj__22);
   Py_CLEAR(clear_module_state->__pyx_codeobj__24);
   Py_CLEAR(clear_module_state->__pyx_codeobj__26);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__28);
   return 0;
 }
 #endif
@@ -2569,13 +2604,17 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_s_Triangle_list_must_be_provided_w);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Triangulation_failed);
   Py_VISIT(traverse_module_state->__pyx_n_s_ValueError);
-  Py_VISIT(traverse_module_state->__pyx_n_s__27);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__8);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_When_using_a_flag_for_area_const);
+  Py_VISIT(traverse_module_state->__pyx_n_s__10);
+  Py_VISIT(traverse_module_state->__pyx_n_s__29);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__9);
+  Py_VISIT(traverse_module_state->__pyx_n_s_a);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_convex_hull);
   Py_VISIT(traverse_module_state->__pyx_n_s_cytriangle_cytriangle);
   Py_VISIT(traverse_module_state->__pyx_kp_s_cytriangle_cytriangle_pyx);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_d_d);
   Py_VISIT(traverse_module_state->__pyx_n_s_delaunay);
   Py_VISIT(traverse_module_state->__pyx_n_s_dict);
   Py_VISIT(traverse_module_state->__pyx_n_s_dict_2);
@@ -2588,6 +2627,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_get_voronoi_as_dict);
   Py_VISIT(traverse_module_state->__pyx_n_s_getstate);
   Py_VISIT(traverse_module_state->__pyx_n_s_import);
+  Py_VISIT(traverse_module_state->__pyx_n_s_initializing);
   Py_VISIT(traverse_module_state->__pyx_n_s_input_dict);
   Py_VISIT(traverse_module_state->__pyx_n_s_is_coroutine);
   Py_VISIT(traverse_module_state->__pyx_kp_u_isenabled);
@@ -2605,17 +2645,21 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_pyx_unpickle_CyTriangle);
   Py_VISIT(traverse_module_state->__pyx_n_s_pyx_vtable);
   Py_VISIT(traverse_module_state->__pyx_n_s_r);
+  Py_VISIT(traverse_module_state->__pyx_n_s_re);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce_ex);
+  Py_VISIT(traverse_module_state->__pyx_n_s_search);
   Py_VISIT(traverse_module_state->__pyx_n_s_segment_list);
   Py_VISIT(traverse_module_state->__pyx_n_s_self);
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate);
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate_cython);
+  Py_VISIT(traverse_module_state->__pyx_n_s_spec);
   Py_VISIT(traverse_module_state->__pyx_n_s_state);
   Py_VISIT(traverse_module_state->__pyx_kp_s_stringsource);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_s_to_dict);
+  Py_VISIT(traverse_module_state->__pyx_n_s_triangle_area_list);
   Py_VISIT(traverse_module_state->__pyx_n_s_triangle_list);
   Py_VISIT(traverse_module_state->__pyx_n_s_triangulate);
   Py_VISIT(traverse_module_state->__pyx_n_s_triswitches);
@@ -2634,24 +2678,25 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_tuple__5);
   Py_VISIT(traverse_module_state->__pyx_tuple__6);
   Py_VISIT(traverse_module_state->__pyx_tuple__7);
-  Py_VISIT(traverse_module_state->__pyx_tuple__9);
-  Py_VISIT(traverse_module_state->__pyx_tuple__13);
+  Py_VISIT(traverse_module_state->__pyx_tuple__8);
+  Py_VISIT(traverse_module_state->__pyx_tuple__11);
   Py_VISIT(traverse_module_state->__pyx_tuple__15);
   Py_VISIT(traverse_module_state->__pyx_tuple__17);
-  Py_VISIT(traverse_module_state->__pyx_tuple__21);
+  Py_VISIT(traverse_module_state->__pyx_tuple__19);
   Py_VISIT(traverse_module_state->__pyx_tuple__23);
   Py_VISIT(traverse_module_state->__pyx_tuple__25);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__10);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__11);
+  Py_VISIT(traverse_module_state->__pyx_tuple__27);
   Py_VISIT(traverse_module_state->__pyx_codeobj__12);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__13);
   Py_VISIT(traverse_module_state->__pyx_codeobj__14);
   Py_VISIT(traverse_module_state->__pyx_codeobj__16);
   Py_VISIT(traverse_module_state->__pyx_codeobj__18);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__19);
   Py_VISIT(traverse_module_state->__pyx_codeobj__20);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__21);
   Py_VISIT(traverse_module_state->__pyx_codeobj__22);
   Py_VISIT(traverse_module_state->__pyx_codeobj__24);
   Py_VISIT(traverse_module_state->__pyx_codeobj__26);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__28);
   return 0;
 }
 #endif
@@ -2720,13 +2765,17 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_s_Triangle_list_must_be_provided_w __pyx_mstate_global->__pyx_kp_s_Triangle_list_must_be_provided_w
 #define __pyx_kp_s_Triangulation_failed __pyx_mstate_global->__pyx_kp_s_Triangulation_failed
 #define __pyx_n_s_ValueError __pyx_mstate_global->__pyx_n_s_ValueError
-#define __pyx_n_s__27 __pyx_mstate_global->__pyx_n_s__27
-#define __pyx_kp_u__8 __pyx_mstate_global->__pyx_kp_u__8
+#define __pyx_kp_s_When_using_a_flag_for_area_const __pyx_mstate_global->__pyx_kp_s_When_using_a_flag_for_area_const
+#define __pyx_n_s__10 __pyx_mstate_global->__pyx_n_s__10
+#define __pyx_n_s__29 __pyx_mstate_global->__pyx_n_s__29
+#define __pyx_kp_u__9 __pyx_mstate_global->__pyx_kp_u__9
+#define __pyx_n_s_a __pyx_mstate_global->__pyx_n_s_a
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_convex_hull __pyx_mstate_global->__pyx_n_s_convex_hull
 #define __pyx_n_s_cytriangle_cytriangle __pyx_mstate_global->__pyx_n_s_cytriangle_cytriangle
 #define __pyx_kp_s_cytriangle_cytriangle_pyx __pyx_mstate_global->__pyx_kp_s_cytriangle_cytriangle_pyx
+#define __pyx_kp_s_d_d __pyx_mstate_global->__pyx_kp_s_d_d
 #define __pyx_n_s_delaunay __pyx_mstate_global->__pyx_n_s_delaunay
 #define __pyx_n_s_dict __pyx_mstate_global->__pyx_n_s_dict
 #define __pyx_n_s_dict_2 __pyx_mstate_global->__pyx_n_s_dict_2
@@ -2739,6 +2788,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_get_voronoi_as_dict __pyx_mstate_global->__pyx_n_s_get_voronoi_as_dict
 #define __pyx_n_s_getstate __pyx_mstate_global->__pyx_n_s_getstate
 #define __pyx_n_s_import __pyx_mstate_global->__pyx_n_s_import
+#define __pyx_n_s_initializing __pyx_mstate_global->__pyx_n_s_initializing
 #define __pyx_n_s_input_dict __pyx_mstate_global->__pyx_n_s_input_dict
 #define __pyx_n_s_is_coroutine __pyx_mstate_global->__pyx_n_s_is_coroutine
 #define __pyx_kp_u_isenabled __pyx_mstate_global->__pyx_kp_u_isenabled
@@ -2756,17 +2806,21 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_pyx_unpickle_CyTriangle __pyx_mstate_global->__pyx_n_s_pyx_unpickle_CyTriangle
 #define __pyx_n_s_pyx_vtable __pyx_mstate_global->__pyx_n_s_pyx_vtable
 #define __pyx_n_s_r __pyx_mstate_global->__pyx_n_s_r
+#define __pyx_n_s_re __pyx_mstate_global->__pyx_n_s_re
 #define __pyx_n_s_reduce __pyx_mstate_global->__pyx_n_s_reduce
 #define __pyx_n_s_reduce_cython __pyx_mstate_global->__pyx_n_s_reduce_cython
 #define __pyx_n_s_reduce_ex __pyx_mstate_global->__pyx_n_s_reduce_ex
+#define __pyx_n_s_search __pyx_mstate_global->__pyx_n_s_search
 #define __pyx_n_s_segment_list __pyx_mstate_global->__pyx_n_s_segment_list
 #define __pyx_n_s_self __pyx_mstate_global->__pyx_n_s_self
 #define __pyx_n_s_setstate __pyx_mstate_global->__pyx_n_s_setstate
 #define __pyx_n_s_setstate_cython __pyx_mstate_global->__pyx_n_s_setstate_cython
+#define __pyx_n_s_spec __pyx_mstate_global->__pyx_n_s_spec
 #define __pyx_n_s_state __pyx_mstate_global->__pyx_n_s_state
 #define __pyx_kp_s_stringsource __pyx_mstate_global->__pyx_kp_s_stringsource
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_s_to_dict __pyx_mstate_global->__pyx_n_s_to_dict
+#define __pyx_n_s_triangle_area_list __pyx_mstate_global->__pyx_n_s_triangle_area_list
 #define __pyx_n_s_triangle_list __pyx_mstate_global->__pyx_n_s_triangle_list
 #define __pyx_n_s_triangulate __pyx_mstate_global->__pyx_n_s_triangulate
 #define __pyx_n_s_triswitches __pyx_mstate_global->__pyx_n_s_triswitches
@@ -2785,27 +2839,28 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_tuple__5 __pyx_mstate_global->__pyx_tuple__5
 #define __pyx_tuple__6 __pyx_mstate_global->__pyx_tuple__6
 #define __pyx_tuple__7 __pyx_mstate_global->__pyx_tuple__7
-#define __pyx_tuple__9 __pyx_mstate_global->__pyx_tuple__9
-#define __pyx_tuple__13 __pyx_mstate_global->__pyx_tuple__13
+#define __pyx_tuple__8 __pyx_mstate_global->__pyx_tuple__8
+#define __pyx_tuple__11 __pyx_mstate_global->__pyx_tuple__11
 #define __pyx_tuple__15 __pyx_mstate_global->__pyx_tuple__15
 #define __pyx_tuple__17 __pyx_mstate_global->__pyx_tuple__17
-#define __pyx_tuple__21 __pyx_mstate_global->__pyx_tuple__21
+#define __pyx_tuple__19 __pyx_mstate_global->__pyx_tuple__19
 #define __pyx_tuple__23 __pyx_mstate_global->__pyx_tuple__23
 #define __pyx_tuple__25 __pyx_mstate_global->__pyx_tuple__25
-#define __pyx_codeobj__10 __pyx_mstate_global->__pyx_codeobj__10
-#define __pyx_codeobj__11 __pyx_mstate_global->__pyx_codeobj__11
+#define __pyx_tuple__27 __pyx_mstate_global->__pyx_tuple__27
 #define __pyx_codeobj__12 __pyx_mstate_global->__pyx_codeobj__12
+#define __pyx_codeobj__13 __pyx_mstate_global->__pyx_codeobj__13
 #define __pyx_codeobj__14 __pyx_mstate_global->__pyx_codeobj__14
 #define __pyx_codeobj__16 __pyx_mstate_global->__pyx_codeobj__16
 #define __pyx_codeobj__18 __pyx_mstate_global->__pyx_codeobj__18
-#define __pyx_codeobj__19 __pyx_mstate_global->__pyx_codeobj__19
 #define __pyx_codeobj__20 __pyx_mstate_global->__pyx_codeobj__20
+#define __pyx_codeobj__21 __pyx_mstate_global->__pyx_codeobj__21
 #define __pyx_codeobj__22 __pyx_mstate_global->__pyx_codeobj__22
 #define __pyx_codeobj__24 __pyx_mstate_global->__pyx_codeobj__24
 #define __pyx_codeobj__26 __pyx_mstate_global->__pyx_codeobj__26
+#define __pyx_codeobj__28 __pyx_mstate_global->__pyx_codeobj__28
 /* #### Code section: module_code ### */
 
-/* "cytriangle/cytriangle.pyx":11
+/* "cytriangle/cytriangle.pyx":12
  *     cdef TriangleIO _vorout
  * 
  *     def __init__(self, input_dict=None):             # <<<<<<<<<<<<<<
@@ -2843,12 +2898,12 @@ static int __pyx_pw_10cytriangle_10cytriangle_10CyTriangle_1__init__(PyObject *_
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_input_dict);
           if (value) { values[0] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 11, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 12, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -2862,7 +2917,7 @@ static int __pyx_pw_10cytriangle_10cytriangle_10CyTriangle_1__init__(PyObject *_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 11, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 12, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cytriangle.cytriangle.CyTriangle.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2885,7 +2940,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "cytriangle/cytriangle.pyx":12
+  /* "cytriangle/cytriangle.pyx":13
  * 
  *     def __init__(self, input_dict=None):
  *         if input_dict is not None:             # <<<<<<<<<<<<<<
@@ -2895,14 +2950,14 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   __pyx_t_1 = (__pyx_v_input_dict != Py_None);
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":13
+    /* "cytriangle/cytriangle.pyx":14
  *     def __init__(self, input_dict=None):
  *         if input_dict is not None:
  *             self._in = TriangleIO(input_dict)             # <<<<<<<<<<<<<<
  *         else:
  *             self._in = TriangleIO()
  */
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO), __pyx_v_input_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO), __pyx_v_input_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
     __Pyx_GOTREF((PyObject *)__pyx_v_self->_in);
@@ -2910,7 +2965,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
     __pyx_v_self->_in = ((struct __pyx_obj_12cytriangleio_TriangleIO *)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "cytriangle/cytriangle.pyx":12
+    /* "cytriangle/cytriangle.pyx":13
  * 
  *     def __init__(self, input_dict=None):
  *         if input_dict is not None:             # <<<<<<<<<<<<<<
@@ -2920,7 +2975,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
     goto __pyx_L3;
   }
 
-  /* "cytriangle/cytriangle.pyx":15
+  /* "cytriangle/cytriangle.pyx":16
  *             self._in = TriangleIO(input_dict)
  *         else:
  *             self._in = TriangleIO()             # <<<<<<<<<<<<<<
@@ -2928,7 +2983,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
  *         self._vorout = TriangleIO()
  */
   /*else*/ {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
     __Pyx_GOTREF((PyObject *)__pyx_v_self->_in);
@@ -2938,14 +2993,14 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   }
   __pyx_L3:;
 
-  /* "cytriangle/cytriangle.pyx":16
+  /* "cytriangle/cytriangle.pyx":17
  *         else:
  *             self._in = TriangleIO()
  *         self._out = TriangleIO()             # <<<<<<<<<<<<<<
  *         self._vorout = TriangleIO()
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF((PyObject *)__pyx_v_self->_out);
@@ -2953,14 +3008,14 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   __pyx_v_self->_out = ((struct __pyx_obj_12cytriangleio_TriangleIO *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "cytriangle/cytriangle.pyx":17
+  /* "cytriangle/cytriangle.pyx":18
  *             self._in = TriangleIO()
  *         self._out = TriangleIO()
  *         self._vorout = TriangleIO()             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF((PyObject *)__pyx_v_self->_vorout);
@@ -2968,7 +3023,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   __pyx_v_self->_vorout = ((struct __pyx_obj_12cytriangleio_TriangleIO *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "cytriangle/cytriangle.pyx":11
+  /* "cytriangle/cytriangle.pyx":12
  *     cdef TriangleIO _vorout
  * 
  *     def __init__(self, input_dict=None):             # <<<<<<<<<<<<<<
@@ -2988,7 +3043,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":19
+/* "cytriangle/cytriangle.pyx":20
  *         self._vorout = TriangleIO()
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3015,7 +3070,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "cytriangle/cytriangle.pyx":21
+  /* "cytriangle/cytriangle.pyx":22
  *     @property
  *     def in_(self):
  *         return self._in             # <<<<<<<<<<<<<<
@@ -3027,7 +3082,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(st
   __pyx_r = ((PyObject *)__pyx_v_self->_in);
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":19
+  /* "cytriangle/cytriangle.pyx":20
  *         self._vorout = TriangleIO()
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3042,7 +3097,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(st
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":23
+/* "cytriangle/cytriangle.pyx":24
  *         return self._in
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3069,7 +3124,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3out___get__(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "cytriangle/cytriangle.pyx":25
+  /* "cytriangle/cytriangle.pyx":26
  *     @property
  *     def out(self):
  *         return self._out             # <<<<<<<<<<<<<<
@@ -3081,7 +3136,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3out___get__(st
   __pyx_r = ((PyObject *)__pyx_v_self->_out);
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":23
+  /* "cytriangle/cytriangle.pyx":24
  *         return self._in
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3096,7 +3151,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3out___get__(st
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":27
+/* "cytriangle/cytriangle.pyx":28
  *         return self._out
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3123,7 +3178,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6vorout___get__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "cytriangle/cytriangle.pyx":29
+  /* "cytriangle/cytriangle.pyx":30
  *     @property
  *     def vorout(self):
  *         return self._vorout             # <<<<<<<<<<<<<<
@@ -3135,7 +3190,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6vorout___get__
   __pyx_r = ((PyObject *)__pyx_v_self->_vorout);
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":27
+  /* "cytriangle/cytriangle.pyx":28
  *         return self._out
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3150,7 +3205,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6vorout___get__
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":31
+/* "cytriangle/cytriangle.pyx":32
  *         return self._vorout
  * 
  *     def get_input_as_dict(self):             # <<<<<<<<<<<<<<
@@ -3203,7 +3258,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2get_input_as_d
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_input_as_dict", 0);
 
-  /* "cytriangle/cytriangle.pyx":32
+  /* "cytriangle/cytriangle.pyx":33
  * 
  *     def get_input_as_dict(self):
  *         return self._in.to_dict()             # <<<<<<<<<<<<<<
@@ -3211,7 +3266,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2get_input_as_d
  *     def get_output_as_dict(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3229,7 +3284,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2get_input_as_d
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -3237,7 +3292,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2get_input_as_d
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":31
+  /* "cytriangle/cytriangle.pyx":32
  *         return self._vorout
  * 
  *     def get_input_as_dict(self):             # <<<<<<<<<<<<<<
@@ -3258,7 +3313,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2get_input_as_d
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":34
+/* "cytriangle/cytriangle.pyx":35
  *         return self._in.to_dict()
  * 
  *     def get_output_as_dict(self):             # <<<<<<<<<<<<<<
@@ -3311,7 +3366,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4get_output_as_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_output_as_dict", 0);
 
-  /* "cytriangle/cytriangle.pyx":35
+  /* "cytriangle/cytriangle.pyx":36
  * 
  *     def get_output_as_dict(self):
  *         return self._out.to_dict()             # <<<<<<<<<<<<<<
@@ -3319,7 +3374,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4get_output_as_
  *     def get_voronoi_as_dict(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_out), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_out), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3337,7 +3392,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4get_output_as_
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -3345,7 +3400,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4get_output_as_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":34
+  /* "cytriangle/cytriangle.pyx":35
  *         return self._in.to_dict()
  * 
  *     def get_output_as_dict(self):             # <<<<<<<<<<<<<<
@@ -3366,7 +3421,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4get_output_as_
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":37
+/* "cytriangle/cytriangle.pyx":38
  *         return self._out.to_dict()
  * 
  *     def get_voronoi_as_dict(self):             # <<<<<<<<<<<<<<
@@ -3419,7 +3474,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6get_voronoi_as
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_voronoi_as_dict", 0);
 
-  /* "cytriangle/cytriangle.pyx":38
+  /* "cytriangle/cytriangle.pyx":39
  * 
  *     def get_voronoi_as_dict(self):
  *         return self._vorout.to_dict()             # <<<<<<<<<<<<<<
@@ -3427,7 +3482,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6get_voronoi_as
  *     def validate_input_flags(self, opts):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_vorout), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_vorout), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3445,7 +3500,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6get_voronoi_as
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -3453,7 +3508,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6get_voronoi_as
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":37
+  /* "cytriangle/cytriangle.pyx":38
  *         return self._out.to_dict()
  * 
  *     def get_voronoi_as_dict(self):             # <<<<<<<<<<<<<<
@@ -3474,7 +3529,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6get_voronoi_as
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":40
+/* "cytriangle/cytriangle.pyx":41
  *         return self._vorout.to_dict()
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
@@ -3524,12 +3579,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_opts)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 40, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "validate_input_flags") < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "validate_input_flags") < 0)) __PYX_ERR(0, 41, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -3540,7 +3595,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("validate_input_flags", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 40, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("validate_input_flags", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 41, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cytriangle.cytriangle.CyTriangle.validate_input_flags", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3561,29 +3616,30 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
+  int __pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("validate_input_flags", 0);
 
-  /* "cytriangle/cytriangle.pyx":41
+  /* "cytriangle/cytriangle.pyx":42
  * 
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:             # <<<<<<<<<<<<<<
  *             if not 'triangle_list' in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_r, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_r, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 42, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":42
+    /* "cytriangle/cytriangle.pyx":43
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:
  *             if not 'triangle_list' in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_5 = 0;
@@ -3601,28 +3657,28 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       PyObject *__pyx_callargs[1] = {__pyx_t_4, };
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_triangle_list, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_triangle_list, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(__pyx_t_1)) {
 
-      /* "cytriangle/cytriangle.pyx":43
+      /* "cytriangle/cytriangle.pyx":44
  *         if "r" in opts:
  *             if not 'triangle_list' in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")             # <<<<<<<<<<<<<<
  *         if "p" in opts:
  *             if not 'segment_list' in self._in.to_dict():
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 43, __pyx_L1_error)
+      __PYX_ERR(0, 44, __pyx_L1_error)
 
-      /* "cytriangle/cytriangle.pyx":42
+      /* "cytriangle/cytriangle.pyx":43
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:
  *             if not 'triangle_list' in self._in.to_dict():             # <<<<<<<<<<<<<<
@@ -3631,7 +3687,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  */
     }
 
-    /* "cytriangle/cytriangle.pyx":41
+    /* "cytriangle/cytriangle.pyx":42
  * 
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:             # <<<<<<<<<<<<<<
@@ -3640,24 +3696,24 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":44
+  /* "cytriangle/cytriangle.pyx":45
  *             if not 'triangle_list' in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:             # <<<<<<<<<<<<<<
  *             if not 'segment_list' in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_p, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_p, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 45, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":45
+    /* "cytriangle/cytriangle.pyx":46
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:
  *             if not 'segment_list' in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
- * 
+ *         if "a" in opts:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_5 = 0;
@@ -3675,37 +3731,37 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       PyObject *__pyx_callargs[1] = {__pyx_t_4, };
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_segment_list, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_segment_list, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(__pyx_t_1)) {
 
-      /* "cytriangle/cytriangle.pyx":46
+      /* "cytriangle/cytriangle.pyx":47
  *         if "p" in opts:
  *             if not 'segment_list' in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")             # <<<<<<<<<<<<<<
- * 
- *     # generic triangulation that accepts any switch
+ *         if "a" in opts:
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 46, __pyx_L1_error)
+      __PYX_ERR(0, 47, __pyx_L1_error)
 
-      /* "cytriangle/cytriangle.pyx":45
+      /* "cytriangle/cytriangle.pyx":46
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:
  *             if not 'segment_list' in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
- * 
+ *         if "a" in opts:
  */
     }
 
-    /* "cytriangle/cytriangle.pyx":44
+    /* "cytriangle/cytriangle.pyx":45
  *             if not 'triangle_list' in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:             # <<<<<<<<<<<<<<
@@ -3714,7 +3770,116 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":40
+  /* "cytriangle/cytriangle.pyx":48
+ *             if not 'segment_list' in self._in.to_dict():
+ *                 raise ValueError("Segment list must be provided when using 'p' flag")
+ *         if "a" in opts:             # <<<<<<<<<<<<<<
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+ */
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_a, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "cytriangle/cytriangle.pyx":49
+ *                 raise ValueError("Segment list must be provided when using 'p' flag")
+ *         if "a" in opts:
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):             # <<<<<<<<<<<<<<
+ *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+ * 
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __pyx_t_5 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[1] = {__pyx_t_4, };
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    }
+    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_triangle_area_list, __pyx_t_2, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (!__pyx_t_6) {
+    } else {
+      __pyx_t_1 = __pyx_t_6;
+      goto __pyx_L9_bool_binop_done;
+    }
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_search); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = NULL;
+    __pyx_t_5 = 0;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_3)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_5 = 1;
+      }
+    }
+    {
+      PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_kp_s_d_d, __pyx_v_opts};
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_1 = (!(!__pyx_t_6));
+    __pyx_L9_bool_binop_done:;
+    __pyx_t_6 = (!__pyx_t_1);
+    if (unlikely(__pyx_t_6)) {
+
+      /* "cytriangle/cytriangle.pyx":50
+ *         if "a" in opts:
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")             # <<<<<<<<<<<<<<
+ * 
+ *     # generic triangulation that accepts any switch
+ */
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __PYX_ERR(0, 50, __pyx_L1_error)
+
+      /* "cytriangle/cytriangle.pyx":49
+ *                 raise ValueError("Segment list must be provided when using 'p' flag")
+ *         if "a" in opts:
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):             # <<<<<<<<<<<<<<
+ *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+ * 
+ */
+    }
+
+    /* "cytriangle/cytriangle.pyx":48
+ *             if not 'segment_list' in self._in.to_dict():
+ *                 raise ValueError("Segment list must be provided when using 'p' flag")
+ *         if "a" in opts:             # <<<<<<<<<<<<<<
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+ */
+  }
+
+  /* "cytriangle/cytriangle.pyx":41
  *         return self._vorout.to_dict()
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
@@ -3737,7 +3902,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":49
+/* "cytriangle/cytriangle.pyx":53
  * 
  *     # generic triangulation that accepts any switch
  *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
@@ -3782,7 +3947,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_triangulate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_triangulate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #ifdef __Pyx_CyFunction_USED
       if (!__Pyx_IsCyOrPyCFunction(__pyx_t_1)
@@ -3808,7 +3973,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
           PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_v_triswitches};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -3830,14 +3995,14 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":50
+  /* "cytriangle/cytriangle.pyx":54
  *     # generic triangulation that accepts any switch
  *     cpdef triangulate(self, triswitches=None):
  *         self.validate_input_flags(triswitches)             # <<<<<<<<<<<<<<
  *         opts = f"Qz{triswitches}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_validate_input_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_validate_input_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_5 = 0;
@@ -3855,58 +4020,58 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_triswitches};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cytriangle/cytriangle.pyx":51
+  /* "cytriangle/cytriangle.pyx":55
  *     cpdef triangulate(self, triswitches=None):
  *         self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')             # <<<<<<<<<<<<<<
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Triangulation failed')
  */
-  __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_triswitches, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_triswitches, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_n_u_Qz, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_n_u_Qz, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_opts = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cytriangle/cytriangle.pyx":52
+  /* "cytriangle/cytriangle.pyx":56
  *         self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Triangulation failed')
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 52, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_7 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (unlikely(__pyx_t_7)) {
 
-    /* "cytriangle/cytriangle.pyx":53
+    /* "cytriangle/cytriangle.pyx":57
  *         opts = f"Qz{triswitches}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Triangulation failed')             # <<<<<<<<<<<<<<
  * 
  *     cpdef delaunay(self):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 53, __pyx_L1_error)
+    __PYX_ERR(0, 57, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":52
+    /* "cytriangle/cytriangle.pyx":56
  *         self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
@@ -3915,7 +4080,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":49
+  /* "cytriangle/cytriangle.pyx":53
  * 
  *     # generic triangulation that accepts any switch
  *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
@@ -3985,12 +4150,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_triswitches);
           if (value) { values[0] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 53, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "triangulate") < 0)) __PYX_ERR(0, 49, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "triangulate") < 0)) __PYX_ERR(0, 53, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -4004,7 +4169,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("triangulate", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 49, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("triangulate", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 53, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cytriangle.cytriangle.CyTriangle.triangulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4029,7 +4194,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_10triangulate(s
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.triswitches = __pyx_v_triswitches;
-  __pyx_t_1 = __pyx_vtabptr_10cytriangle_10cytriangle_CyTriangle->triangulate(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = __pyx_vtabptr_10cytriangle_10cytriangle_CyTriangle->triangulate(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4046,7 +4211,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_10triangulate(s
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":55
+/* "cytriangle/cytriangle.pyx":59
  *             raise RuntimeError('Triangulation failed')
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
@@ -4085,7 +4250,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_delaunay); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_delaunay); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #ifdef __Pyx_CyFunction_USED
       if (!__Pyx_IsCyOrPyCFunction(__pyx_t_1)
@@ -4111,7 +4276,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
           PyObject *__pyx_callargs[1] = {__pyx_t_4, };
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -4133,14 +4298,14 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":56
+  /* "cytriangle/cytriangle.pyx":60
  * 
  *     cpdef delaunay(self):
  *         opts = "Qz".encode('utf-8')             # <<<<<<<<<<<<<<
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Delaunay triangulation failed')
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_n_s_Qz, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_n_s_Qz, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_5 = 0;
@@ -4158,41 +4323,41 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_kp_s_utf_8};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __pyx_v_opts = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cytriangle/cytriangle.pyx":57
+  /* "cytriangle/cytriangle.pyx":61
  *     cpdef delaunay(self):
  *         opts = "Qz".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Delaunay triangulation failed')
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_7 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (unlikely(__pyx_t_7)) {
 
-    /* "cytriangle/cytriangle.pyx":58
+    /* "cytriangle/cytriangle.pyx":62
  *         opts = "Qz".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Delaunay triangulation failed')             # <<<<<<<<<<<<<<
  * 
  *     cpdef convex_hull(self):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 58, __pyx_L1_error)
+    __PYX_ERR(0, 62, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":57
+    /* "cytriangle/cytriangle.pyx":61
  *     cpdef delaunay(self):
  *         opts = "Qz".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
@@ -4201,7 +4366,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":55
+  /* "cytriangle/cytriangle.pyx":59
  *             raise RuntimeError('Triangulation failed')
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
@@ -4268,7 +4433,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_12delaunay(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("delaunay", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4285,7 +4450,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_12delaunay(stru
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":60
+/* "cytriangle/cytriangle.pyx":64
  *             raise RuntimeError('Delaunay triangulation failed')
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
@@ -4324,7 +4489,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_convex_hull); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_convex_hull); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #ifdef __Pyx_CyFunction_USED
       if (!__Pyx_IsCyOrPyCFunction(__pyx_t_1)
@@ -4350,7 +4515,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
           PyObject *__pyx_callargs[1] = {__pyx_t_4, };
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -4372,7 +4537,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":61
+  /* "cytriangle/cytriangle.pyx":65
  * 
  *     cpdef convex_hull(self):
  *         opts = f"Qzc".encode('utf-8')             # <<<<<<<<<<<<<<
@@ -4382,34 +4547,34 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
   __Pyx_INCREF(__pyx_n_b_Qzc);
   __pyx_v_opts = __pyx_n_b_Qzc;
 
-  /* "cytriangle/cytriangle.pyx":62
+  /* "cytriangle/cytriangle.pyx":66
  *     cpdef convex_hull(self):
  *         opts = f"Qzc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Convex hull construction failed')
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_7 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (unlikely(__pyx_t_7)) {
 
-    /* "cytriangle/cytriangle.pyx":63
+    /* "cytriangle/cytriangle.pyx":67
  *         opts = f"Qzc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Convex hull construction failed')             # <<<<<<<<<<<<<<
  * 
  *     cpdef voronoi(self):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 63, __pyx_L1_error)
+    __PYX_ERR(0, 67, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":62
+    /* "cytriangle/cytriangle.pyx":66
  *     cpdef convex_hull(self):
  *         opts = f"Qzc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
@@ -4418,7 +4583,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":60
+  /* "cytriangle/cytriangle.pyx":64
  *             raise RuntimeError('Delaunay triangulation failed')
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
@@ -4485,7 +4650,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_14convex_hull(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("convex_hull", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4502,7 +4667,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_14convex_hull(s
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":65
+/* "cytriangle/cytriangle.pyx":69
  *             raise RuntimeError('Convex hull construction failed')
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
@@ -4541,7 +4706,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_voronoi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_voronoi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #ifdef __Pyx_CyFunction_USED
       if (!__Pyx_IsCyOrPyCFunction(__pyx_t_1)
@@ -4567,7 +4732,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
           PyObject *__pyx_callargs[1] = {__pyx_t_4, };
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -4589,7 +4754,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":66
+  /* "cytriangle/cytriangle.pyx":70
  * 
  *     cpdef voronoi(self):
  *         opts = f"Qzv".encode('utf-8')             # <<<<<<<<<<<<<<
@@ -4599,31 +4764,31 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
   __Pyx_INCREF(__pyx_n_b_Qzv);
   __pyx_v_opts = __pyx_n_b_Qzv;
 
-  /* "cytriangle/cytriangle.pyx":67
+  /* "cytriangle/cytriangle.pyx":71
  *     cpdef voronoi(self):
  *         opts = f"Qzv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Generation of voronoi diagram failed')
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_7 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (unlikely(__pyx_t_7)) {
 
-    /* "cytriangle/cytriangle.pyx":68
+    /* "cytriangle/cytriangle.pyx":72
  *         opts = f"Qzv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Generation of voronoi diagram failed')             # <<<<<<<<<<<<<<
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 68, __pyx_L1_error)
+    __PYX_ERR(0, 72, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":67
+    /* "cytriangle/cytriangle.pyx":71
  *     cpdef voronoi(self):
  *         opts = f"Qzv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
@@ -4631,7 +4796,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":65
+  /* "cytriangle/cytriangle.pyx":69
  *             raise RuntimeError('Convex hull construction failed')
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
@@ -4698,7 +4863,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_16voronoi(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("voronoi", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5229,7 +5394,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle___pyx_unpickle_CyTriangle(CY
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_tuple__7, Py_NE)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_tuple__8, Py_NE)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
@@ -5777,13 +5942,17 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_s_Triangle_list_must_be_provided_w, __pyx_k_Triangle_list_must_be_provided_w, sizeof(__pyx_k_Triangle_list_must_be_provided_w), 0, 0, 1, 0},
     {&__pyx_kp_s_Triangulation_failed, __pyx_k_Triangulation_failed, sizeof(__pyx_k_Triangulation_failed), 0, 0, 1, 0},
     {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-    {&__pyx_n_s__27, __pyx_k__27, sizeof(__pyx_k__27), 0, 0, 1, 1},
-    {&__pyx_kp_u__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 1, 0, 0},
+    {&__pyx_kp_s_When_using_a_flag_for_area_const, __pyx_k_When_using_a_flag_for_area_const, sizeof(__pyx_k_When_using_a_flag_for_area_const), 0, 0, 1, 0},
+    {&__pyx_n_s__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 0, 1, 1},
+    {&__pyx_n_s__29, __pyx_k__29, sizeof(__pyx_k__29), 0, 0, 1, 1},
+    {&__pyx_kp_u__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 1, 0, 0},
+    {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_convex_hull, __pyx_k_convex_hull, sizeof(__pyx_k_convex_hull), 0, 0, 1, 1},
     {&__pyx_n_s_cytriangle_cytriangle, __pyx_k_cytriangle_cytriangle, sizeof(__pyx_k_cytriangle_cytriangle), 0, 0, 1, 1},
     {&__pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_k_cytriangle_cytriangle_pyx, sizeof(__pyx_k_cytriangle_cytriangle_pyx), 0, 0, 1, 0},
+    {&__pyx_kp_s_d_d, __pyx_k_d_d, sizeof(__pyx_k_d_d), 0, 0, 1, 0},
     {&__pyx_n_s_delaunay, __pyx_k_delaunay, sizeof(__pyx_k_delaunay), 0, 0, 1, 1},
     {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
     {&__pyx_n_s_dict_2, __pyx_k_dict_2, sizeof(__pyx_k_dict_2), 0, 0, 1, 1},
@@ -5796,6 +5965,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_get_voronoi_as_dict, __pyx_k_get_voronoi_as_dict, sizeof(__pyx_k_get_voronoi_as_dict), 0, 0, 1, 1},
     {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
     {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+    {&__pyx_n_s_initializing, __pyx_k_initializing, sizeof(__pyx_k_initializing), 0, 0, 1, 1},
     {&__pyx_n_s_input_dict, __pyx_k_input_dict, sizeof(__pyx_k_input_dict), 0, 0, 1, 1},
     {&__pyx_n_s_is_coroutine, __pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 0, 1, 1},
     {&__pyx_kp_u_isenabled, __pyx_k_isenabled, sizeof(__pyx_k_isenabled), 0, 1, 0, 0},
@@ -5813,17 +5983,21 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_pyx_unpickle_CyTriangle, __pyx_k_pyx_unpickle_CyTriangle, sizeof(__pyx_k_pyx_unpickle_CyTriangle), 0, 0, 1, 1},
     {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
     {&__pyx_n_s_r, __pyx_k_r, sizeof(__pyx_k_r), 0, 0, 1, 1},
+    {&__pyx_n_s_re, __pyx_k_re, sizeof(__pyx_k_re), 0, 0, 1, 1},
     {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
     {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
+    {&__pyx_n_s_search, __pyx_k_search, sizeof(__pyx_k_search), 0, 0, 1, 1},
     {&__pyx_n_s_segment_list, __pyx_k_segment_list, sizeof(__pyx_k_segment_list), 0, 0, 1, 1},
     {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
     {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
     {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
+    {&__pyx_n_s_spec, __pyx_k_spec, sizeof(__pyx_k_spec), 0, 0, 1, 1},
     {&__pyx_n_s_state, __pyx_k_state, sizeof(__pyx_k_state), 0, 0, 1, 1},
     {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {&__pyx_n_s_to_dict, __pyx_k_to_dict, sizeof(__pyx_k_to_dict), 0, 0, 1, 1},
+    {&__pyx_n_s_triangle_area_list, __pyx_k_triangle_area_list, sizeof(__pyx_k_triangle_area_list), 0, 0, 1, 1},
     {&__pyx_n_s_triangle_list, __pyx_k_triangle_list, sizeof(__pyx_k_triangle_list), 0, 0, 1, 1},
     {&__pyx_n_s_triangulate, __pyx_k_triangulate, sizeof(__pyx_k_triangulate), 0, 0, 1, 1},
     {&__pyx_n_s_triswitches, __pyx_k_triswitches, sizeof(__pyx_k_triswitches), 0, 0, 1, 1},
@@ -5838,8 +6012,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 43, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 57, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -5850,69 +6024,80 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "cytriangle/cytriangle.pyx":43
+  /* "cytriangle/cytriangle.pyx":44
  *         if "r" in opts:
  *             if not 'triangle_list' in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")             # <<<<<<<<<<<<<<
  *         if "p" in opts:
  *             if not 'segment_list' in self._in.to_dict():
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Triangle_list_must_be_provided_w); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Triangle_list_must_be_provided_w); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "cytriangle/cytriangle.pyx":46
+  /* "cytriangle/cytriangle.pyx":47
  *         if "p" in opts:
  *             if not 'segment_list' in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")             # <<<<<<<<<<<<<<
- * 
- *     # generic triangulation that accepts any switch
+ *         if "a" in opts:
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Segment_list_must_be_provided_wh); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Segment_list_must_be_provided_wh); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "cytriangle/cytriangle.pyx":53
+  /* "cytriangle/cytriangle.pyx":50
+ *         if "a" in opts:
+ *             if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")             # <<<<<<<<<<<<<<
+ * 
+ *     # generic triangulation that accepts any switch
+ */
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_When_using_a_flag_for_area_const); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+
+  /* "cytriangle/cytriangle.pyx":57
  *         opts = f"Qz{triswitches}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Triangulation failed')             # <<<<<<<<<<<<<<
  * 
  *     cpdef delaunay(self):
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Triangulation_failed); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 53, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_Triangulation_failed); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "cytriangle/cytriangle.pyx":58
+  /* "cytriangle/cytriangle.pyx":62
  *         opts = "Qz".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Delaunay triangulation failed')             # <<<<<<<<<<<<<<
  * 
  *     cpdef convex_hull(self):
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_Delaunay_triangulation_failed); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 58, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Delaunay_triangulation_failed); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "cytriangle/cytriangle.pyx":63
+  /* "cytriangle/cytriangle.pyx":67
  *         opts = f"Qzc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Convex hull construction failed')             # <<<<<<<<<<<<<<
  * 
  *     cpdef voronoi(self):
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Convex_hull_construction_failed); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_Convex_hull_construction_failed); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "cytriangle/cytriangle.pyx":68
+  /* "cytriangle/cytriangle.pyx":72
  *         opts = f"Qzv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Generation of voronoi diagram failed')             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_Generation_of_voronoi_diagram_fa); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 68, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__6);
-  __Pyx_GIVEREF(__pyx_tuple__6);
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_s_Generation_of_voronoi_diagram_fa); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
 
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
@@ -5921,103 +6106,103 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         from pickle import PickleError as __pyx_PickleError
  *         raise __pyx_PickleError, "Incompatible checksums (0x%x vs (0xfa5e81c, 0xcb7eaaa, 0xa10a831) = (_in, _out, _vorout))" % __pyx_checksum
  */
-  __pyx_tuple__7 = PyTuple_Pack(3, __pyx_int_262531100, __pyx_int_213379754, __pyx_int_168863793); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
+  __pyx_tuple__8 = PyTuple_Pack(3, __pyx_int_262531100, __pyx_int_213379754, __pyx_int_168863793); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "cytriangle/cytriangle.pyx":31
+  /* "cytriangle/cytriangle.pyx":32
  *         return self._vorout
  * 
  *     def get_input_as_dict(self):             # <<<<<<<<<<<<<<
  *         return self._in.to_dict()
  * 
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 31, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_get_input_as_dict, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_get_input_as_dict, 32, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 32, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":34
+  /* "cytriangle/cytriangle.pyx":35
  *         return self._in.to_dict()
  * 
  *     def get_output_as_dict(self):             # <<<<<<<<<<<<<<
  *         return self._out.to_dict()
  * 
  */
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_get_output_as_dict, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_get_output_as_dict, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 35, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":37
+  /* "cytriangle/cytriangle.pyx":38
  *         return self._out.to_dict()
  * 
  *     def get_voronoi_as_dict(self):             # <<<<<<<<<<<<<<
  *         return self._vorout.to_dict()
  * 
  */
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_get_voronoi_as_dict, 37, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_get_voronoi_as_dict, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 38, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":40
+  /* "cytriangle/cytriangle.pyx":41
  *         return self._vorout.to_dict()
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
  *         if "r" in opts:
  *             if not 'triangle_list' in self._in.to_dict():
  */
-  __pyx_tuple__13 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_opts); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__13);
-  __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_validate_input_flags, 40, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_opts); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_validate_input_flags, 41, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 41, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":49
+  /* "cytriangle/cytriangle.pyx":53
  * 
  *     # generic triangulation that accepts any switch
  *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
  *         self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  */
-  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_triswitches); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_triangulate, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 49, __pyx_L1_error)
-  __pyx_tuple__17 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_triswitches); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_triangulate, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "cytriangle/cytriangle.pyx":55
+  /* "cytriangle/cytriangle.pyx":59
  *             raise RuntimeError('Triangulation failed')
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
  *         opts = "Qz".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_delaunay, 55, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_delaunay, 59, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 59, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":60
+  /* "cytriangle/cytriangle.pyx":64
  *             raise RuntimeError('Delaunay triangulation failed')
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
  *         opts = f"Qzc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_convex_hull, 60, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_convex_hull, 64, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 64, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":65
+  /* "cytriangle/cytriangle.pyx":69
  *             raise RuntimeError('Convex hull construction failed')
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
  *         opts = f"Qzv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_voronoi, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cytriangle_cytriangle_pyx, __pyx_n_s_voronoi, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 69, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     cdef tuple state
  *     cdef object _dict
  */
-  __pyx_tuple__21 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__21);
-  __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "(tree fragment)":16
  *     else:
@@ -6025,20 +6210,20 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_CyTriangle__set_state(self, __pyx_state)
  */
-  __pyx_tuple__23 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_GIVEREF(__pyx_tuple__25);
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(1, 16, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_CyTriangle(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__25 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_CyTriangle, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_CyTriangle, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6108,15 +6293,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_10cytriangle_10cytriangle_CyTriangle.convex_hull = (PyObject *(*)(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *, int __pyx_skip_dispatch))__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull;
   __pyx_vtable_10cytriangle_10cytriangle_CyTriangle.voronoi = (PyObject *(*)(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *, int __pyx_skip_dispatch))__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_10cytriangle_10cytriangle_CyTriangle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, NULL); if (unlikely(!__pyx_ptype_10cytriangle_10cytriangle_CyTriangle)) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_ptype_10cytriangle_10cytriangle_CyTriangle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, NULL); if (unlikely(!__pyx_ptype_10cytriangle_10cytriangle_CyTriangle)) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   #else
   __pyx_ptype_10cytriangle_10cytriangle_CyTriangle = &__pyx_type_10cytriangle_10cytriangle_CyTriangle;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_print = 0;
@@ -6126,13 +6311,13 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_vtabptr_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_vtabptr_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CyTriangle, (PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CyTriangle, (PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   #endif
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -6457,108 +6642,120 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "cytriangle/cytriangle.pyx":31
+  /* "cytriangle/cytriangle.pyx":5
+ * from ctriangle cimport triangulate as ctriangulate
+ * from cytriangleio  cimport TriangleIO
+ * import re             # <<<<<<<<<<<<<<
+ * 
+ * cdef class CyTriangle:
+ */
+  __pyx_t_2 = __Pyx_ImportDottedModule(__pyx_n_s_re, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "cytriangle/cytriangle.pyx":32
  *         return self._vorout
  * 
  *     def get_input_as_dict(self):             # <<<<<<<<<<<<<<
  *         return self._in.to_dict()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_3get_input_as_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_get_input_as_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_3get_input_as_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_get_input_as_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_get_input_as_dict, __pyx_t_2) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_get_input_as_dict, __pyx_t_2) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":34
+  /* "cytriangle/cytriangle.pyx":35
  *         return self._in.to_dict()
  * 
  *     def get_output_as_dict(self):             # <<<<<<<<<<<<<<
  *         return self._out.to_dict()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_5get_output_as_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_get_output_as_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_5get_output_as_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_get_output_as_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_get_output_as_dict, __pyx_t_2) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_get_output_as_dict, __pyx_t_2) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":37
+  /* "cytriangle/cytriangle.pyx":38
  *         return self._out.to_dict()
  * 
  *     def get_voronoi_as_dict(self):             # <<<<<<<<<<<<<<
  *         return self._vorout.to_dict()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_7get_voronoi_as_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_get_voronoi_as_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_7get_voronoi_as_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_get_voronoi_as_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_get_voronoi_as_dict, __pyx_t_2) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_get_voronoi_as_dict, __pyx_t_2) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":40
+  /* "cytriangle/cytriangle.pyx":41
  *         return self._vorout.to_dict()
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
  *         if "r" in opts:
  *             if not 'triangle_list' in self._in.to_dict():
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_9validate_input_flags, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_validate_input_flags, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_9validate_input_flags, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_validate_input_flags, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_validate_input_flags, __pyx_t_2) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_validate_input_flags, __pyx_t_2) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":49
+  /* "cytriangle/cytriangle.pyx":53
  * 
  *     # generic triangulation that accepts any switch
  *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
  *         self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_11triangulate, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_triangulate, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_11triangulate, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_triangulate, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__17);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_triangulate, __pyx_t_2) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__19);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_triangulate, __pyx_t_2) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":55
+  /* "cytriangle/cytriangle.pyx":59
  *             raise RuntimeError('Triangulation failed')
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
  *         opts = "Qz".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_13delaunay, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_delaunay, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_13delaunay, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_delaunay, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_delaunay, __pyx_t_2) < 0) __PYX_ERR(0, 55, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_delaunay, __pyx_t_2) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":60
+  /* "cytriangle/cytriangle.pyx":64
  *             raise RuntimeError('Delaunay triangulation failed')
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
  *         opts = f"Qzc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_15convex_hull, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_convex_hull, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_15convex_hull, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_convex_hull, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_convex_hull, __pyx_t_2) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_convex_hull, __pyx_t_2) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":65
+  /* "cytriangle/cytriangle.pyx":69
  *             raise RuntimeError('Convex hull construction failed')
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
  *         opts = f"Qzv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_17voronoi, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_voronoi, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_17voronoi, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_voronoi, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_voronoi, __pyx_t_2) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_voronoi, __pyx_t_2) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
@@ -6567,7 +6764,7 @@ if (!__Pyx_RefNanny) {
  *     cdef tuple state
  *     cdef object _dict
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_19__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle___reduce_cython, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_19__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle___reduce_cython, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6579,7 +6776,7 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_CyTriangle__set_state(self, __pyx_state)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_21__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle___setstate_cython, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_21__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle___setstate_cython, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_2) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6590,7 +6787,7 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_1__pyx_unpickle_CyTriangle, 0, __pyx_n_s_pyx_unpickle_CyTriangle, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_1__pyx_unpickle_CyTriangle, 0, __pyx_n_s_pyx_unpickle_CyTriangle, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_CyTriangle, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7676,31 +7873,6 @@ static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UIN
 }
 #endif
 
-/* GetAttr3 */
-static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
-        return NULL;
-    __Pyx_PyErr_Clear();
-    Py_INCREF(d);
-    return d;
-}
-static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
-    PyObject *r;
-#if CYTHON_USE_TYPE_SLOTS
-    if (likely(PyString_Check(n))) {
-        r = __Pyx_PyObject_GetAttrStrNoError(o, n);
-        if (unlikely(!r) && likely(!PyErr_Occurred())) {
-            r = __Pyx_NewRef(d);
-        }
-        return r;
-    }
-#endif
-    r = PyObject_GetAttr(o, n);
-    return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
-}
-
 /* GetModuleGlobalName */
 #if CYTHON_USE_DICT_VERSIONS
 static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
@@ -7742,6 +7914,31 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
     PyErr_Clear();
 #endif
     return __Pyx_GetBuiltinName(name);
+}
+
+/* GetAttr3 */
+static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
+        return NULL;
+    __Pyx_PyErr_Clear();
+    Py_INCREF(d);
+    return d;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
+    PyObject *r;
+#if CYTHON_USE_TYPE_SLOTS
+    if (likely(PyString_Check(n))) {
+        r = __Pyx_PyObject_GetAttrStrNoError(o, n);
+        if (unlikely(!r) && likely(!PyErr_Occurred())) {
+            r = __Pyx_NewRef(d);
+        }
+        return r;
+    }
+#endif
+    r = PyObject_GetAttr(o, n);
+    return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
 }
 
 /* RaiseUnexpectedTypeError */
@@ -7836,7 +8033,7 @@ static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
         if (unlikely(!module_name_str)) { goto modbad; }
         module_name = PyUnicode_FromString(module_name_str);
         if (unlikely(!module_name)) { goto modbad; }
-        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__8);
+        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__9);
         if (unlikely(!module_dot)) { goto modbad; }
         full_name = PyUnicode_Concat(module_dot, name);
         if (unlikely(!full_name)) { goto modbad; }
@@ -8659,6 +8856,134 @@ bad:
     return NULL;
 }
 #endif
+
+/* ImportDottedModule */
+#if PY_MAJOR_VERSION >= 3
+static PyObject *__Pyx__ImportDottedModule_Error(PyObject *name, PyObject *parts_tuple, Py_ssize_t count) {
+    PyObject *partial_name = NULL, *slice = NULL, *sep = NULL;
+    if (unlikely(PyErr_Occurred())) {
+        PyErr_Clear();
+    }
+    if (likely(PyTuple_GET_SIZE(parts_tuple) == count)) {
+        partial_name = name;
+    } else {
+        slice = PySequence_GetSlice(parts_tuple, 0, count);
+        if (unlikely(!slice))
+            goto bad;
+        sep = PyUnicode_FromStringAndSize(".", 1);
+        if (unlikely(!sep))
+            goto bad;
+        partial_name = PyUnicode_Join(sep, slice);
+    }
+    PyErr_Format(
+#if PY_MAJOR_VERSION < 3
+        PyExc_ImportError,
+        "No module named '%s'", PyString_AS_STRING(partial_name));
+#else
+#if PY_VERSION_HEX >= 0x030600B1
+        PyExc_ModuleNotFoundError,
+#else
+        PyExc_ImportError,
+#endif
+        "No module named '%U'", partial_name);
+#endif
+bad:
+    Py_XDECREF(sep);
+    Py_XDECREF(slice);
+    Py_XDECREF(partial_name);
+    return NULL;
+}
+#endif
+#if PY_MAJOR_VERSION >= 3
+static PyObject *__Pyx__ImportDottedModule_Lookup(PyObject *name) {
+    PyObject *imported_module;
+#if PY_VERSION_HEX < 0x030700A1 || (CYTHON_COMPILING_IN_PYPY && PYPY_VERSION_NUM  < 0x07030400)
+    PyObject *modules = PyImport_GetModuleDict();
+    if (unlikely(!modules))
+        return NULL;
+    imported_module = __Pyx_PyDict_GetItemStr(modules, name);
+    Py_XINCREF(imported_module);
+#else
+    imported_module = PyImport_GetModule(name);
+#endif
+    return imported_module;
+}
+#endif
+#if PY_MAJOR_VERSION >= 3
+static PyObject *__Pyx_ImportDottedModule_WalkParts(PyObject *module, PyObject *name, PyObject *parts_tuple) {
+    Py_ssize_t i, nparts;
+    nparts = PyTuple_GET_SIZE(parts_tuple);
+    for (i=1; i < nparts && module; i++) {
+        PyObject *part, *submodule;
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        part = PyTuple_GET_ITEM(parts_tuple, i);
+#else
+        part = PySequence_ITEM(parts_tuple, i);
+#endif
+        submodule = __Pyx_PyObject_GetAttrStrNoError(module, part);
+#if !(CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS)
+        Py_DECREF(part);
+#endif
+        Py_DECREF(module);
+        module = submodule;
+    }
+    if (unlikely(!module)) {
+        return __Pyx__ImportDottedModule_Error(name, parts_tuple, i);
+    }
+    return module;
+}
+#endif
+static PyObject *__Pyx__ImportDottedModule(PyObject *name, PyObject *parts_tuple) {
+#if PY_MAJOR_VERSION < 3
+    PyObject *module, *from_list, *star = __pyx_n_s__10;
+    CYTHON_UNUSED_VAR(parts_tuple);
+    from_list = PyList_New(1);
+    if (unlikely(!from_list))
+        return NULL;
+    Py_INCREF(star);
+    PyList_SET_ITEM(from_list, 0, star);
+    module = __Pyx_Import(name, from_list, 0);
+    Py_DECREF(from_list);
+    return module;
+#else
+    PyObject *imported_module;
+    PyObject *module = __Pyx_Import(name, NULL, 0);
+    if (!parts_tuple || unlikely(!module))
+        return module;
+    imported_module = __Pyx__ImportDottedModule_Lookup(name);
+    if (likely(imported_module)) {
+        Py_DECREF(module);
+        return imported_module;
+    }
+    PyErr_Clear();
+    return __Pyx_ImportDottedModule_WalkParts(module, name, parts_tuple);
+#endif
+}
+static PyObject *__Pyx_ImportDottedModule(PyObject *name, PyObject *parts_tuple) {
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030400B1
+    PyObject *module = __Pyx__ImportDottedModule_Lookup(name);
+    if (likely(module)) {
+        PyObject *spec = __Pyx_PyObject_GetAttrStrNoError(module, __pyx_n_s_spec);
+        if (likely(spec)) {
+            PyObject *unsafe = __Pyx_PyObject_GetAttrStrNoError(spec, __pyx_n_s_initializing);
+            if (likely(!unsafe || !__Pyx_PyObject_IsTrue(unsafe))) {
+                Py_DECREF(spec);
+                spec = NULL;
+            }
+            Py_XDECREF(unsafe);
+        }
+        if (likely(!spec)) {
+            PyErr_Clear();
+            return module;
+        }
+        Py_DECREF(spec);
+        Py_DECREF(module);
+    } else if (PyErr_Occurred()) {
+        PyErr_Clear();
+    }
+#endif
+    return __Pyx__ImportDottedModule(name, parts_tuple);
+}
 
 /* FetchSharedCythonModule */
 static PyObject *__Pyx_FetchSharedCythonABIModule(void) {
@@ -10295,7 +10620,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
                                                __pyx_n_s_name);
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
-        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__27));
+        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__29));
     }
     return name;
 }

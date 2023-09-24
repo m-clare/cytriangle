@@ -2,6 +2,7 @@ from libc.stdlib cimport malloc, free
 from ctriangle cimport triangulateio
 from ctriangle cimport triangulate as ctriangulate
 from cytriangleio  cimport TriangleIO
+import re
 
 cdef class CyTriangle:
     cdef TriangleIO _in
@@ -44,6 +45,9 @@ cdef class CyTriangle:
         if "p" in opts:
             if not 'segment_list' in self._in.to_dict():
                 raise ValueError("Segment list must be provided when using 'p' flag")
+        if "a" in opts:
+            if not ('triangle_area_list' in self._in.to_dict() or bool(re.search('[\d.*.]+\d.*', opts))):
+                raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
 
     # generic triangulation that accepts any switch
     cpdef triangulate(self, triswitches=None):
