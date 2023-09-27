@@ -13,7 +13,6 @@ generate-setup-file = true
 
 [tool.poetry.dependencies]
 python = ">=3.9"
-Cython = "^3.0"
 numpy = "^1.25.2"
 
 [tool.poetry.group.dev.dependencies]
@@ -23,7 +22,7 @@ black = "^23.9.1"
 [build-system]
 requires = ["poetry-core>=1.0.0",
             "Cython>=0.29.35,<3.0; platform_system=='Windows'",
-            "Cython>=3.0;  platform_system!='Windows'",
+            "Cython>=3.0; platform_system!='Windows'",
             "setuptools",
             "numpy"]
 
