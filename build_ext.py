@@ -38,7 +38,8 @@ class BuildExt(build_ext):
 def build(setup_kwargs):
     setup_kwargs.update(
         dict(
-            cmdclas=dict(build_ext=BuildExt),
+            cmdclass=dict(build_ext=BuildExt),
+            packages=['cytriangle'],
             ext_modules = cythonize(extensions, language_level=3),
             zip_safe=False
         )
