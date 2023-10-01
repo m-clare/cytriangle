@@ -1,3 +1,5 @@
+# distutils: language = c++
+
 from libc.stdlib cimport malloc, free
 from ctriangle cimport triangulateio
 from ctriangle cimport triangulate as ctriangulate

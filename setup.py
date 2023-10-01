@@ -13,14 +13,14 @@ define_macros = [
 extensions = [
     Extension(
         'cytriangle.cytriangleio',
-        sources=['cytriangle/cytriangleio.pyx', 'c/triangle.c'],
-        include_dirs=['c'],
+        sources=['cytriangle/cytriangleio.pyx', 'cpp/triangle.cpp'],
+        include_dirs=['cpp'],
         define_macros=define_macros
     ),
     Extension(
         'cytriangle.cytriangle',
-        sources=['cytriangle/cytriangle.pyx', 'c/triangle.c'],
-        include_dirs=['c'],
+        sources=['cytriangle/cytriangle.pyx', 'cpp/triangle.cpp'],
+        include_dirs=['cpp'],
         define_macros=define_macros,
     ),
 ]
@@ -35,5 +35,6 @@ setup(
     author_email='mclare@utsv.net',
     description="Object oriented Cython wrapper of Shewchuk's C Triangle Library",
     packages=packages,
+    language="c++",
     ext_modules=cythonize(extensions),
 )
