@@ -26,7 +26,7 @@
             ]
         ],
         "depends": [
-            "c/triangle.h"
+            "c\\triangle.h"
         ],
         "include_dirs": [
             "c"
@@ -1452,7 +1452,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "cytriangle/cytriangleio.pyx",
+  "cytriangle\\\\cytriangleio.pyx",
   "<stringsource>",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -2290,7 +2290,7 @@ static const char __pyx_k_TriangleIO_set_triangles[] = "TriangleIO.set_triangles
 static const char __pyx_k_validate_attribute_number[] = "validate_attribute_number";
 static const char __pyx_k_validate_input_attributes[] = "validate_input_attributes";
 static const char __pyx_k_TriangleIO___reduce_cython[] = "TriangleIO.__reduce_cython__";
-static const char __pyx_k_cytriangle_cytriangleio_pyx[] = "cytriangle/cytriangleio.pyx";
+static const char __pyx_k_cytriangle_cytriangleio_pyx[] = "cytriangle\\cytriangleio.pyx";
 static const char __pyx_k_TriangleIO___setstate_cython[] = "TriangleIO.__setstate_cython__";
 static const char __pyx_k_TriangleIO_set_triangle_areas[] = "TriangleIO.set_triangle_areas";
 static const char __pyx_k_TriangleIO_set_vertex_markers[] = "TriangleIO.set_vertex_markers";

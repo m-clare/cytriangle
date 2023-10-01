@@ -1,6 +1,6 @@
-from cytriangle import CyTriangle
+from cytriangle.cytriangle import CyTriangle
 
-sample_dict = {"point_list": [[0, 0], [0, 1], [1, 1], [1, 0]]}
+sample_dict = {"vertices": [[0, 0], [0, 1], [1, 1], [1, 0]]}
 
 if __name__ == "__main__":
     test = CyTriangle(input_dict=sample_dict)

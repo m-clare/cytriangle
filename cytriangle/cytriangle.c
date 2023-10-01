@@ -26,7 +26,7 @@
             ]
         ],
         "depends": [
-            "c/triangle.h"
+            "c\\triangle.h"
         ],
         "include_dirs": [
             "c"
@@ -1452,9 +1452,9 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "cytriangle/cytriangle.pyx",
+  "cytriangle\\\\cytriangle.pyx",
   "<stringsource>",
-  "cytriangle/cytriangleio.pxd",
+  "cytriangle\\\\cytriangleio.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* #### Code section: numeric_typedefs ### */
@@ -2305,7 +2305,7 @@ static const char __pyx_k_cytriangle_cytriangle[] = "cytriangle.cytriangle";
 static const char __pyx_k_CyTriangle_convex_hull[] = "CyTriangle.convex_hull";
 static const char __pyx_k_CyTriangle_triangulate[] = "CyTriangle.triangulate";
 static const char __pyx_k_pyx_unpickle_CyTriangle[] = "__pyx_unpickle_CyTriangle";
-static const char __pyx_k_cytriangle_cytriangle_pyx[] = "cytriangle/cytriangle.pyx";
+static const char __pyx_k_cytriangle_cytriangle_pyx[] = "cytriangle\\cytriangle.pyx";
 static const char __pyx_k_CyTriangle___reduce_cython[] = "CyTriangle.__reduce_cython__";
 static const char __pyx_k_CyTriangle___setstate_cython[] = "CyTriangle.__setstate_cython__";
 static const char __pyx_k_CyTriangle_get_input_as_dict[] = "CyTriangle.get_input_as_dict";
