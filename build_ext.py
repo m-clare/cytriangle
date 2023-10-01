@@ -16,13 +16,13 @@ define_macros = [
 extensions = [
     Extension(
         "cytriangle.cytriangleio",
-        sources=["cytriangle/cytriangleio.c", "c/triangle.c"],
+        sources=["cytriangle/cytriangleio.pyx", "c/triangle.c"],
         include_dirs=["c"],
         define_macros=define_macros,
     ),
     Extension(
         "cytriangle.cytriangle",
-        sources=["cytriangle/cytriangle.c", "c/triangle.c"],
+        sources=["cytriangle/cytriangle.pyx", "c/triangle.c"],
         include_dirs=["c"],
         define_macros=define_macros,
     ),

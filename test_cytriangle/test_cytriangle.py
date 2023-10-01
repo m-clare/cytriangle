@@ -18,9 +18,6 @@ def test_simple_triangle_point_input():
     }
 
 
-@pytest.mark.skip(
-    reason="isolate if all triangulate calls cause access errors on windows"
-)
 def test_simple_triangle_area():
     test = CyTriangle(input_dict=simple_input)
     test.triangulate("a0.2")
@@ -99,9 +96,6 @@ def test_input_optional_triangle_fields():
     assert test.in_.triangle_attributes == [[0, 1], [2, 3]]
 
 
-@pytest.mark.skip(
-    reason="isolate if all triangulate calls cause access errors on windows"
-)
 def test_input_output_neighbor_field():
     test = CyTriangle(input_dict=simple_input)
     test.triangulate("na0.2")
@@ -144,18 +138,12 @@ def test_input_region_field():
     assert test.in_.regions == [{"vertex": [0.5, 0.5], "max_area": 0.2, "marker": 1}]
 
 
-@pytest.mark.skip(
-    reason="isolate if all triangulate calls cause access errors on windows"
-)
 def test_output_edge_fields():
     test = CyTriangle(input_dict=tricall_input)
     test.triangulate("czAevn")
     assert test.out.edges == [[0, 1], [1, 2], [2, 0], [3, 2], [1, 3]]
 
 
-@pytest.mark.skip(
-    reason="isolate if all triangulate calls cause access errors on windows"
-)
 def test_refine_output_fields():
     test = CyTriangle(input_dict=tricall_input)
     test.triangulate("czAevn")
