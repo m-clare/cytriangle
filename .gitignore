@@ -1,3 +1,6 @@
 build/
+dist/
 *.so
 *__pycache__*
+poetry.lock
+cytriangle/*.c
