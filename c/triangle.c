@@ -195,6 +195,7 @@
 /*****************************************************************************/
 
 #include "triangle.h"
+#include <stddef.h>
 
 /* For single precision (which will save some memory and reduce paging),     */
 /*   define the symbol SINGLE by using the -DSINGLE compiler switch or by    */
@@ -344,7 +345,7 @@
 
 
 /* Define the size large enough to store and operate on a pointer.           */
-#define INT_PTR unsigned long long
+#define INT_PTR size_t
 
 
 #include <stdio.h>
