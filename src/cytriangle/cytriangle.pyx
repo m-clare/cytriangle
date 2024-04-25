@@ -1,7 +1,7 @@
 from libc.stdlib cimport malloc, free
-from cytriangle.ctriangle cimport triangulateio
-from cytriangle.ctriangle cimport triangulate as ctriangulate
-from cytriangle.cytriangleio  cimport TriangleIO
+from .ctriangle cimport triangulateio
+from .ctriangle cimport triangulate as ctriangulate
+from .cytriangleio  cimport TriangleIO
 import re
 
 cdef class CyTriangle:

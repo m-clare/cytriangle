@@ -1,6 +1,6 @@
 from libc.stdlib cimport free, malloc
 import numpy as np
-from cytriangle.ctriangle cimport triangulateio
+from .ctriangle cimport triangulateio
 
 def validate_input_attributes(attributes):
     num_attr = list(set([len(sublist) for sublist in attributes]))

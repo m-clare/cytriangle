@@ -192,7 +192,6 @@ def test_refine_output_fields():
         [25, 26, 20],
     ]
 
-
 def test_memory_deallocation():
     test = CyTriangle(input_dict=simple_input)
     del test  # Deallocate memory without errors
