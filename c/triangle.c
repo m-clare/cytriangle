@@ -340,14 +340,7 @@
 
 #define ONETHIRD 0.333333333333333333333333333333333333333333333333333333333333
 
-
-/* Define the size large enough to store and operate on a pointer.           */
-#ifdef _WIN32
-#define INT_PTR unsigned long long
-#else
-#define INT_PTR unsigned long
-#endif
-
+#include <stdint.h> // For uintptr_t
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -365,6 +358,13 @@
 #include <setjmp.h>
 #include "triangle.h"
 #endif /* TRILIBRARY */
+
+/* Define the size large enough to store and operate on a pointer.           */
+#ifdef _WIN32
+#define INT_PTR uintptr_t
+#else
+#define INT_PTR unsigned long
+#endif
 
 /* A few forward declarations.                                               */
 
