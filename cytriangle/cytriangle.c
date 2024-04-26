@@ -19,10 +19,6 @@
             [
                 "TRILIBRARY",
                 1
-            ],
-            [
-                "ANSI_DECLARATORS",
-                1
             ]
         ],
         "depends": [
