@@ -9,7 +9,6 @@ define_macros = [
     ("REAL", "double"),
     ("NO_TIMER", 1),
     ("TRILIBRARY", 1),
-    ("ANSI_DECLARATORS", 1),
 ]
 
 # Extension modules
