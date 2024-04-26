@@ -342,8 +342,8 @@
 
 
 /* Define the size large enough to store and operate on a pointer.           */
-#ifdef _WIN64
-#define INT_PTR unsigned __int64
+#ifdef _WIN32
+#define INT_PTR unsigned long long
 #else
 #define INT_PTR unsigned long
 #endif
