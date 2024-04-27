@@ -54,8 +54,7 @@ cdef class TriangleIO:
 
     def __init__(self, input_dict=None):
         # Assemble the triangulateio struct from a Python dictionary (default)
-        if self._io is NULL:
-            self._io = <triangulateio*> malloc(sizeof(triangulateio))
+        self._io = <triangulateio*> malloc(sizeof(triangulateio))
 
         # Allocate null fields
         self._io.pointlist = <double*> NULL
