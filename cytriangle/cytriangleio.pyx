@@ -380,7 +380,7 @@ cdef class TriangleIO:
         holes = np.ascontiguousarray(holes, dtype=np.double)
         num_holes = len(holes)
         self._io.numberofholes = num_holes
-        self._io.holelist = <double*>malloc(num_holes * sizeof(double))
+        self._io.holelist = <double*>malloc(num_holes * 2 * sizeof(double))
         for i in range(num_holes):
             self._io.holelist[2 * i] = holes[i, 0]
             self._io.holelist[2 * i + 1] = holes[i, 1]
