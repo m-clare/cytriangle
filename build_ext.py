@@ -15,14 +15,14 @@ define_macros = [
 extensions = [
     Extension(
         "cytriangle.cytriangleio",
-        sources=["cytriangle/cytriangleio.pyx", "c/triangle.c"],
-        include_dirs=["c"],
+        sources=["src/cytriangle/cytriangleio.pyx", "src/c/triangle.c"],
+        include_dirs=["src/c"],
         define_macros=define_macros,
     ),
     Extension(
         "cytriangle.cytriangle",
-        sources=["cytriangle/cytriangle.pyx", "c/triangle.c"],
-        include_dirs=["c"],
+        sources=["src/cytriangle/cytriangle.pyx", "src/c/triangle.c"],
+        include_dirs=["src/c"],
         define_macros=define_macros,
     ),
 ]
@@ -32,8 +32,8 @@ class BuildExt(build_ext):
     def build_extensions(self):
         try:
             super().build_extensions()
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"An exception occured: {type(e).__name__}: {e}")
 
 
 def build(setup_kwargs):
