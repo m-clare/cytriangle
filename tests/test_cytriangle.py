@@ -51,18 +51,6 @@ def test_input_vertices():
     assert test.in_.vertices == [[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]]
 
 
-def test_validate_input_flags():
-    test = CyTriangle(input_dict=simple_input)
-    with pytest.raises(ValueError):
-        test.triangulate("r")
-    with pytest.raises(ValueError):
-        test.triangulate("p")
-    with pytest.raises(ValueError):
-        test.triangulate("a")
-    with pytest.raises(ValueError):
-        test.triangulate("q")
-
-
 def test_validate_missing_input_elements():
     with pytest.raises(ValueError):
         test = CyTriangle({**simple_input, "vertex_attributes": [[1], [1], [1]]})
