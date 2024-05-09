@@ -1,6 +1,7 @@
 cdef extern from "triangle.h":
 
     cdef struct triangulateio:
+
         double *pointlist
         double *pointattributelist
         int *pointmarkerlist
@@ -21,6 +22,7 @@ cdef extern from "triangle.h":
 
         double *holelist
         int numberofholes
+
         double *regionlist
         int numberofregions
 
@@ -29,4 +31,9 @@ cdef extern from "triangle.h":
         double *normlist
         int numberofedges
 
-    void triangulate(char *triswitches, triangulateio *in_, triangulateio *out_, triangulateio *vorout)
+    void triangulate(
+        char *triswitches,
+        triangulateio *in_,
+        triangulateio *out_,
+        triangulateio *vorout
+    )

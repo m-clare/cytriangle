@@ -17,6 +17,5 @@ def triangulate(input_dict, flags):
         input_dict["regions"] = parsed_regions
     input = CyTriangle(input_dict)
     print(input.in_.to_dict())
-    print(flags)
-    input.triangulate()
+    input.triangulate(flags)
     return input.out.to_dict()

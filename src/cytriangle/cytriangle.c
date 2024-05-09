@@ -1529,8 +1529,8 @@ struct __pyx_opt_args_10cytriangle_10cytriangle_10CyTriangle_triangulate;
 /* "cytriangle/cytriangle.pyx":56
  * 
  *     # generic triangulation that accepts any switch
- *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
- *         self.validate_input_flags(triswitches)
+ *     cpdef triangulate(self, triswitches=''):             # <<<<<<<<<<<<<<
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  */
 struct __pyx_opt_args_10cytriangle_10cytriangle_10CyTriangle_triangulate {
@@ -2305,11 +2305,11 @@ int __pyx_module_is_main_cytriangle__cytriangle = 0;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
 /* #### Code section: string_decls ### */
-static const char __pyx_k_a[] = "a";
 static const char __pyx_k_p[] = "p";
 static const char __pyx_k_q[] = "q";
 static const char __pyx_k_r[] = "r";
 static const char __pyx_k_Qz[] = "Qz";
+static const char __pyx_k__4[] = "";
 static const char __pyx_k_gc[] = "gc";
 static const char __pyx_k_re[] = "re";
 static const char __pyx_k_Qzc[] = "Qzc";
@@ -2325,7 +2325,6 @@ static const char __pyx_k_opts[] = "opts";
 static const char __pyx_k_self[] = "self";
 static const char __pyx_k_spec[] = "__spec__";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_a_d_d[] = "a[\\d.*.]+\\d.*";
 static const char __pyx_k_q_d_d[] = "q[\\d.*.]+\\d.*";
 static const char __pyx_k_state[] = "state";
 static const char __pyx_k_dict_2[] = "_dict";
@@ -2366,7 +2365,6 @@ static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_get_input_as_dict[] = "get_input_as_dict";
-static const char __pyx_k_triangle_max_area[] = "triangle_max_area";
 static const char __pyx_k_CyTriangle_voronoi[] = "CyTriangle.voronoi";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
@@ -2392,7 +2390,6 @@ static const char __pyx_k_Generation_of_voronoi_diagram_fa[] = "Generation of vo
 static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0xfa5e81c, 0xcb7eaaa, 0xa10a831) = (_in, _out, _vorout))";
 static const char __pyx_k_Segment_list_must_be_provided_wh[] = "Segment list must be provided when using 'p' flag";
 static const char __pyx_k_Triangle_list_must_be_provided_w[] = "Triangle list must be provided when using 'r' flag";
-static const char __pyx_k_When_using_a_flag_for_area_const[] = "When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided";
 static const char __pyx_k_When_using_q_flag_for_minimum_an[] = "When using 'q' flag for minimum angles, an angle must be provided";
 /* #### Code section: decls ### */
 static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *__pyx_v_self, PyObject *__pyx_v_input_dict); /* proto */
@@ -2476,13 +2473,11 @@ typedef struct {
   PyObject *__pyx_kp_u_Triangle_list_must_be_provided_w;
   PyObject *__pyx_kp_u_Triangulation_failed;
   PyObject *__pyx_n_s_ValueError;
-  PyObject *__pyx_kp_u_When_using_a_flag_for_area_const;
   PyObject *__pyx_kp_u_When_using_q_flag_for_minimum_an;
   PyObject *__pyx_kp_u__10;
   PyObject *__pyx_n_s__11;
   PyObject *__pyx_n_s__30;
-  PyObject *__pyx_n_u_a;
-  PyObject *__pyx_kp_u_a_d_d;
+  PyObject *__pyx_kp_u__4;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_convex_hull;
@@ -2533,7 +2528,6 @@ typedef struct {
   PyObject *__pyx_kp_s_stringsource;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_s_to_dict;
-  PyObject *__pyx_n_u_triangle_max_area;
   PyObject *__pyx_n_u_triangles;
   PyObject *__pyx_n_s_triangulate;
   PyObject *__pyx_n_s_triswitches;
@@ -2547,7 +2541,6 @@ typedef struct {
   PyObject *__pyx_tuple_;
   PyObject *__pyx_tuple__2;
   PyObject *__pyx_tuple__3;
-  PyObject *__pyx_tuple__4;
   PyObject *__pyx_tuple__5;
   PyObject *__pyx_tuple__6;
   PyObject *__pyx_tuple__7;
@@ -2641,13 +2634,11 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_Triangle_list_must_be_provided_w);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Triangulation_failed);
   Py_CLEAR(clear_module_state->__pyx_n_s_ValueError);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_When_using_a_flag_for_area_const);
   Py_CLEAR(clear_module_state->__pyx_kp_u_When_using_q_flag_for_minimum_an);
   Py_CLEAR(clear_module_state->__pyx_kp_u__10);
   Py_CLEAR(clear_module_state->__pyx_n_s__11);
   Py_CLEAR(clear_module_state->__pyx_n_s__30);
-  Py_CLEAR(clear_module_state->__pyx_n_u_a);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_a_d_d);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__4);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_convex_hull);
@@ -2698,7 +2689,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_s_stringsource);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_s_to_dict);
-  Py_CLEAR(clear_module_state->__pyx_n_u_triangle_max_area);
   Py_CLEAR(clear_module_state->__pyx_n_u_triangles);
   Py_CLEAR(clear_module_state->__pyx_n_s_triangulate);
   Py_CLEAR(clear_module_state->__pyx_n_s_triswitches);
@@ -2712,7 +2702,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_tuple_);
   Py_CLEAR(clear_module_state->__pyx_tuple__2);
   Py_CLEAR(clear_module_state->__pyx_tuple__3);
-  Py_CLEAR(clear_module_state->__pyx_tuple__4);
   Py_CLEAR(clear_module_state->__pyx_tuple__5);
   Py_CLEAR(clear_module_state->__pyx_tuple__6);
   Py_CLEAR(clear_module_state->__pyx_tuple__7);
@@ -2784,13 +2773,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_Triangle_list_must_be_provided_w);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Triangulation_failed);
   Py_VISIT(traverse_module_state->__pyx_n_s_ValueError);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_When_using_a_flag_for_area_const);
   Py_VISIT(traverse_module_state->__pyx_kp_u_When_using_q_flag_for_minimum_an);
   Py_VISIT(traverse_module_state->__pyx_kp_u__10);
   Py_VISIT(traverse_module_state->__pyx_n_s__11);
   Py_VISIT(traverse_module_state->__pyx_n_s__30);
-  Py_VISIT(traverse_module_state->__pyx_n_u_a);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_a_d_d);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__4);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_convex_hull);
@@ -2841,7 +2828,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_s_stringsource);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_s_to_dict);
-  Py_VISIT(traverse_module_state->__pyx_n_u_triangle_max_area);
   Py_VISIT(traverse_module_state->__pyx_n_u_triangles);
   Py_VISIT(traverse_module_state->__pyx_n_s_triangulate);
   Py_VISIT(traverse_module_state->__pyx_n_s_triswitches);
@@ -2855,7 +2841,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_tuple_);
   Py_VISIT(traverse_module_state->__pyx_tuple__2);
   Py_VISIT(traverse_module_state->__pyx_tuple__3);
-  Py_VISIT(traverse_module_state->__pyx_tuple__4);
   Py_VISIT(traverse_module_state->__pyx_tuple__5);
   Py_VISIT(traverse_module_state->__pyx_tuple__6);
   Py_VISIT(traverse_module_state->__pyx_tuple__7);
@@ -2945,13 +2930,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_Triangle_list_must_be_provided_w __pyx_mstate_global->__pyx_kp_u_Triangle_list_must_be_provided_w
 #define __pyx_kp_u_Triangulation_failed __pyx_mstate_global->__pyx_kp_u_Triangulation_failed
 #define __pyx_n_s_ValueError __pyx_mstate_global->__pyx_n_s_ValueError
-#define __pyx_kp_u_When_using_a_flag_for_area_const __pyx_mstate_global->__pyx_kp_u_When_using_a_flag_for_area_const
 #define __pyx_kp_u_When_using_q_flag_for_minimum_an __pyx_mstate_global->__pyx_kp_u_When_using_q_flag_for_minimum_an
 #define __pyx_kp_u__10 __pyx_mstate_global->__pyx_kp_u__10
 #define __pyx_n_s__11 __pyx_mstate_global->__pyx_n_s__11
 #define __pyx_n_s__30 __pyx_mstate_global->__pyx_n_s__30
-#define __pyx_n_u_a __pyx_mstate_global->__pyx_n_u_a
-#define __pyx_kp_u_a_d_d __pyx_mstate_global->__pyx_kp_u_a_d_d
+#define __pyx_kp_u__4 __pyx_mstate_global->__pyx_kp_u__4
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_convex_hull __pyx_mstate_global->__pyx_n_s_convex_hull
@@ -3002,7 +2985,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_s_stringsource __pyx_mstate_global->__pyx_kp_s_stringsource
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_s_to_dict __pyx_mstate_global->__pyx_n_s_to_dict
-#define __pyx_n_u_triangle_max_area __pyx_mstate_global->__pyx_n_u_triangle_max_area
 #define __pyx_n_u_triangles __pyx_mstate_global->__pyx_n_u_triangles
 #define __pyx_n_s_triangulate __pyx_mstate_global->__pyx_n_s_triangulate
 #define __pyx_n_s_triswitches __pyx_mstate_global->__pyx_n_s_triswitches
@@ -3016,7 +2998,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
 #define __pyx_tuple__2 __pyx_mstate_global->__pyx_tuple__2
 #define __pyx_tuple__3 __pyx_mstate_global->__pyx_tuple__3
-#define __pyx_tuple__4 __pyx_mstate_global->__pyx_tuple__4
 #define __pyx_tuple__5 __pyx_mstate_global->__pyx_tuple__5
 #define __pyx_tuple__6 __pyx_mstate_global->__pyx_tuple__6
 #define __pyx_tuple__7 __pyx_mstate_global->__pyx_tuple__7
@@ -3973,7 +3954,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  *         if "p" in opts:
  *             if not 'segments' in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
- *         if "a" in opts:
+ *         # if "a" in opts:
  */
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -4007,8 +3988,8 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  *         if "p" in opts:
  *             if not 'segments' in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")             # <<<<<<<<<<<<<<
- *         if "a" in opts:
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
+ *         # if "a" in opts:
+ *         #     if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
  */
       __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
@@ -4021,7 +4002,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  *         if "p" in opts:
  *             if not 'segments' in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
- *         if "a" in opts:
+ *         # if "a" in opts:
  */
     }
 
@@ -4034,57 +4015,26 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":48
- *             if not 'segments' in self._in.to_dict():
- *                 raise ValueError("Segment list must be provided when using 'p' flag")
- *         if "a" in opts:             # <<<<<<<<<<<<<<
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+  /* "cytriangle/cytriangle.pyx":51
+ *         #     if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
+ *         #         raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+ *         if "q" in opts:             # <<<<<<<<<<<<<<
+ *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
+ *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_a, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_q, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 51, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":49
- *                 raise ValueError("Segment list must be provided when using 'p' flag")
- *         if "a" in opts:
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):             # <<<<<<<<<<<<<<
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+    /* "cytriangle/cytriangle.pyx":52
+ *         #         raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
  *         if "q" in opts:
+ *             if not bool(re.search('q[\d.*.]+\d.*', opts)):             # <<<<<<<<<<<<<<
+ *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
+ * 
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = NULL;
-    __pyx_t_5 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
-        __pyx_t_5 = 1;
-      }
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    }
-    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_triangle_max_area, __pyx_t_2, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (!__pyx_t_6) {
-    } else {
-      __pyx_t_1 = __pyx_t_6;
-      goto __pyx_L9_bool_binop_done;
-    }
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_search); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_search); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -4102,99 +4052,17 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
     }
     #endif
     {
-      PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_kp_u_a_d_d, __pyx_v_opts};
+      PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_kp_u_q_d_d, __pyx_v_opts};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_1 = (!(!__pyx_t_6));
-    __pyx_L9_bool_binop_done:;
-    __pyx_t_6 = (!__pyx_t_1);
+    __pyx_t_6 = (!(!(!__pyx_t_1)));
     if (unlikely(__pyx_t_6)) {
-
-      /* "cytriangle/cytriangle.pyx":50
- *         if "a" in opts:
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")             # <<<<<<<<<<<<<<
- *         if "q" in opts:
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
- */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 50, __pyx_L1_error)
-
-      /* "cytriangle/cytriangle.pyx":49
- *                 raise ValueError("Segment list must be provided when using 'p' flag")
- *         if "a" in opts:
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):             # <<<<<<<<<<<<<<
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
- *         if "q" in opts:
- */
-    }
-
-    /* "cytriangle/cytriangle.pyx":48
- *             if not 'segments' in self._in.to_dict():
- *                 raise ValueError("Segment list must be provided when using 'p' flag")
- *         if "a" in opts:             # <<<<<<<<<<<<<<
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
- */
-  }
-
-  /* "cytriangle/cytriangle.pyx":51
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
- *         if "q" in opts:             # <<<<<<<<<<<<<<
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
- */
-  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_q, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 51, __pyx_L1_error)
-  if (__pyx_t_6) {
-
-    /* "cytriangle/cytriangle.pyx":52
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
- *         if "q" in opts:
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):             # <<<<<<<<<<<<<<
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
- * 
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_search); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = NULL;
-    __pyx_t_5 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
-        __pyx_t_5 = 1;
-      }
-    }
-    #endif
-    {
-      PyObject *__pyx_callargs[3] = {__pyx_t_4, __pyx_kp_u_q_d_d, __pyx_v_opts};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    }
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 52, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_1 = (!(!(!__pyx_t_6)));
-    if (unlikely(__pyx_t_1)) {
 
       /* "cytriangle/cytriangle.pyx":53
  *         if "q" in opts:
@@ -4203,14 +4071,14 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
  * 
  *     # generic triangulation that accepts any switch
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __PYX_ERR(0, 53, __pyx_L1_error)
 
       /* "cytriangle/cytriangle.pyx":52
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+ *         #         raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
  *         if "q" in opts:
  *             if not bool(re.search('q[\d.*.]+\d.*', opts)):             # <<<<<<<<<<<<<<
  *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
@@ -4219,8 +4087,8 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
     }
 
     /* "cytriangle/cytriangle.pyx":51
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+ *         #     if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
+ *         #         raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
  *         if "q" in opts:             # <<<<<<<<<<<<<<
  *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
  *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
@@ -4253,8 +4121,8 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
 /* "cytriangle/cytriangle.pyx":56
  * 
  *     # generic triangulation that accepts any switch
- *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
- *         self.validate_input_flags(triswitches)
+ *     cpdef triangulate(self, triswitches=''):             # <<<<<<<<<<<<<<
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  */
 
@@ -4266,7 +4134,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_10cytriangle_10cytriangle_10CyTriangle_triangulate *__pyx_optional_args) {
-  PyObject *__pyx_v_triswitches = ((PyObject *)Py_None);
+  PyObject *__pyx_v_triswitches = ((PyObject *)__pyx_kp_u__4);
   PyObject *__pyx_v_opts = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4340,42 +4208,9 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":57
- *     # generic triangulation that accepts any switch
- *     cpdef triangulate(self, triswitches=None):
- *         self.validate_input_flags(triswitches)             # <<<<<<<<<<<<<<
- *         opts = f"Qz{triswitches}".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_validate_input_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  __pyx_t_5 = 0;
-  #if CYTHON_UNPACK_METHODS
-  if (likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_5 = 1;
-    }
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_triswitches};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
   /* "cytriangle/cytriangle.pyx":58
- *     cpdef triangulate(self, triswitches=None):
- *         self.validate_input_flags(triswitches)
+ *     cpdef triangulate(self, triswitches=''):
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')             # <<<<<<<<<<<<<<
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  *             raise RuntimeError('Triangulation failed')
@@ -4392,7 +4227,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
   __pyx_t_1 = 0;
 
   /* "cytriangle/cytriangle.pyx":59
- *         self.validate_input_flags(triswitches)
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Triangulation failed')
@@ -4419,7 +4254,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
     __PYX_ERR(0, 60, __pyx_L1_error)
 
     /* "cytriangle/cytriangle.pyx":59
- *         self.validate_input_flags(triswitches)
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Triangulation failed')
@@ -4430,8 +4265,8 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
   /* "cytriangle/cytriangle.pyx":56
  * 
  *     # generic triangulation that accepts any switch
- *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
- *         self.validate_input_flags(triswitches)
+ *     cpdef triangulate(self, triswitches=''):             # <<<<<<<<<<<<<<
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  */
 
@@ -4490,7 +4325,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
     PyObject **__pyx_pyargnames[] = {&__pyx_n_s_triswitches,0};
-    values[0] = __Pyx_Arg_NewRef_FASTCALL(((PyObject *)Py_None));
+    values[0] = __Pyx_Arg_NewRef_FASTCALL(((PyObject *)__pyx_kp_u__4));
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
@@ -6379,13 +6214,11 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_Triangle_list_must_be_provided_w, __pyx_k_Triangle_list_must_be_provided_w, sizeof(__pyx_k_Triangle_list_must_be_provided_w), 0, 1, 0, 0},
     {&__pyx_kp_u_Triangulation_failed, __pyx_k_Triangulation_failed, sizeof(__pyx_k_Triangulation_failed), 0, 1, 0, 0},
     {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-    {&__pyx_kp_u_When_using_a_flag_for_area_const, __pyx_k_When_using_a_flag_for_area_const, sizeof(__pyx_k_When_using_a_flag_for_area_const), 0, 1, 0, 0},
     {&__pyx_kp_u_When_using_q_flag_for_minimum_an, __pyx_k_When_using_q_flag_for_minimum_an, sizeof(__pyx_k_When_using_q_flag_for_minimum_an), 0, 1, 0, 0},
     {&__pyx_kp_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
     {&__pyx_n_s__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 0, 1, 1},
     {&__pyx_n_s__30, __pyx_k__30, sizeof(__pyx_k__30), 0, 0, 1, 1},
-    {&__pyx_n_u_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 1, 0, 1},
-    {&__pyx_kp_u_a_d_d, __pyx_k_a_d_d, sizeof(__pyx_k_a_d_d), 0, 1, 0, 0},
+    {&__pyx_kp_u__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 1, 0, 0},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_convex_hull, __pyx_k_convex_hull, sizeof(__pyx_k_convex_hull), 0, 0, 1, 1},
@@ -6436,7 +6269,6 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {&__pyx_n_s_to_dict, __pyx_k_to_dict, sizeof(__pyx_k_to_dict), 0, 0, 1, 1},
-    {&__pyx_n_u_triangle_max_area, __pyx_k_triangle_max_area, sizeof(__pyx_k_triangle_max_area), 0, 1, 0, 1},
     {&__pyx_n_u_triangles, __pyx_k_triangles, sizeof(__pyx_k_triangles), 0, 1, 0, 1},
     {&__pyx_n_s_triangulate, __pyx_k_triangulate, sizeof(__pyx_k_triangulate), 0, 0, 1, 1},
     {&__pyx_n_s_triswitches, __pyx_k_triswitches, sizeof(__pyx_k_triswitches), 0, 0, 1, 1},
@@ -6477,23 +6309,12 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         if "p" in opts:
  *             if not 'segments' in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")             # <<<<<<<<<<<<<<
- *         if "a" in opts:
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
+ *         # if "a" in opts:
+ *         #     if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
  */
   __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_Segment_list_must_be_provided_wh); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-
-  /* "cytriangle/cytriangle.pyx":50
- *         if "a" in opts:
- *             if not ('triangle_max_area' in self._in.to_dict() or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2) or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")             # <<<<<<<<<<<<<<
- *         if "q" in opts:
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
- */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_When_using_a_flag_for_area_const); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 50, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
 
   /* "cytriangle/cytriangle.pyx":53
  *         if "q" in opts:
@@ -6502,9 +6323,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *     # generic triangulation that accepts any switch
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_u_When_using_q_flag_for_minimum_an); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 53, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_When_using_q_flag_for_minimum_an); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
 
   /* "cytriangle/cytriangle.pyx":60
  *         opts = f"Qz{triswitches}".encode('utf-8')
@@ -6604,15 +6425,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "cytriangle/cytriangle.pyx":56
  * 
  *     # generic triangulation that accepts any switch
- *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
- *         self.validate_input_flags(triswitches)
+ *     cpdef triangulate(self, triswitches=''):             # <<<<<<<<<<<<<<
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  */
   __pyx_tuple__18 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_triswitches); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
   __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_triangulate, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 56, __pyx_L1_error)
-  __pyx_tuple__20 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_u__4); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
@@ -7156,8 +6977,8 @@ if (!__Pyx_RefNanny) {
   /* "cytriangle/cytriangle.pyx":56
  * 
  *     # generic triangulation that accepts any switch
- *     cpdef triangulate(self, triswitches=None):             # <<<<<<<<<<<<<<
- *         self.validate_input_flags(triswitches)
+ *     cpdef triangulate(self, triswitches=''):             # <<<<<<<<<<<<<<
+ *         # if triswitches: self.validate_input_flags(triswitches)
  *         opts = f"Qz{triswitches}".encode('utf-8')
  */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_11triangulate, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_triangulate, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)

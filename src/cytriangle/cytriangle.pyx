@@ -53,10 +53,9 @@ cdef class CyTriangle:
                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
 
     # generic triangulation that accepts any switch
-    cpdef triangulate(self, triswitches=None):
+    cpdef triangulate(self, triswitches=''):
         # if triswitches: self.validate_input_flags(triswitches)
         opts = f"Qz{triswitches}".encode('utf-8')
-        print(opts)
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
             raise RuntimeError('Triangulation failed')
 
