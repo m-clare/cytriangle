@@ -17,6 +17,7 @@ cdef class TriangleIO:
     def __cinit__(self):
         # Initialize the triangulateio struct with NULL pointers
         self._io = <triangulateio*> NULL
+        self.out_flag = 0
 
     def __dealloc__(self):
         # Free allocated memory when the instance is deallocated
@@ -40,9 +41,9 @@ cdef class TriangleIO:
                 free(self._io.segmentlist)
             if self._io.segmentmarkerlist is not NULL:
                 free(self._io.segmentmarkerlist)
-            if self._io.holelist is not NULL:
+            if self.out_flag == 1 and self._io.holelist is not NULL:
                 free(self._io.holelist)
-            if self._io.regionlist is not NULL:
+            if self.out_flag == 1 and self._io.regionlist is not NULL:
                 free(self._io.regionlist)
             if self._io.edgelist is not NULL:
                 free(self._io.edgelist)
@@ -52,7 +53,10 @@ cdef class TriangleIO:
                 free(self._io.normlist)
             free(self._io)
 
-    def __init__(self, input_dict=None):
+    def __init__(self, input_dict=None,kind=''):
+        # Prevent double deallocation on 'out' triangleio structs
+        if kind == 'out':
+            self.out_flag = 1
         # Assemble the triangulateio struct from a Python dictionary (default)
         self._io = <triangulateio*> malloc(sizeof(triangulateio))
 
@@ -66,7 +70,7 @@ cdef class TriangleIO:
 
         self._io.trianglelist = <int*> NULL
         self._io.numberoftriangles = 0
-        self._io.numberofcorners = 3
+        self._io.numberofcorners = 0
         self._io.numberoftriangleattributes = 0
         self._io.triangleattributelist = <double*> NULL
         self._io.trianglearealist = <double*> NULL
@@ -187,7 +191,7 @@ cdef class TriangleIO:
             for i in range(self._io.numberoftriangles):
                 tri_order = []
                 for j in range(self._io.numberofcorners):
-                    tri_order.append(self._io.trianglelist[i * 3 + j])
+                    tri_order.append(self._io.trianglelist[i * self._io.numberofcorners + j])
                 triangles.append(tri_order)
             return triangles
 
@@ -274,7 +278,7 @@ cdef class TriangleIO:
             for i in range(self._io.numberofregions):
                 region = {}
                 region['vertex'] = [self._io.regionlist[4*i], self._io.regionlist[4*i + 1]]
-                region['marker'] = self._io.regionlist[4*i + 2]
+                region['marker'] = int(self._io.regionlist[4*i + 2])
                 region['max_area'] = self._io.regionlist[4*i + 3]
                 regions.append(region)
             return regions
@@ -309,7 +313,7 @@ cdef class TriangleIO:
         self._io.numberofpoints = num_vertices
         if num_vertices < 3:
             raise ValueError('Valid input requires three or more vertices')
-        vertices = np.ascontiguousarray(vertices, dtype=np.double)
+        vertices = np.ascontiguousarray(vertices)
         self._io.pointlist = <double*>malloc(2 * num_vertices * sizeof(double))
         for i in range(num_vertices):
             self._io.pointlist[2 * i] = vertices[i, 0]
@@ -319,7 +323,7 @@ cdef class TriangleIO:
         num_attr = validate_input_attributes(vertex_attributes)
         num_vertices = self._io.numberofpoints
         validate_attribute_number(vertex_attributes, num_vertices)
-        vertex_attributes = np.ascontiguousarray(vertex_attributes, dtype=np.double)
+        vertex_attributes = np.ascontiguousarray(vertex_attributes)
         self._io.pointattributelist = <double*>malloc(num_attr * num_vertices * sizeof(double))
         self._io.numberofpointattributes = num_attr
         for i in range(num_vertices):
@@ -334,19 +338,19 @@ cdef class TriangleIO:
 
     def set_triangles(self, triangles):
         num_triangles = len(triangles)
+        num_corners = self._io.numberofcorners
         triangles = np.ascontiguousarray(triangles, dtype=int)
-
-        self._io.trianglelist = <int*>malloc(num_triangles * 3 * sizeof(int))
+        self._io.trianglelist = <int*>malloc(num_triangles * num_corners * sizeof(int))
         self._io.numberoftriangles = num_triangles
         for i in range(num_triangles):
-            for j in range(3):
-                self._io.trianglelist[i*3 + j] = triangles[i, j]
+            for j in range(num_corners):
+                self._io.trianglelist[i*num_corners + j] = triangles[i, j]
 
     def set_triangle_attributes(self, triangle_attributes):
         num_attr = validate_input_attributes(triangle_attributes)
         num_triangles = self._io.numberoftriangles
         validate_attribute_number(triangle_attributes, num_triangles)
-        triangle_attributes = np.ascontiguousarray(triangle_attributes, dtype=np.double)
+        triangle_attributes = np.ascontiguousarray(triangle_attributes)
         self._io.triangleattributelist = <double*>malloc(num_attr * num_triangles * sizeof(double))
         self._io.numberoftriangleattributes = num_attr
         for i in range(num_triangles):
@@ -356,7 +360,7 @@ cdef class TriangleIO:
     def set_triangle_areas(self, triangle_areas):
         num_triangles = self._io.numberoftriangles
         validate_attribute_number(triangle_areas, num_triangles)
-        triangle_max_area = np.ascontiguousarray(triangle_areas, dtype=np.double)
+        triangle_max_area = np.ascontiguousarray(triangle_areas)
         self._io.trianglearealist = <double*>malloc(num_triangles * sizeof(double))
         for i in range(num_triangles):
             self._io.trianglearealist[i] = triangle_max_area[i]
@@ -377,20 +381,20 @@ cdef class TriangleIO:
             self._io.segmentmarkerlist[i] = segment_markers[i]
 
     def set_holes(self, holes):
-        holes = np.ascontiguousarray(holes, dtype=np.double)
         num_holes = len(holes)
         self._io.numberofholes = num_holes
+        holes = np.ascontiguousarray(holes)
         self._io.holelist = <double*>malloc(num_holes * 2 * sizeof(double))
         for i in range(num_holes):
             self._io.holelist[2 * i] = holes[i, 0]
             self._io.holelist[2 * i + 1] = holes[i, 1]
 
     def set_regions(self, regions):
-        # unpack region dict
-        region_array = [[region['vertex'][0], region['vertex'][1], region['marker'], region['max_area']] for region in regions]
-        regions = np.ascontiguousarray(region_array, dtype=np.double)
         num_regions = len(regions)
         self._io.numberofregions = num_regions
+        # unpack region dict
+        region_array = [[region['vertex'][0], region['vertex'][1], region['marker'], region['max_area']] for region in regions]
+        regions = np.ascontiguousarray(region_array)
         self._io.regionlist = <double*>malloc(num_regions * 4 * sizeof(double))
         for i in range(num_regions):
             for j in range(4):

@@ -1,4 +1,3 @@
-from libc.stdlib cimport malloc, free
 from cytriangle.ctriangle cimport triangulateio
 from cytriangle.ctriangle cimport triangulate as ctriangulate
 from cytriangle.cytriangleio  cimport TriangleIO
@@ -14,7 +13,7 @@ cdef class CyTriangle:
             self._in = TriangleIO(input_dict)
         else:
             self._in = TriangleIO()
-        self._out = TriangleIO()
+        self._out = TriangleIO(kind='out')
         self._vorout = TriangleIO()
 
     @property
