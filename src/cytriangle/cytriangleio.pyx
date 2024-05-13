@@ -41,9 +41,9 @@ cdef class TriangleIO:
                 free(self._io.segmentlist)
             if self._io.segmentmarkerlist is not NULL:
                 free(self._io.segmentmarkerlist)
-            if self.out_flag == 1 and self._io.holelist is not NULL:
+            if self._io.holelist is not NULL and self.out_flag != 1:
                 free(self._io.holelist)
-            if self.out_flag == 1 and self._io.regionlist is not NULL:
+            if self._io.regionlist is not NULL and self.out_flag != 1:
                 free(self._io.regionlist)
             if self._io.edgelist is not NULL:
                 free(self._io.edgelist)

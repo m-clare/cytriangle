@@ -4005,7 +4005,7 @@ static void __pyx_pf_10cytriangle_12cytriangleio_10TriangleIO_2__dealloc__(struc
  *                 free(self._io.segmentlist)
  *             if self._io.segmentmarkerlist is not NULL:             # <<<<<<<<<<<<<<
  *                 free(self._io.segmentmarkerlist)
- *             if self.out_flag == 1 and self._io.holelist is not NULL:
+ *             if self._io.holelist is not NULL and self.out_flag != 1:
  */
     __pyx_t_1 = (__pyx_v_self->_io->segmentmarkerlist != NULL);
     if (__pyx_t_1) {
@@ -4014,7 +4014,7 @@ static void __pyx_pf_10cytriangle_12cytriangleio_10TriangleIO_2__dealloc__(struc
  *                 free(self._io.segmentlist)
  *             if self._io.segmentmarkerlist is not NULL:
  *                 free(self._io.segmentmarkerlist)             # <<<<<<<<<<<<<<
- *             if self.out_flag == 1 and self._io.holelist is not NULL:
+ *             if self._io.holelist is not NULL and self.out_flag != 1:
  *                 free(self._io.holelist)
  */
       free(__pyx_v_self->_io->segmentmarkerlist);
@@ -4024,33 +4024,33 @@ static void __pyx_pf_10cytriangle_12cytriangleio_10TriangleIO_2__dealloc__(struc
  *                 free(self._io.segmentlist)
  *             if self._io.segmentmarkerlist is not NULL:             # <<<<<<<<<<<<<<
  *                 free(self._io.segmentmarkerlist)
- *             if self.out_flag == 1 and self._io.holelist is not NULL:
+ *             if self._io.holelist is not NULL and self.out_flag != 1:
  */
     }
 
     /* "cytriangle/cytriangleio.pyx":44
  *             if self._io.segmentmarkerlist is not NULL:
  *                 free(self._io.segmentmarkerlist)
- *             if self.out_flag == 1 and self._io.holelist is not NULL:             # <<<<<<<<<<<<<<
+ *             if self._io.holelist is not NULL and self.out_flag != 1:             # <<<<<<<<<<<<<<
  *                 free(self._io.holelist)
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:
  */
-    __pyx_t_2 = (__pyx_v_self->out_flag == 1);
+    __pyx_t_2 = (__pyx_v_self->_io->holelist != NULL);
     if (__pyx_t_2) {
     } else {
       __pyx_t_1 = __pyx_t_2;
       goto __pyx_L14_bool_binop_done;
     }
-    __pyx_t_2 = (__pyx_v_self->_io->holelist != NULL);
+    __pyx_t_2 = (__pyx_v_self->out_flag != 1);
     __pyx_t_1 = __pyx_t_2;
     __pyx_L14_bool_binop_done:;
     if (__pyx_t_1) {
 
       /* "cytriangle/cytriangleio.pyx":45
  *                 free(self._io.segmentmarkerlist)
- *             if self.out_flag == 1 and self._io.holelist is not NULL:
+ *             if self._io.holelist is not NULL and self.out_flag != 1:
  *                 free(self._io.holelist)             # <<<<<<<<<<<<<<
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:
  *                 free(self._io.regionlist)
  */
       free(__pyx_v_self->_io->holelist);
@@ -4058,33 +4058,33 @@ static void __pyx_pf_10cytriangle_12cytriangleio_10TriangleIO_2__dealloc__(struc
       /* "cytriangle/cytriangleio.pyx":44
  *             if self._io.segmentmarkerlist is not NULL:
  *                 free(self._io.segmentmarkerlist)
- *             if self.out_flag == 1 and self._io.holelist is not NULL:             # <<<<<<<<<<<<<<
+ *             if self._io.holelist is not NULL and self.out_flag != 1:             # <<<<<<<<<<<<<<
  *                 free(self._io.holelist)
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:
  */
     }
 
     /* "cytriangle/cytriangleio.pyx":46
- *             if self.out_flag == 1 and self._io.holelist is not NULL:
+ *             if self._io.holelist is not NULL and self.out_flag != 1:
  *                 free(self._io.holelist)
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:             # <<<<<<<<<<<<<<
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:             # <<<<<<<<<<<<<<
  *                 free(self._io.regionlist)
  *             if self._io.edgelist is not NULL:
  */
-    __pyx_t_2 = (__pyx_v_self->out_flag == 1);
+    __pyx_t_2 = (__pyx_v_self->_io->regionlist != NULL);
     if (__pyx_t_2) {
     } else {
       __pyx_t_1 = __pyx_t_2;
       goto __pyx_L17_bool_binop_done;
     }
-    __pyx_t_2 = (__pyx_v_self->_io->regionlist != NULL);
+    __pyx_t_2 = (__pyx_v_self->out_flag != 1);
     __pyx_t_1 = __pyx_t_2;
     __pyx_L17_bool_binop_done:;
     if (__pyx_t_1) {
 
       /* "cytriangle/cytriangleio.pyx":47
  *                 free(self._io.holelist)
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:
  *                 free(self._io.regionlist)             # <<<<<<<<<<<<<<
  *             if self._io.edgelist is not NULL:
  *                 free(self._io.edgelist)
@@ -4092,16 +4092,16 @@ static void __pyx_pf_10cytriangle_12cytriangleio_10TriangleIO_2__dealloc__(struc
       free(__pyx_v_self->_io->regionlist);
 
       /* "cytriangle/cytriangleio.pyx":46
- *             if self.out_flag == 1 and self._io.holelist is not NULL:
+ *             if self._io.holelist is not NULL and self.out_flag != 1:
  *                 free(self._io.holelist)
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:             # <<<<<<<<<<<<<<
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:             # <<<<<<<<<<<<<<
  *                 free(self._io.regionlist)
  *             if self._io.edgelist is not NULL:
  */
     }
 
     /* "cytriangle/cytriangleio.pyx":48
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:
  *                 free(self._io.regionlist)
  *             if self._io.edgelist is not NULL:             # <<<<<<<<<<<<<<
  *                 free(self._io.edgelist)
@@ -4120,7 +4120,7 @@ static void __pyx_pf_10cytriangle_12cytriangleio_10TriangleIO_2__dealloc__(struc
       free(__pyx_v_self->_io->edgelist);
 
       /* "cytriangle/cytriangleio.pyx":48
- *             if self.out_flag == 1 and self._io.regionlist is not NULL:
+ *             if self._io.regionlist is not NULL and self.out_flag != 1:
  *                 free(self._io.regionlist)
  *             if self._io.edgelist is not NULL:             # <<<<<<<<<<<<<<
  *                 free(self._io.edgelist)
