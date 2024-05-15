@@ -103,6 +103,8 @@ cdef class TriangleIO:
                 if 'vertex_markers' in input_dict:
                     self.set_vertex_markers(input_dict['vertex_markers'])
             if 'triangles' in input_dict:
+                # fetch number of corners from triangle input
+                self._io.numberofcorners = len(input_dict['triangles'][0])
                 self.set_triangles(input_dict['triangles'])
                 if 'triangle_attributes' in input_dict:
                     self.set_triangle_attributes(input_dict['triangle_attributes'])

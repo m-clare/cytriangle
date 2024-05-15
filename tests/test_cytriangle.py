@@ -203,53 +203,53 @@ def test_xor_section_properties():
     assert out_vertices == test_output_vertices
 
 
-# def test_refine_output_fields():
-#     test = CyTriangle(input_dict=tricall_input)
-#     test.triangulate("czAevn")
-#     refine_output = test.get_output_as_dict()
-#     test_refine = CyTriangle(refine_output)
-#     test_refine.in_.set_triangle_areas([3.0, 1.0])
-#     test_refine.triangulate("prazBP")
-#     assert test_refine.out.triangles == [
-#         [26, 10, 13],
-#         [24, 4, 9],
-#         [18, 8, 15],
-#         [11, 14, 1],
-#         [14, 5, 9],
-#         [14, 9, 7],
-#         [4, 7, 9],
-#         [4, 0, 7],
-#         [0, 1, 7],
-#         [24, 9, 5],
-#         [12, 16, 17],
-#         [6, 16, 11],
-#         [14, 11, 16],
-#         [1, 14, 7],
-#         [12, 5, 14],
-#         [15, 24, 5],
-#         [6, 17, 16],
-#         [24, 26, 13],
-#         [19, 12, 17],
-#         [2, 10, 25],
-#         [23, 22, 17],
-#         [14, 16, 12],
-#         [12, 19, 18],
-#         [18, 19, 8],
-#         [8, 20, 15],
-#         [5, 12, 18],
-#         [23, 17, 21],
-#         [22, 19, 17],
-#         [26, 25, 10],
-#         [26, 15, 20],
-#         [21, 3, 23],
-#         [22, 8, 19],
-#         [21, 17, 6],
-#         [4, 24, 13],
-#         [5, 18, 15],
-#         [20, 2, 25],
-#         [15, 26, 24],
-#         [25, 26, 20],
-#     ]
+def test_refine_output_fields():
+    test = CyTriangle(input_dict=tricall_input)
+    test.triangulate("czAevn")
+    refine_output = test.get_output_as_dict()
+    test_refine = CyTriangle({**refine_output, "number_of_corners": 3})
+    test_refine.in_.set_triangle_areas([3.0, 1.0])
+    test_refine.triangulate("prazBP")
+    assert test_refine.out.triangles == [
+        [26, 10, 13],
+        [24, 4, 9],
+        [18, 8, 15],
+        [11, 14, 1],
+        [14, 5, 9],
+        [14, 9, 7],
+        [4, 7, 9],
+        [4, 0, 7],
+        [0, 1, 7],
+        [24, 9, 5],
+        [12, 16, 17],
+        [6, 16, 11],
+        [14, 11, 16],
+        [1, 14, 7],
+        [12, 5, 14],
+        [15, 24, 5],
+        [6, 17, 16],
+        [24, 26, 13],
+        [19, 12, 17],
+        [2, 10, 25],
+        [23, 22, 17],
+        [14, 16, 12],
+        [12, 19, 18],
+        [18, 19, 8],
+        [8, 20, 15],
+        [5, 12, 18],
+        [23, 17, 21],
+        [22, 19, 17],
+        [26, 25, 10],
+        [26, 15, 20],
+        [21, 3, 23],
+        [22, 8, 19],
+        [21, 17, 6],
+        [4, 24, 13],
+        [5, 18, 15],
+        [20, 2, 25],
+        [15, 26, 24],
+        [25, 26, 20],
+    ]
 
 
 def test_memory_deallocation():
