@@ -17,4 +17,4 @@ def triangulate(input_dict, flags):
         input_dict["regions"] = parsed_regions
     triangle_obj = CyTriangle(input_dict)
     triangle_obj.triangulate(flags)
-    return triangle_obj.out.to_np_dict()
+    return triangle_obj.out.to_dict(opt='np')
