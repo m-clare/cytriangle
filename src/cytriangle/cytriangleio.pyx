@@ -153,6 +153,41 @@ cdef class TriangleIO:
 
         return output_dict
 
+    def to_np_dict(self):
+        output_dict = {}
+
+        if self.vertices:
+            output_dict['vertices'] = np.asarray(self.vertices)
+        if self.vertex_attributes:
+            output_dict['vertex_attributes'] = np.asarray(self.vertex_attributes)
+        if self.vertex_markers:
+            output_dict['vertex_markers'] = np.asarray(self.vertex_markers)
+        if self.triangles:
+            output_dict['triangles'] = np.asarray(self.triangles)
+        if self.triangle_attributes:
+            output_dict['triangle_attributes'] = np.asarray(self.triangle_attributes)
+        if self.triangle_max_area:
+            output_dict['triangle_max_area'] = self.triangle_max_area
+        if self.neighbors:
+            output_dict['neighbors'] = self.neighbors
+        if self.segments:
+            output_dict['segments'] = self.segments
+        if self.segment_markers:
+            output_dict['segment_markers'] = self.segment_markers
+        if self.holes:
+            output_dict['holes'] = self.holes
+        if self.regions:
+            output_dict['regions'] = self.regions
+        if self.edges:
+            output_dict['edges'] = self.edges
+        if self.edge_markers:
+            output_dict['edge_markers'] = self.edge_markers
+        if self.norms:
+            output_dict['norms'] = self.norms
+
+        return output_dict
+
+
     @property
     def vertices(self):
         if self._io.pointlist is not NULL:
