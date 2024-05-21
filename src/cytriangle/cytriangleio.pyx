@@ -390,6 +390,7 @@ cdef class TriangleIO:
 
     def set_segment_markers(self, segment_markers):
         segment_markers = np.ascontiguousarray(segment_markers, dtype=int)
+        validate_attribute_number(segment_markers, self._io.numberofsegments)
         self._io.segmentmarkerlist = <int*>malloc(self._io.numberofsegments * sizeof(int))
         for i in range(self._io.numberofsegments):
             self._io.segmentmarkerlist[i] = segment_markers[i]

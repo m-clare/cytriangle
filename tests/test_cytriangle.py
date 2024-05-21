@@ -13,7 +13,7 @@ tricall_input = {
 
 def test_simple_triangle_point_input():
     test = CyTriangle(input_dict=simple_input)
-    assert test.get_input_as_dict() == {
+    assert test.input_dict() == {
         "vertices": [[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]]
     }
 
@@ -21,7 +21,7 @@ def test_simple_triangle_point_input():
 def test_simple_triangle_area():
     test = CyTriangle(input_dict=simple_input)
     test.triangulate("a0.2")
-    output = test.get_output_as_dict()
+    output = test.output_dict()
     assert output["vertices"] == [
         [0.0, 0.0],
         [0.0, 1.0],
@@ -49,6 +49,18 @@ def test_simple_triangle_area():
 def test_input_vertices():
     test = CyTriangle(input_dict=simple_input)
     assert test.in_.vertices == [[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]]
+
+
+def test_validate_input_flags():
+    test = CyTriangle(input_dict=simple_input)
+    with pytest.raises(ValueError):
+        test.triangulate("r")
+    with pytest.raises(ValueError):
+        test.triangulate("p")
+    with pytest.raises(ValueError):
+        test.triangulate("a")
+    with pytest.raises(ValueError):
+        test.triangulate("q")
 
 
 def test_validate_missing_input_elements():
@@ -206,7 +218,7 @@ def test_xor_section_properties():
 def test_refine_output_fields():
     test = CyTriangle(input_dict=tricall_input)
     test.triangulate("czAevn")
-    refine_output = test.get_output_as_dict()
+    refine_output = test.output_dict()
     test_refine = CyTriangle({**refine_output, "number_of_corners": 3})
     test_refine.in_.set_triangle_areas([3.0, 1.0])
     test_refine.triangulate("prazBP")
