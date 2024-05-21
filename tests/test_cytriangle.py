@@ -219,7 +219,7 @@ def test_refine_output_fields():
     test = CyTriangle(input_dict=tricall_input)
     test.triangulate("czAevn")
     refine_output = test.output_dict()
-    test_refine = CyTriangle({**refine_output, "number_of_corners": 3})
+    test_refine = CyTriangle(refine_output)
     test_refine.in_.set_triangle_areas([3.0, 1.0])
     test_refine.triangulate("prazBP")
     assert test_refine.out.triangles == [
