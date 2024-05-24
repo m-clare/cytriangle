@@ -5,12 +5,18 @@ from cytriangle.ctriangle cimport triangulateio
 def validate_input_attributes(attributes):
     num_attr = list(set([len(sublist) for sublist in attributes]))
     if len(num_attr) > 1:
-        raise ValueError("Attribute lists must have the same number of attributes for each element")
+        raise ValueError(
+            "Attribute lists must have the same number of attributes for each element"
+        )
     return num_attr[0]
+
 
 def validate_attribute_number(attributes, base_quantity):
     if len(attributes) != base_quantity:
-        raise ValueError("Attribute list must have the same number of elements as the input it decorates")
+        raise ValueError(
+            "Attribute list must have the same number of elements as the input it decorates"
+        )
+
 
 cdef class TriangleIO:
 
@@ -167,8 +173,12 @@ cdef class TriangleIO:
 
     @property
     def vertices(self):
+        """
+        `vertices`:  A list of pairs [x, y] that are point coordinates.
+        """
         if self._io.pointlist is not NULL:
-            return [[self._io.pointlist[2*i], self._io.pointlist[2*i + 1]] for i in range(self._io.numberofpoints)]
+            return [[self._io.pointlist[2*i], self._io.pointlist[2*i + 1]]
+                    for i in range(self._io.numberofpoints)]
 
     @vertices.setter
     def vertices(self, vertices):
@@ -176,6 +186,11 @@ cdef class TriangleIO:
 
     @property
     def vertex_attributes(self):
+        """
+        `vertex_attributes`: An list of lists of vertex attributes.
+        Each vertex must have the same number of attributes, and
+        len(vertex_attributes) should match the number of points.
+        """
         if self._io.pointattributelist is not NULL:
             vertex_attributes = []
             for i in range(self._io.numberofpoints):
