@@ -17,12 +17,12 @@ def validate_attribute_number(attributes, base_quantity):
             "Attribute list must have the same number of elements as the input it decorates"
         )
 
-
 cdef class TriangleIO:
 
     def __cinit__(self):
         # Initialize the triangulateio struct with NULL pointers
         self._io = <triangulateio*> NULL
+        # out flag prevents freeing shared in / out struct data twice
         self.out_flag = 0
 
     def __dealloc__(self):
@@ -126,6 +126,15 @@ cdef class TriangleIO:
                 self.set_regions(input_dict['regions'])
 
     def to_dict(self,opt=''):
+        """
+        Converts the internal C TriangleIO data structure into a dictionary format.
+
+        Parameters:
+        - opt: A string that indicates the format of the output. If 'np', numpy arrays are used.
+
+        Returns:
+        - A dictionary containing the triangulation data.
+        """
         output_dict = {}
 
         if opt == 'np':
@@ -174,7 +183,10 @@ cdef class TriangleIO:
     @property
     def vertices(self):
         """
-        `vertices`:  A list of pairs [x, y] that are point coordinates.
+        `vertices`:  A list of pairs [x, y] that are vertex coordinates.
+
+        Returns:
+        - A list of pairs [x, y] that are vertex coordinates.
         """
         if self._io.pointlist is not NULL:
             return [[self._io.pointlist[2*i], self._io.pointlist[2*i + 1]]
@@ -187,16 +199,21 @@ cdef class TriangleIO:
     @property
     def vertex_attributes(self):
         """
-        `vertex_attributes`: An list of lists of vertex attributes.
+        `vertex_attributes`: An list of lists of vertex attributes (floats).
         Each vertex must have the same number of attributes, and
-        len(vertex_attributes) should match the number of points.
+        len(vertex_attributes) must match the number of points.
+
+        Returns:
+        - A list of lists, where each inner list contains attributes for a vertex.
         """
         if self._io.pointattributelist is not NULL:
             vertex_attributes = []
             for i in range(self._io.numberofpoints):
                 vertex_attr = []
                 for j in range(self._io.numberofpointattributes):
-                    vertex_attr.append(self._io.pointattributelist[i*self._io.numberofpointattributes + j ])
+                    vertex_attr.append(
+                        self._io.pointattributelist[i*self._io.numberofpointattributes + j ]
+                    )
                 vertex_attributes.append(vertex_attr)
             return vertex_attributes
 
@@ -206,6 +223,12 @@ cdef class TriangleIO:
 
     @property
     def vertex_markers(self):
+        """
+        `vertex_markers`: A list of vertex markers; one int per point.
+
+        Returns:
+        - A list of integers representing markers for each vertex.
+        """
         if self._io.pointmarkerlist is not NULL:
             return [self._io.pointmarkerlist[i] for i in range(self._io.numberofpoints)]
 
@@ -215,6 +238,14 @@ cdef class TriangleIO:
 
     @property
     def triangles(self):
+        """
+        `triangles`: A list of triangle corners (not necessarily 3). Corners are designated
+        in a counterclockwise order, followed by any other nodes if the triangle represents a
+        nonlinear element (e.g. num_corners > 3).
+
+        Returns:
+        - A list of lists, where each inner list contains vertex indices for a triangle.
+        """
         if self._io.trianglelist is not NULL:
             triangles = []
             for i in range(self._io.numberoftriangles):
@@ -230,12 +261,21 @@ cdef class TriangleIO:
 
     @property
     def triangle_attributes(self):
+        """
+        `triangle_attributes`: A list of triangle attributes. Each triangle must have
+        the same number of attributes.
+
+         Returns:
+        - A list of lists, where each inner list contains attributes for a triangle.
+        """
         if self._io.triangleattributelist is not NULL:
             triangle_attributes = []
             for i in range(self._io.numberoftriangles):
                 triangle_attr = []
                 for j in range(self._io.numberoftriangleattributes):
-                    triangle_attr.append(self._io.triangleattributelist[i*self._io.numberoftriangleattributes + j ])
+                    triangle_attr.append(
+                        self._io.triangleattributelist[i*self._io.numberoftriangleattributes + j]
+                    )
                 triangle_attributes.append(triangle_attr)
             return triangle_attributes
 
@@ -245,8 +285,16 @@ cdef class TriangleIO:
 
     @property
     def triangle_max_area(self):
+        """
+        `triangle_max_area`: A list of triangle area constraints; one per triangle, 0 if not set.
+        Input only.
+
+        Returns:
+        - A list of floats representing the maximum area for each triangle.
+        """
         if self._io.trianglearealist is not NULL:
-            return [self._io.trianglearealist[i] for i in range(self._io.numberoftriangles)]
+            return [self._io.trianglearealist[i]
+                    for i in range(self._io.numberoftriangles)]
 
     @triangle_max_area.setter
     def triangle_max_area(self, triangle_areas):
@@ -254,11 +302,18 @@ cdef class TriangleIO:
 
     @property
     def neighbors(self):
+        """
+        `neighbors`: A list of triangle neighbors; three ints per triangle. Output only.
+
+        Returns:
+        - A list of lists, where each inner list contains indices of neighboring triangles.
+        """
         max_neighbors = 3
         if self._io.neighborlist is not NULL:
             neighbor_list = []
             for i in range(self._io.numberoftriangles):
-                neighbors = [self._io.neighborlist[i*max_neighbors + j] for j in range(max_neighbors)]
+                neighbors = [self._io.neighborlist[i*max_neighbors + j]
+                             for j in range(max_neighbors)]
                 # remove sentinel values (-1)
                 neighbors = [neighbor for neighbor in neighbors if neighbor != -1]
                 neighbor_list.append(neighbors)
@@ -266,6 +321,13 @@ cdef class TriangleIO:
 
     @property
     def segments(self):
+        """
+        `segments`: A list of segment endpoints.
+
+        Returns:
+        - A list of lists, where each inner list contains vertex indices for
+        a segment.
+        """
         if self._io.segmentlist is not NULL:
             segments = []
             for i in range(self._io.numberofsegments):
@@ -280,8 +342,15 @@ cdef class TriangleIO:
 
     @property
     def holes(self):
+        """
+        `holes`: A list of hole coordinates.
+
+        Returns:
+        - A list of pairs [x, y] representing coordinates of holes.
+        """
         if self._io.holelist is not NULL:
-            return [[self._io.holelist[2*i], self._io.holelist[2*i + 1]] for i in range(self._io.numberofholes)]
+            return [[self._io.holelist[2*i], self._io.holelist[2*i + 1]]
+                    for i in range(self._io.numberofholes)]
 
     @holes.setter
     def holes(self, holes):
@@ -290,6 +359,12 @@ cdef class TriangleIO:
     # unmarked segments have a value of 0
     @property
     def segment_markers(self):
+        """
+        `segment_markers`:  An array of segment markers; one int per segment.
+
+        Returns:
+        - A list of integers representing markers for each segment.
+        """
         if self._io.segmentmarkerlist is not NULL:
             segment_markers = []
             for i in range(self._io.numberofsegments):
@@ -302,6 +377,16 @@ cdef class TriangleIO:
 
     @property
     def regions(self):
+        """
+        `regions`: An array of regional attributes and area constraints. Note that
+        each regional attribute is used only if you select the `A` switch, and each area
+        constraint is used only if you select the `a` switch (with no number following).
+
+        Returns:
+        - A list of dictionaries, each containing 'vertex' (coordinates of the region's
+        vertex), 'marker' (integer marker for the region), and 'max_area' (maximum area
+        constraint for the region).
+        """
         if self._io.regionlist is not NULL:
             regions = []
             for i in range(self._io.numberofregions):
@@ -318,6 +403,14 @@ cdef class TriangleIO:
 
     @property
     def edges(self):
+        """
+        `edges`: An array of edge endpoints. The first edge's endpoints are at
+        indices [0] and [1], followed by the remaining edges. Two ints per
+        edge. Output only.
+
+        Returns:
+        - A list of lists, where each inner list contains vertex indices for an edge.
+        """
         if self._io.edgelist is not NULL:
             edges = []
             for i in range(self._io.numberofedges):
@@ -326,15 +419,34 @@ cdef class TriangleIO:
 
     @property
     def edge_markers(self):
+        """
+        `edge_markers`: An array of edge markers; one int per edge. Output only.
+
+        Returns:
+        - A list of integers representing markers for each edge.
+        """
         if self._io.edgemarkerlist is not NULL:
             return [self._io.edgemarkerlist[i] for i in range(self._io.numberofedges)]
 
     @property
     def norms(self):
+        """
+        `norms`: An array of normal vectors, used for infinite rays in Voronoi
+        diagrams. For each finite edge in a Voronoi diagram, the normal vector written
+        is the zero vector. Output only.
+
+        Returns:
+        - A list of dictionaries, each containing 'ray_origin' (start
+        point of the ray) and 'ray_direction' (direction of the ray),
+        represented as [x, y] pairs.
+        """
         if self._io.normlist is not NULL:
             norm_list = []
             for i in range(self._io.numberofedges):
-                norm_list.append({'ray_origin': [self._io.normlist[i * 4], self._io.normlist[i * 4 + 1]], 'ray_direction': [self._io.normlist[i * 4 + 2], self._io.normlist[i * 4 + 3]]})
+                norm_list.append({'ray_origin': [self._io.normlist[i * 4],
+                                                 self._io.normlist[i * 4 + 1]],
+                                  'ray_direction': [self._io.normlist[i * 4 + 2],
+                                                    self._io.normlist[i * 4 + 3]]})
             return norm_list
 
     def set_vertices(self, vertices):
@@ -423,7 +535,11 @@ cdef class TriangleIO:
         num_regions = len(regions)
         self._io.numberofregions = num_regions
         # unpack region dict
-        region_array = [[region['vertex'][0], region['vertex'][1], region['marker'], region['max_area']] for region in regions]
+        region_array = [[region['vertex'][0],
+                         region['vertex'][1],
+                         region['marker'],
+                         region['max_area']]
+                        for region in regions]
         regions = np.ascontiguousarray(region_array)
         self._io.regionlist = <double*>malloc(num_regions * 4 * sizeof(double))
         for i in range(num_regions):

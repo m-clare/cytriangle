@@ -4,6 +4,35 @@ from cytriangle.cytriangleio  cimport TriangleIO
 import re
 
 cdef class CyTriangle:
+    """
+    A class to represent the input, output, and voronoi output (optional) of a
+    triangulation action
+
+    Attributes
+    ----------
+    in_ : TriangleIO
+        input object to be triangulated
+    out : TriangleIO
+        output object of the triangulation (null initially, and if no triangulation
+        is run)
+    vorout: TriangleIO
+        voronoi output object of triangulation (null initially, and if no triangulation
+        is run, and if -v switch is not included in triangulate options)
+
+    Methods
+    -------
+    input_dict(opt=""):
+        Returns a dictionary representation of the triangulation input.
+    output_dict(opt=""):
+        Returns a dictionary representation of the triangulation output.
+    voronoi_dict(opt=""):
+        Returns a dictionary representation of the triangulation voronoi output.
+    validate_input_flags(opts=""):
+        Checks validity of flag options to avoid obvious incompatibilities between
+        flags provided
+
+
+    """
     cdef TriangleIO _in
     cdef TriangleIO _out
     cdef TriangleIO _vorout
@@ -45,16 +74,19 @@ cdef class CyTriangle:
             if not 'segments' in self._in.to_dict():
                 raise ValueError("Segment list must be provided when using 'p' flag")
         if "a" in opts:
-            if not ('triangle_max_area' in self._in.to_dict() or 'A' in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
-                raise ValueError("When using 'a' flag for area constraints, a global area flag (e.g. a0.2), 'A' flag, or local triangle area constraint list (e.g. [3.0, 1.0]) must be provided")
+            if not ('triangle_max_area' in self._in.to_dict() or 'A'
+                    in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
+                raise ValueError(f"""When using 'a' flag for area constraints, a global
+                                 area flag (e.g. a0.2), 'A' flag, or local triangle area
+                                 constraint list (e.g. [3.0, 1.0]) must be provided""")
         if "q" in opts:
             if not bool(re.search('q[\d.*.]+\d.*', opts)):
                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
 
     # generic triangulation that accepts any switch
-    cpdef triangulate(self, triswitches=''):
-        if triswitches: self.validate_input_flags(triswitches)
-        opts = f"Qz{triswitches}".encode('utf-8')
+    cpdef triangulate(self, triflags=''):
+        if triflags: self.validate_input_flags(triflags)
+        opts = f"Qz{triflags}".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
             raise RuntimeError('Triangulation failed')
 
