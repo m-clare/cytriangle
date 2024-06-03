@@ -2,6 +2,8 @@
 ## A Python Wrapped Triangle Library via Cython
 
 ![ci-tests](https://github.com/m-clare/cytriangle/actions/workflows/ci.yaml/badge.svg)
+![code style](https://img.shields.io/badge/code%20style-black-000000.svg)
+![license](https://img.shields.io/github/license/m-clare/cytriangle)
 
 *CyTriangle* is an object-oriented python wrapper around Jonathan Richard Shewchuk's [Triangle](https://www.cs.cmu.edu/~quake/triangle.html) library. From its documentation:
 
