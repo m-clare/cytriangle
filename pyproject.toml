@@ -1,11 +1,30 @@
 [tool.poetry]
 name = "cytriangle"
-version = "0.1.0"
+version = "1.0.0"
 description = "Object-oriented Cython wrapper of Shewchuk's Triangle Library"
 authors = ["Maryanne Wachter <mclare@utsv.net>"]
+maintainers = [
+    "Maryanne Wachter <mclare@utsv.net>",
+    "Connor Ferster <connorferser@gmail.com>"
+]
 license = "LGPL 3.0"
 repository = "https://github.com/m-clare/cytriangle"
 readme = "README.md"
+keywords = [
+  "finite-element-analysis",
+  "triangular-meshing",
+  "mesh",
+  "FEA"
+]
+classifiers = [
+    "Environment :: Console",
+    "Topic :: Scientific/Engineering",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
 
 [tool.poetry.build]
 script = "build_ext.py"
@@ -24,5 +43,4 @@ requires = ["poetry-core>=1.0.0",
             "Cython>=3.0",
             "setuptools",
             "numpy"]
-
 build-backend = "poetry.core.masonry.api"

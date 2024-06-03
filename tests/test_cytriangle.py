@@ -1,5 +1,5 @@
 import pytest
-from cytriangle.cytriangle import CyTriangle
+from cytriangle import CyTriangle
 
 simple_input = {"vertices": [[0, 0], [0, 1], [1, 1], [1, 0]]}
 
