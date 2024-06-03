@@ -17,6 +17,7 @@ keywords = [
   "FEA"
 ]
 classifiers = [
+    "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Topic :: Scientific/Engineering",
     "Natural Language :: English",
