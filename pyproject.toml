@@ -31,6 +31,7 @@ classifiers = [
 
 [tool.poetry.build]
 script = "build_ext.py"
+generate-setup-file = true
 
 [tool.poetry.dependencies]
 python = ">=3.9"
