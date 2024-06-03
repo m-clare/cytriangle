@@ -8,13 +8,15 @@ maintainers = [
     "Connor Ferster <connorferser@gmail.com>"
 ]
 license = "LGPL 3.0"
+homepage = "https://github.com/m-clare/cytriangle"
 repository = "https://github.com/m-clare/cytriangle"
 readme = "README.md"
 keywords = [
   "finite-element-analysis",
   "triangular-meshing",
   "mesh",
-  "FEA"
+  "FEA",
+  "triangle"
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -29,7 +31,6 @@ classifiers = [
 
 [tool.poetry.build]
 script = "build_ext.py"
-generate-setup-file = true
 
 [tool.poetry.dependencies]
 python = ">=3.9"
