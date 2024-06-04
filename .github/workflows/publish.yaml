@@ -7,7 +7,6 @@ on:
 
 jobs:
   publish:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
