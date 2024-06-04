@@ -25,7 +25,8 @@ jobs:
             python-wheels-windows-latest-3.10
             python-wheels-windows-latest-3.11
             python-wheels-windows-latest-3.12
-          path: dist/
+          path: dist/*
+          merge-multiple: true
 
       - name: Set up Python
         uses: actions/setup-python@v4
