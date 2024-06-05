@@ -56,19 +56,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: |
-            python-wheels-ubuntu-latest-3.9
-            python-wheels-ubuntu-latest-3.10
-            python-wheels-ubuntu-latest-3.11
-            python-wheels-ubuntu-latest-3.12
-            python-wheels-macos-latest-3.9
-            python-wheels-macos-latest-3.10
-            python-wheels-macos-latest-3.11
-            python-wheels-macos-latest-3.12
-            python-wheels-windows-latest-3.9
-            python-wheels-windows-latest-3.10
-            python-wheels-windows-latest-3.11
-            python-wheels-windows-latest-3.12
+          name: python-wheels-ubuntu-latest-3.9
 
       - name: Set up Python
         uses: actions/setup-python@v4
