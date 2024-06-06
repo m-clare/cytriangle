@@ -73,4 +73,4 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
         run: |
-          twine upload dist/*/*.whl
+          twine upload --repository testpypi dist/*/*.whl
