@@ -1,9 +1,8 @@
 name: Publish
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -71,6 +70,6 @@ jobs:
       - name: Test publish to PyPI
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          twine upload --repository testpypi dist/*/*.whl
+          twine upload dist/*/*.whl
