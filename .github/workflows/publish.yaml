@@ -67,7 +67,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install twine
 
-      - name: Test publish to PyPI
+      - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
