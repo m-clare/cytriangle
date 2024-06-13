@@ -14819,8 +14819,10 @@ int main(int argc, char **argv)
       out->numberofholes = m.holes;
       out->numberofregions = m.regions;
       if (b.poly) {
-        out->holelist = in->holelist;
-        out->regionlist = in->regionlist;
+        out->holelist = (REAL *)malloc(sizeof(REAL) * 2 * out->numberofholes);
+        memcpy(out->holelist, in->holelist, sizeof(REAL) * 2 * out->numberofholes);
+        out->regionlist = (REAL *)malloc(sizeof(REAL) * 4 * out->numberofregions);
+        memcpy(out->regionlist, in->regionlist, sizeof(REAL) * 4 * out->numberofregions);
       } else {
         out->holelist = (REAL *) NULL;
         out->regionlist = (REAL *) NULL;

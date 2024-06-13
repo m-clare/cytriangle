@@ -49,7 +49,7 @@ cdef class CyTriangle:
             self._in = TriangleIO(input_dict)
         else:
             self._in = TriangleIO()
-        self._out = TriangleIO(kind='out')
+        self._out = TriangleIO()
         self._vorout = TriangleIO()
 
     @property

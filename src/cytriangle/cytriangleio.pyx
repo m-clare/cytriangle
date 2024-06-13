@@ -22,8 +22,6 @@ cdef class TriangleIO:
     def __cinit__(self):
         # Initialize the triangulateio struct with NULL pointers
         self._io = <triangulateio*> NULL
-        # out flag prevents freeing shared in / out struct data twice
-        self.out_flag = 0
 
     def __dealloc__(self):
         # Free allocated memory when the instance is deallocated
@@ -47,9 +45,9 @@ cdef class TriangleIO:
                 free(self._io.segmentlist)
             if self._io.segmentmarkerlist is not NULL:
                 free(self._io.segmentmarkerlist)
-            if self._io.holelist is not NULL and self.out_flag != 1:
+            if self._io.holelist is not NULL:
                 free(self._io.holelist)
-            if self._io.regionlist is not NULL and self.out_flag != 1:
+            if self._io.regionlist is not NULL:
                 free(self._io.regionlist)
             if self._io.edgelist is not NULL:
                 free(self._io.edgelist)
@@ -60,9 +58,6 @@ cdef class TriangleIO:
             free(self._io)
 
     def __init__(self, input_dict=None,kind=''):
-        # Prevent double deallocation on 'out' triangleio structs
-        if kind == 'out':
-            self.out_flag = 1
         # Assemble the triangulateio struct from a Python dictionary (default)
         self._io = <triangulateio*> malloc(sizeof(triangulateio))
 
