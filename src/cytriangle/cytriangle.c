@@ -1540,12 +1540,10 @@ struct __pyx_opt_args_10cytriangle_10cytriangle_10CyTriangle_triangulate {
  * from cytriangle.ctriangle cimport triangulateio
  * 
  * cdef class TriangleIO:             # <<<<<<<<<<<<<<
- *     cdef int out_flag
  *     cdef triangulateio* _io
  */
 struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO {
   PyObject_HEAD
-  int out_flag;
   struct triangulateio *_io;
 };
 
@@ -2352,7 +2350,6 @@ static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_opt[] = "opt";
 static const char __pyx_k_out[] = "out";
 static const char __pyx_k_dict[] = "__dict__";
-static const char __pyx_k_kind[] = "kind";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_opts[] = "opts";
@@ -2541,7 +2538,6 @@ typedef struct {
   PyObject *__pyx_n_s_input_dict;
   PyObject *__pyx_n_s_is_coroutine;
   PyObject *__pyx_kp_u_isenabled;
-  PyObject *__pyx_n_s_kind;
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_u_marker;
   PyObject *__pyx_n_u_max_area;
@@ -2551,7 +2547,6 @@ typedef struct {
   PyObject *__pyx_n_s_opt;
   PyObject *__pyx_n_s_opts;
   PyObject *__pyx_n_s_out;
-  PyObject *__pyx_n_u_out;
   PyObject *__pyx_n_s_output_dict;
   PyObject *__pyx_n_u_p;
   PyObject *__pyx_n_s_parsed_regions;
@@ -2725,7 +2720,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_input_dict);
   Py_CLEAR(clear_module_state->__pyx_n_s_is_coroutine);
   Py_CLEAR(clear_module_state->__pyx_kp_u_isenabled);
-  Py_CLEAR(clear_module_state->__pyx_n_s_kind);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_u_marker);
   Py_CLEAR(clear_module_state->__pyx_n_u_max_area);
@@ -2735,7 +2729,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_opt);
   Py_CLEAR(clear_module_state->__pyx_n_s_opts);
   Py_CLEAR(clear_module_state->__pyx_n_s_out);
-  Py_CLEAR(clear_module_state->__pyx_n_u_out);
   Py_CLEAR(clear_module_state->__pyx_n_s_output_dict);
   Py_CLEAR(clear_module_state->__pyx_n_u_p);
   Py_CLEAR(clear_module_state->__pyx_n_s_parsed_regions);
@@ -2887,7 +2880,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_input_dict);
   Py_VISIT(traverse_module_state->__pyx_n_s_is_coroutine);
   Py_VISIT(traverse_module_state->__pyx_kp_u_isenabled);
-  Py_VISIT(traverse_module_state->__pyx_n_s_kind);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_u_marker);
   Py_VISIT(traverse_module_state->__pyx_n_u_max_area);
@@ -2897,7 +2889,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_opt);
   Py_VISIT(traverse_module_state->__pyx_n_s_opts);
   Py_VISIT(traverse_module_state->__pyx_n_s_out);
-  Py_VISIT(traverse_module_state->__pyx_n_u_out);
   Py_VISIT(traverse_module_state->__pyx_n_s_output_dict);
   Py_VISIT(traverse_module_state->__pyx_n_u_p);
   Py_VISIT(traverse_module_state->__pyx_n_s_parsed_regions);
@@ -3063,7 +3054,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_input_dict __pyx_mstate_global->__pyx_n_s_input_dict
 #define __pyx_n_s_is_coroutine __pyx_mstate_global->__pyx_n_s_is_coroutine
 #define __pyx_kp_u_isenabled __pyx_mstate_global->__pyx_kp_u_isenabled
-#define __pyx_n_s_kind __pyx_mstate_global->__pyx_n_s_kind
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_u_marker __pyx_mstate_global->__pyx_n_u_marker
 #define __pyx_n_u_max_area __pyx_mstate_global->__pyx_n_u_max_area
@@ -3073,7 +3063,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_opt __pyx_mstate_global->__pyx_n_s_opt
 #define __pyx_n_s_opts __pyx_mstate_global->__pyx_n_s_opts
 #define __pyx_n_s_out __pyx_mstate_global->__pyx_n_s_out
-#define __pyx_n_u_out __pyx_mstate_global->__pyx_n_u_out
 #define __pyx_n_s_output_dict __pyx_mstate_global->__pyx_n_s_output_dict
 #define __pyx_n_u_p __pyx_mstate_global->__pyx_n_u_p
 #define __pyx_n_s_parsed_regions __pyx_mstate_global->__pyx_n_s_parsed_regions
@@ -3248,7 +3237,6 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3293,7 +3281,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
  *             self._in = TriangleIO(input_dict)
  *         else:
  *             self._in = TriangleIO()             # <<<<<<<<<<<<<<
- *         self._out = TriangleIO(kind='out')
+ *         self._out = TriangleIO()
  *         self._vorout = TriangleIO()
  */
   /*else*/ {
@@ -3310,36 +3298,32 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   /* "cytriangle/cytriangle.pyx":52
  *         else:
  *             self._in = TriangleIO()
- *         self._out = TriangleIO(kind='out')             # <<<<<<<<<<<<<<
+ *         self._out = TriangleIO()             # <<<<<<<<<<<<<<
  *         self._vorout = TriangleIO()
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_kind, __pyx_n_u_out) < 0) __PYX_ERR(0, 52, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO), __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GIVEREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF((PyObject *)__pyx_v_self->_out);
   __Pyx_DECREF((PyObject *)__pyx_v_self->_out);
-  __pyx_v_self->_out = ((struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO *)__pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_v_self->_out = ((struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO *)__pyx_t_2);
+  __pyx_t_2 = 0;
 
   /* "cytriangle/cytriangle.pyx":53
  *             self._in = TriangleIO()
- *         self._out = TriangleIO(kind='out')
+ *         self._out = TriangleIO()
  *         self._vorout = TriangleIO()             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_3 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF((PyObject *)__pyx_v_self->_vorout);
   __Pyx_DECREF((PyObject *)__pyx_v_self->_vorout);
-  __pyx_v_self->_vorout = ((struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO *)__pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_v_self->_vorout = ((struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO *)__pyx_t_2);
+  __pyx_t_2 = 0;
 
   /* "cytriangle/cytriangle.pyx":47
  *     cdef TriangleIO _vorout
@@ -3354,7 +3338,6 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("cytriangle.cytriangle.CyTriangle.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
@@ -7178,7 +7161,6 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_input_dict, __pyx_k_input_dict, sizeof(__pyx_k_input_dict), 0, 0, 1, 1},
     {&__pyx_n_s_is_coroutine, __pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 0, 1, 1},
     {&__pyx_kp_u_isenabled, __pyx_k_isenabled, sizeof(__pyx_k_isenabled), 0, 1, 0, 0},
-    {&__pyx_n_s_kind, __pyx_k_kind, sizeof(__pyx_k_kind), 0, 0, 1, 1},
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
     {&__pyx_n_u_marker, __pyx_k_marker, sizeof(__pyx_k_marker), 0, 1, 0, 1},
     {&__pyx_n_u_max_area, __pyx_k_max_area, sizeof(__pyx_k_max_area), 0, 1, 0, 1},
@@ -7188,7 +7170,6 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_opt, __pyx_k_opt, sizeof(__pyx_k_opt), 0, 0, 1, 1},
     {&__pyx_n_s_opts, __pyx_k_opts, sizeof(__pyx_k_opts), 0, 0, 1, 1},
     {&__pyx_n_s_out, __pyx_k_out, sizeof(__pyx_k_out), 0, 0, 1, 1},
-    {&__pyx_n_u_out, __pyx_k_out, sizeof(__pyx_k_out), 0, 1, 0, 1},
     {&__pyx_n_s_output_dict, __pyx_k_output_dict, sizeof(__pyx_k_output_dict), 0, 0, 1, 1},
     {&__pyx_n_u_p, __pyx_k_p, sizeof(__pyx_k_p), 0, 1, 0, 1},
     {&__pyx_n_s_parsed_regions, __pyx_k_parsed_regions, sizeof(__pyx_k_parsed_regions), 0, 0, 1, 1},
