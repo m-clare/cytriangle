@@ -2,6 +2,7 @@ from libc.stdlib cimport free, malloc
 import numpy as np
 from cytriangle.ctriangle cimport triangulateio
 
+
 def validate_input_attributes(attributes):
     num_attr = list(set([len(sublist) for sublist in attributes]))
     if len(num_attr) > 1:
@@ -14,8 +15,10 @@ def validate_input_attributes(attributes):
 def validate_attribute_number(attributes, base_quantity):
     if len(attributes) != base_quantity:
         raise ValueError(
-            "Attribute list must have the same number of elements as the input it decorates"
+            """Attribute list must have the same number of elements as the
+            input it decorates"""
         )
+
 
 cdef class TriangleIO:
 
@@ -57,7 +60,7 @@ cdef class TriangleIO:
                 free(self._io.normlist)
             free(self._io)
 
-    def __init__(self, input_dict=None,kind=''):
+    def __init__(self, input_dict=None):
         # Assemble the triangulateio struct from a Python dictionary (default)
         self._io = <triangulateio*> malloc(sizeof(triangulateio))
 
@@ -120,12 +123,13 @@ cdef class TriangleIO:
             if 'regions' in input_dict:
                 self.set_regions(input_dict['regions'])
 
-    def to_dict(self,opt=''):
+    def to_dict(self, opt=''):
         """
         Converts the internal C TriangleIO data structure into a dictionary format.
 
         Parameters:
-        - opt: A string that indicates the format of the output. If 'np', numpy arrays are used.
+        - opt: A string that indicates the format of the output. If 'np',
+          numpy arrays are used.
 
         Returns:
         - A dictionary containing the triangulation data.
@@ -142,7 +146,8 @@ cdef class TriangleIO:
             if self.triangles:
                 output_dict['triangles'] = np.asarray(self.triangles)
             if self.triangle_attributes:
-                output_dict['triangle_attributes'] = np.asarray(self.triangle_attributes)
+                output_dict['triangle_attributes'] = np.asarray(
+                    self.triangle_attributes)
         else:
             if self.vertices:
                 output_dict['vertices'] = self.vertices
@@ -207,7 +212,9 @@ cdef class TriangleIO:
                 vertex_attr = []
                 for j in range(self._io.numberofpointattributes):
                     vertex_attr.append(
-                        self._io.pointattributelist[i*self._io.numberofpointattributes + j ]
+                        self._io.pointattributelist[
+                            i*self._io.numberofpointattributes + j
+                        ]
                     )
                 vertex_attributes.append(vertex_attr)
             return vertex_attributes
@@ -234,8 +241,9 @@ cdef class TriangleIO:
     @property
     def triangles(self):
         """
-        `triangles`: A list of triangle corners (not necessarily 3). Corners are designated
-        in a counterclockwise order, followed by any other nodes if the triangle represents a
+        `triangles`: A list of triangle corners (not necessarily 3).
+        Corners are designated in a counterclockwise order,
+        followed by any other nodes if the triangle represents a
         nonlinear element (e.g. num_corners > 3).
 
         Returns:
@@ -246,7 +254,9 @@ cdef class TriangleIO:
             for i in range(self._io.numberoftriangles):
                 tri_order = []
                 for j in range(self._io.numberofcorners):
-                    tri_order.append(self._io.trianglelist[i * self._io.numberofcorners + j])
+                    tri_order.append(self._io.trianglelist[
+                        i * self._io.numberofcorners + j
+                    ])
                 triangles.append(tri_order)
             return triangles
 
@@ -269,7 +279,9 @@ cdef class TriangleIO:
                 triangle_attr = []
                 for j in range(self._io.numberoftriangleattributes):
                     triangle_attr.append(
-                        self._io.triangleattributelist[i*self._io.numberoftriangleattributes + j]
+                        self._io.triangleattributelist[
+                            i*self._io.numberoftriangleattributes + j
+                        ]
                     )
                 triangle_attributes.append(triangle_attr)
             return triangle_attributes
@@ -281,7 +293,8 @@ cdef class TriangleIO:
     @property
     def triangle_max_area(self):
         """
-        `triangle_max_area`: A list of triangle area constraints; one per triangle, 0 if not set.
+        `triangle_max_area`: A list of triangle area constraints;
+        one per triangle, 0 if not set.
         Input only.
 
         Returns:
@@ -301,7 +314,8 @@ cdef class TriangleIO:
         `neighbors`: A list of triangle neighbors; three ints per triangle. Output only.
 
         Returns:
-        - A list of lists, where each inner list contains indices of neighboring triangles.
+        - A list of lists, where each inner list contains indices of neighboring
+          triangles.
         """
         max_neighbors = 3
         if self._io.neighborlist is not NULL:
@@ -386,7 +400,8 @@ cdef class TriangleIO:
             regions = []
             for i in range(self._io.numberofregions):
                 region = {}
-                region['vertex'] = [self._io.regionlist[4*i], self._io.regionlist[4*i + 1]]
+                region['vertex'] = [self._io.regionlist[4*i],
+                                    self._io.regionlist[4*i + 1]]
                 region['marker'] = int(self._io.regionlist[4*i + 2])
                 region['max_area'] = self._io.regionlist[4*i + 3]
                 regions.append(region)
@@ -460,7 +475,8 @@ cdef class TriangleIO:
         num_vertices = self._io.numberofpoints
         validate_attribute_number(vertex_attributes, num_vertices)
         vertex_attributes = np.ascontiguousarray(vertex_attributes)
-        self._io.pointattributelist = <double*>malloc(num_attr * num_vertices * sizeof(double))
+        self._io.pointattributelist = <double*>malloc(
+            num_attr * num_vertices * sizeof(double))
         self._io.numberofpointattributes = num_attr
         for i in range(num_vertices):
             for j in range(num_attr):
@@ -487,11 +503,13 @@ cdef class TriangleIO:
         num_triangles = self._io.numberoftriangles
         validate_attribute_number(triangle_attributes, num_triangles)
         triangle_attributes = np.ascontiguousarray(triangle_attributes)
-        self._io.triangleattributelist = <double*>malloc(num_attr * num_triangles * sizeof(double))
+        self._io.triangleattributelist = <double*>malloc(
+            num_attr * num_triangles * sizeof(double))
         self._io.numberoftriangleattributes = num_attr
         for i in range(num_triangles):
             for j in range(num_attr):
-                self._io.triangleattributelist[i * num_attr + j] = triangle_attributes[i, j]
+                self._io.triangleattributelist[
+                    i * num_attr + j] = triangle_attributes[i, j]
 
     def set_triangle_areas(self, triangle_areas):
         num_triangles = self._io.numberoftriangles
@@ -513,7 +531,8 @@ cdef class TriangleIO:
     def set_segment_markers(self, segment_markers):
         segment_markers = np.ascontiguousarray(segment_markers, dtype=int)
         validate_attribute_number(segment_markers, self._io.numberofsegments)
-        self._io.segmentmarkerlist = <int*>malloc(self._io.numberofsegments * sizeof(int))
+        self._io.segmentmarkerlist = <int*>malloc(
+            self._io.numberofsegments * sizeof(int))
         for i in range(self._io.numberofsegments):
             self._io.segmentmarkerlist[i] = segment_markers[i]
 

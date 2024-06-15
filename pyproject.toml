@@ -30,6 +30,10 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 
+[tool.cython-lint]
+max-line-length = 88
+ignore = ['E503', 'E504']
+
 [tool.poetry.build]
 script = "build_ext.py"
 generate-setup-file = true

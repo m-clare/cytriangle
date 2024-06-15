@@ -1,4 +1,3 @@
-from cytriangle.ctriangle cimport triangulateio
 from cytriangle.ctriangle cimport triangulate as ctriangulate
 from cytriangle.cytriangleio  cimport TriangleIO
 import re
@@ -75,20 +74,21 @@ cdef class CyTriangle:
 
     def validate_input_flags(self, opts):
         if "r" in opts:
-            if not 'triangles' in self._in.to_dict():
+            if 'triangles' not in self._in.to_dict():
                 raise ValueError("Triangle list must be provided when using 'r' flag")
         if "p" in opts:
-            if not 'segments' in self._in.to_dict():
+            if 'segments' not in self._in.to_dict():
                 raise ValueError("Segment list must be provided when using 'p' flag")
         if "a" in opts:
             if not ('triangle_max_area' in self._in.to_dict() or 'A'
-                    in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
-                raise ValueError(f"""When using 'a' flag for area constraints, a global
+                    in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
+                raise ValueError("""When using 'a' flag for area constraints, a global
                                  area flag (e.g. a0.2), 'A' flag, or local triangle area
                                  constraint list (e.g. [3.0, 1.0]) must be provided""")
         if "q" in opts:
-            if not bool(re.search('q[\d.*.]+\d.*', opts)):
-                raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
+            if not bool(re.search(r'q[\d.*.]+\d.*', opts)):
+                raise ValueError("""When using 'q' flag for minimum angles, an angle
+                                 must be provided""")
 
     # generic triangulation that accepts any switch
     cpdef triangulate(self, triflags=''):
@@ -121,15 +121,18 @@ cdef class CyTriangle:
         - Check the consistency and Delaunay property of the mesh (-C).
 
         """
-        if triflags: self.validate_input_flags(triflags)
+        if triflags:
+            self.validate_input_flags(triflags)
         opts = f"Qz{triflags}".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+                is not None:
             raise RuntimeError('Triangulation failed')
         return self.out
 
     cpdef delaunay(self):
         """
-        Run the main triangulation method on the in_ object with *only* -Qz flags enabled.
+        Run the main triangulation method on the in_ object with *only* -Qz
+        flags enabled.
 
         - Q Quiet: suppresses all output messages from Triangle library
 
@@ -137,7 +140,8 @@ cdef class CyTriangle:
 
         """
         opts = "Qz".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+                is not None:
             raise RuntimeError('Delaunay triangulation failed')
         return self.out
 
@@ -152,9 +156,11 @@ cdef class CyTriangle:
         - c Encloses the convex hull with segments
 
         """
-        opts = f"Qzc".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
-            raise RuntimeError('Delaunay triangulation and convex hull construction failed')
+        opts = "Qzc".encode('utf-8')
+        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+                is not None:
+            raise RuntimeError("""Delaunay triangulation and convex hull
+                               construction failed""")
         return self.out
 
     cpdef voronoi(self):
@@ -168,10 +174,13 @@ cdef class CyTriangle:
         - v Generates a Voronoi diagram.
 
         """
-        opts = f"Qzv".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
-            raise RuntimeError('Delaunay triangulation and generation of voronoi diagram failed')
+        opts = "Qzv".encode('utf-8')
+        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+                is not None:
+            raise RuntimeError("""Delaunay triangulation and generation of
+                               voronoi diagram failed""")
         return self.out
+
 
 def triangulate(input_dict, flags):
     """

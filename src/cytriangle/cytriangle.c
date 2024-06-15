@@ -1548,7 +1548,7 @@ struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO {
 };
 
 
-/* "cytriangle/cytriangle.pyx":6
+/* "cytriangle/cytriangle.pyx":5
  * import re
  * 
  * cdef class CyTriangle:             # <<<<<<<<<<<<<<
@@ -2426,13 +2426,13 @@ static const char __pyx_k_CyTriangle___setstate_cython[] = "CyTriangle.__setstat
 static const char __pyx_k_Delaunay_triangulation_failed[] = "Delaunay triangulation failed";
 static const char __pyx_k_src_cytriangle_cytriangle_pyx[] = "src/cytriangle/cytriangle.pyx";
 static const char __pyx_k_CyTriangle_validate_input_flags[] = "CyTriangle.validate_input_flags";
-static const char __pyx_k_Delaunay_triangulation_and_conve[] = "Delaunay triangulation and convex hull construction failed";
-static const char __pyx_k_Delaunay_triangulation_and_gener[] = "Delaunay triangulation and generation of voronoi diagram failed";
+static const char __pyx_k_Delaunay_triangulation_and_conve[] = "Delaunay triangulation and convex hull\n                               construction failed";
+static const char __pyx_k_Delaunay_triangulation_and_gener[] = "Delaunay triangulation and generation of\n                               voronoi diagram failed";
 static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0xfa5e81c, 0xcb7eaaa, 0xa10a831) = (_in, _out, _vorout))";
 static const char __pyx_k_Segment_list_must_be_provided_wh[] = "Segment list must be provided when using 'p' flag";
 static const char __pyx_k_Triangle_list_must_be_provided_w[] = "Triangle list must be provided when using 'r' flag";
 static const char __pyx_k_When_using_a_flag_for_area_const[] = "When using 'a' flag for area constraints, a global\n                                 area flag (e.g. a0.2), 'A' flag, or local triangle area\n                                 constraint list (e.g. [3.0, 1.0]) must be provided";
-static const char __pyx_k_When_using_q_flag_for_minimum_an[] = "When using 'q' flag for minimum angles, an angle must be provided";
+static const char __pyx_k_When_using_q_flag_for_minimum_an[] = "When using 'q' flag for minimum angles, an angle\n                                 must be provided";
 /* #### Code section: decls ### */
 static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *__pyx_v_self, PyObject *__pyx_v_input_dict); /* proto */
 static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *__pyx_v_self); /* proto */
@@ -3142,7 +3142,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__34 __pyx_mstate_global->__pyx_codeobj__34
 /* #### Code section: module_code ### */
 
-/* "cytriangle/cytriangle.pyx":47
+/* "cytriangle/cytriangle.pyx":46
  *     cdef TriangleIO _vorout
  * 
  *     def __init__(self, input_dict=None):             # <<<<<<<<<<<<<<
@@ -3186,12 +3186,12 @@ static int __pyx_pw_10cytriangle_10cytriangle_10CyTriangle_1__init__(PyObject *_
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_input_dict);
           if (value) { values[0] = __Pyx_Arg_NewRef_VARARGS(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 46, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -3205,7 +3205,7 @@ static int __pyx_pw_10cytriangle_10cytriangle_10CyTriangle_1__init__(PyObject *_
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 47, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 46, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3242,7 +3242,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 1);
 
-  /* "cytriangle/cytriangle.pyx":48
+  /* "cytriangle/cytriangle.pyx":47
  * 
  *     def __init__(self, input_dict=None):
  *         if input_dict is not None:             # <<<<<<<<<<<<<<
@@ -3252,14 +3252,14 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   __pyx_t_1 = (__pyx_v_input_dict != Py_None);
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":49
+    /* "cytriangle/cytriangle.pyx":48
  *     def __init__(self, input_dict=None):
  *         if input_dict is not None:
  *             self._in = TriangleIO(input_dict)             # <<<<<<<<<<<<<<
  *         else:
  *             self._in = TriangleIO()
  */
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO), __pyx_v_input_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO), __pyx_v_input_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
     __Pyx_GOTREF((PyObject *)__pyx_v_self->_in);
@@ -3267,7 +3267,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
     __pyx_v_self->_in = ((struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO *)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "cytriangle/cytriangle.pyx":48
+    /* "cytriangle/cytriangle.pyx":47
  * 
  *     def __init__(self, input_dict=None):
  *         if input_dict is not None:             # <<<<<<<<<<<<<<
@@ -3277,7 +3277,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
     goto __pyx_L3;
   }
 
-  /* "cytriangle/cytriangle.pyx":51
+  /* "cytriangle/cytriangle.pyx":50
  *             self._in = TriangleIO(input_dict)
  *         else:
  *             self._in = TriangleIO()             # <<<<<<<<<<<<<<
@@ -3285,7 +3285,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
  *         self._vorout = TriangleIO()
  */
   /*else*/ {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
     __Pyx_GOTREF((PyObject *)__pyx_v_self->_in);
@@ -3295,14 +3295,14 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   }
   __pyx_L3:;
 
-  /* "cytriangle/cytriangle.pyx":52
+  /* "cytriangle/cytriangle.pyx":51
  *         else:
  *             self._in = TriangleIO()
  *         self._out = TriangleIO()             # <<<<<<<<<<<<<<
  *         self._vorout = TriangleIO()
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF((PyObject *)__pyx_v_self->_out);
@@ -3310,14 +3310,14 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   __pyx_v_self->_out = ((struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "cytriangle/cytriangle.pyx":53
+  /* "cytriangle/cytriangle.pyx":52
  *             self._in = TriangleIO()
  *         self._out = TriangleIO()
  *         self._vorout = TriangleIO()             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_10cytriangle_12cytriangleio_TriangleIO)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF((PyObject *)__pyx_v_self->_vorout);
@@ -3325,7 +3325,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   __pyx_v_self->_vorout = ((struct __pyx_obj_10cytriangle_12cytriangleio_TriangleIO *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "cytriangle/cytriangle.pyx":47
+  /* "cytriangle/cytriangle.pyx":46
  *     cdef TriangleIO _vorout
  * 
  *     def __init__(self, input_dict=None):             # <<<<<<<<<<<<<<
@@ -3345,7 +3345,7 @@ static int __pyx_pf_10cytriangle_10cytriangle_10CyTriangle___init__(struct __pyx
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":55
+/* "cytriangle/cytriangle.pyx":54
  *         self._vorout = TriangleIO()
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3373,7 +3373,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 1);
 
-  /* "cytriangle/cytriangle.pyx":57
+  /* "cytriangle/cytriangle.pyx":56
  *     @property
  *     def in_(self):
  *         return self._in             # <<<<<<<<<<<<<<
@@ -3385,7 +3385,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(st
   __pyx_r = ((PyObject *)__pyx_v_self->_in);
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":55
+  /* "cytriangle/cytriangle.pyx":54
  *         self._vorout = TriangleIO()
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3400,7 +3400,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3in____get__(st
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":59
+/* "cytriangle/cytriangle.pyx":58
  *         return self._in
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3428,7 +3428,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3out___get__(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 1);
 
-  /* "cytriangle/cytriangle.pyx":61
+  /* "cytriangle/cytriangle.pyx":60
  *     @property
  *     def out(self):
  *         return self._out             # <<<<<<<<<<<<<<
@@ -3440,7 +3440,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3out___get__(st
   __pyx_r = ((PyObject *)__pyx_v_self->_out);
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":59
+  /* "cytriangle/cytriangle.pyx":58
  *         return self._in
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3455,7 +3455,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_3out___get__(st
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":63
+/* "cytriangle/cytriangle.pyx":62
  *         return self._out
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3483,7 +3483,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6vorout___get__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 1);
 
-  /* "cytriangle/cytriangle.pyx":65
+  /* "cytriangle/cytriangle.pyx":64
  *     @property
  *     def vorout(self):
  *         return self._vorout             # <<<<<<<<<<<<<<
@@ -3495,7 +3495,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6vorout___get__
   __pyx_r = ((PyObject *)__pyx_v_self->_vorout);
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":63
+  /* "cytriangle/cytriangle.pyx":62
  *         return self._out
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -3510,7 +3510,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6vorout___get__
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":67
+/* "cytriangle/cytriangle.pyx":66
  *         return self._vorout
  * 
  *     def input_dict(self, opt=''):             # <<<<<<<<<<<<<<
@@ -3571,12 +3571,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_opt);
           if (value) { values[0] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "input_dict") < 0)) __PYX_ERR(0, 67, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "input_dict") < 0)) __PYX_ERR(0, 66, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -3590,7 +3590,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("input_dict", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 67, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("input_dict", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 66, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3629,7 +3629,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2input_dict(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("input_dict", 1);
 
-  /* "cytriangle/cytriangle.pyx":68
+  /* "cytriangle/cytriangle.pyx":67
  * 
  *     def input_dict(self, opt=''):
  *         return self._in.to_dict(opt)             # <<<<<<<<<<<<<<
@@ -3637,7 +3637,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2input_dict(str
  *     def output_dict(self, opt=''):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3657,7 +3657,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2input_dict(str
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_opt};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -3665,7 +3665,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2input_dict(str
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":67
+  /* "cytriangle/cytriangle.pyx":66
  *         return self._vorout
  * 
  *     def input_dict(self, opt=''):             # <<<<<<<<<<<<<<
@@ -3686,7 +3686,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_2input_dict(str
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":70
+/* "cytriangle/cytriangle.pyx":69
  *         return self._in.to_dict(opt)
  * 
  *     def output_dict(self, opt=''):             # <<<<<<<<<<<<<<
@@ -3747,12 +3747,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_opt);
           if (value) { values[0] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "output_dict") < 0)) __PYX_ERR(0, 70, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "output_dict") < 0)) __PYX_ERR(0, 69, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -3766,7 +3766,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("output_dict", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 70, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("output_dict", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 69, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3805,7 +3805,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4output_dict(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("output_dict", 1);
 
-  /* "cytriangle/cytriangle.pyx":71
+  /* "cytriangle/cytriangle.pyx":70
  * 
  *     def output_dict(self, opt=''):
  *         return self._out.to_dict(opt)             # <<<<<<<<<<<<<<
@@ -3813,7 +3813,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4output_dict(st
  *     def voronoi_dict(self, opt=''):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_out), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_out), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3833,7 +3833,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4output_dict(st
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_opt};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -3841,7 +3841,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4output_dict(st
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":70
+  /* "cytriangle/cytriangle.pyx":69
  *         return self._in.to_dict(opt)
  * 
  *     def output_dict(self, opt=''):             # <<<<<<<<<<<<<<
@@ -3862,7 +3862,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_4output_dict(st
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":73
+/* "cytriangle/cytriangle.pyx":72
  *         return self._out.to_dict(opt)
  * 
  *     def voronoi_dict(self, opt=''):             # <<<<<<<<<<<<<<
@@ -3923,12 +3923,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_opt);
           if (value) { values[0] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "voronoi_dict") < 0)) __PYX_ERR(0, 73, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "voronoi_dict") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -3942,7 +3942,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("voronoi_dict", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 73, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("voronoi_dict", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 72, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3981,7 +3981,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6voronoi_dict(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("voronoi_dict", 1);
 
-  /* "cytriangle/cytriangle.pyx":74
+  /* "cytriangle/cytriangle.pyx":73
  * 
  *     def voronoi_dict(self, opt=''):
  *         return self._vorout.to_dict(opt)             # <<<<<<<<<<<<<<
@@ -3989,7 +3989,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6voronoi_dict(s
  *     def validate_input_flags(self, opts):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_vorout), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_vorout), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -4009,7 +4009,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6voronoi_dict(s
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_opt};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -4017,7 +4017,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6voronoi_dict(s
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":73
+  /* "cytriangle/cytriangle.pyx":72
  *         return self._out.to_dict(opt)
  * 
  *     def voronoi_dict(self, opt=''):             # <<<<<<<<<<<<<<
@@ -4038,12 +4038,12 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_6voronoi_dict(s
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":76
+/* "cytriangle/cytriangle.pyx":75
  *         return self._vorout.to_dict(opt)
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  */
 
 /* Python wrapper */
@@ -4099,12 +4099,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "validate_input_flags") < 0)) __PYX_ERR(0, 76, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "validate_input_flags") < 0)) __PYX_ERR(0, 75, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -4115,7 +4115,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("validate_input_flags", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 76, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("validate_input_flags", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 75, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4156,24 +4156,24 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("validate_input_flags", 1);
 
-  /* "cytriangle/cytriangle.pyx":77
+  /* "cytriangle/cytriangle.pyx":76
  * 
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:             # <<<<<<<<<<<<<<
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_r, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_r, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 76, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":78
+    /* "cytriangle/cytriangle.pyx":77
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():             # <<<<<<<<<<<<<<
+ *             if 'triangles' not in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_5 = 0;
@@ -4193,63 +4193,63 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_triangles, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_triangles, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(__pyx_t_1)) {
 
-      /* "cytriangle/cytriangle.pyx":79
+      /* "cytriangle/cytriangle.pyx":78
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")             # <<<<<<<<<<<<<<
  *         if "p" in opts:
- *             if not 'segments' in self._in.to_dict():
+ *             if 'segments' not in self._in.to_dict():
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 79, __pyx_L1_error)
+      __PYX_ERR(0, 78, __pyx_L1_error)
 
-      /* "cytriangle/cytriangle.pyx":78
+      /* "cytriangle/cytriangle.pyx":77
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():             # <<<<<<<<<<<<<<
+ *             if 'triangles' not in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:
  */
     }
 
-    /* "cytriangle/cytriangle.pyx":77
+    /* "cytriangle/cytriangle.pyx":76
  * 
  *     def validate_input_flags(self, opts):
  *         if "r" in opts:             # <<<<<<<<<<<<<<
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":80
- *             if not 'triangles' in self._in.to_dict():
+  /* "cytriangle/cytriangle.pyx":79
+ *             if 'triangles' not in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:             # <<<<<<<<<<<<<<
- *             if not 'segments' in self._in.to_dict():
+ *             if 'segments' not in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_p, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_p, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 79, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":81
+    /* "cytriangle/cytriangle.pyx":80
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:
- *             if not 'segments' in self._in.to_dict():             # <<<<<<<<<<<<<<
+ *             if 'segments' not in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  *         if "a" in opts:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_5 = 0;
@@ -4269,63 +4269,63 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_segments, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_segments, __pyx_t_2, Py_NE)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(__pyx_t_1)) {
 
-      /* "cytriangle/cytriangle.pyx":82
+      /* "cytriangle/cytriangle.pyx":81
  *         if "p" in opts:
- *             if not 'segments' in self._in.to_dict():
+ *             if 'segments' not in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")             # <<<<<<<<<<<<<<
  *         if "a" in opts:
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 82, __pyx_L1_error)
+      __PYX_ERR(0, 81, __pyx_L1_error)
 
-      /* "cytriangle/cytriangle.pyx":81
+      /* "cytriangle/cytriangle.pyx":80
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:
- *             if not 'segments' in self._in.to_dict():             # <<<<<<<<<<<<<<
+ *             if 'segments' not in self._in.to_dict():             # <<<<<<<<<<<<<<
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  *         if "a" in opts:
  */
     }
 
-    /* "cytriangle/cytriangle.pyx":80
- *             if not 'triangles' in self._in.to_dict():
+    /* "cytriangle/cytriangle.pyx":79
+ *             if 'triangles' not in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")
  *         if "p" in opts:             # <<<<<<<<<<<<<<
- *             if not 'segments' in self._in.to_dict():
+ *             if 'segments' not in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":83
- *             if not 'segments' in self._in.to_dict():
+  /* "cytriangle/cytriangle.pyx":82
+ *             if 'segments' not in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  *         if "a" in opts:             # <<<<<<<<<<<<<<
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_a, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_a, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 82, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":84
+    /* "cytriangle/cytriangle.pyx":83
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  *         if "a" in opts:
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'             # <<<<<<<<<<<<<<
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError(f"""When using 'a' flag for area constraints, a global
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("""When using 'a' flag for area constraints, a global
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_in), __pyx_n_s_to_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_5 = 0;
@@ -4345,11 +4345,11 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_triangle_max_area, __pyx_t_2, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_triangle_max_area, __pyx_t_2, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (!__pyx_t_6) {
     } else {
@@ -4357,22 +4357,22 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       goto __pyx_L9_bool_binop_done;
     }
 
-    /* "cytriangle/cytriangle.pyx":85
+    /* "cytriangle/cytriangle.pyx":84
  *         if "a" in opts:
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):             # <<<<<<<<<<<<<<
- *                 raise ValueError(f"""When using 'a' flag for area constraints, a global
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):             # <<<<<<<<<<<<<<
+ *                 raise ValueError("""When using 'a' flag for area constraints, a global
  *                                  area flag (e.g. a0.2), 'A' flag, or local triangle area
  */
-    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_A, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_A, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 84, __pyx_L1_error)
     if (!__pyx_t_6) {
     } else {
       __pyx_t_1 = __pyx_t_6;
       goto __pyx_L9_bool_binop_done;
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_search); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_search); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -4393,76 +4393,76 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_kp_u_a_d_d, __pyx_v_opts};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_1 = (!(!__pyx_t_6));
     __pyx_L9_bool_binop_done:;
 
-    /* "cytriangle/cytriangle.pyx":84
+    /* "cytriangle/cytriangle.pyx":83
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  *         if "a" in opts:
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'             # <<<<<<<<<<<<<<
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError(f"""When using 'a' flag for area constraints, a global
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("""When using 'a' flag for area constraints, a global
  */
     __pyx_t_6 = (!__pyx_t_1);
     if (unlikely(__pyx_t_6)) {
 
-      /* "cytriangle/cytriangle.pyx":86
+      /* "cytriangle/cytriangle.pyx":85
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError(f"""When using 'a' flag for area constraints, a global             # <<<<<<<<<<<<<<
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("""When using 'a' flag for area constraints, a global             # <<<<<<<<<<<<<<
  *                                  area flag (e.g. a0.2), 'A' flag, or local triangle area
  *                                  constraint list (e.g. [3.0, 1.0]) must be provided""")
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 86, __pyx_L1_error)
+      __PYX_ERR(0, 85, __pyx_L1_error)
 
-      /* "cytriangle/cytriangle.pyx":84
+      /* "cytriangle/cytriangle.pyx":83
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  *         if "a" in opts:
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'             # <<<<<<<<<<<<<<
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError(f"""When using 'a' flag for area constraints, a global
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("""When using 'a' flag for area constraints, a global
  */
     }
 
-    /* "cytriangle/cytriangle.pyx":83
- *             if not 'segments' in self._in.to_dict():
+    /* "cytriangle/cytriangle.pyx":82
+ *             if 'segments' not in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")
  *         if "a" in opts:             # <<<<<<<<<<<<<<
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":89
+  /* "cytriangle/cytriangle.pyx":88
  *                                  area flag (e.g. a0.2), 'A' flag, or local triangle area
  *                                  constraint list (e.g. [3.0, 1.0]) must be provided""")
  *         if "q" in opts:             # <<<<<<<<<<<<<<
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
+ *             if not bool(re.search(r'q[\d.*.]+\d.*', opts)):
+ *                 raise ValueError("""When using 'q' flag for minimum angles, an angle
  */
-  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_q, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_q, __pyx_v_opts, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 88, __pyx_L1_error)
   if (__pyx_t_6) {
 
-    /* "cytriangle/cytriangle.pyx":90
+    /* "cytriangle/cytriangle.pyx":89
  *                                  constraint list (e.g. [3.0, 1.0]) must be provided""")
  *         if "q" in opts:
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):             # <<<<<<<<<<<<<<
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
- * 
+ *             if not bool(re.search(r'q[\d.*.]+\d.*', opts)):             # <<<<<<<<<<<<<<
+ *                 raise ValueError("""When using 'q' flag for minimum angles, an angle
+ *                                  must be provided""")
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_search); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_search); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -4483,52 +4483,52 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_8validate_input
       PyObject *__pyx_callargs[3] = {__pyx_t_4, __pyx_kp_u_q_d_d, __pyx_v_opts};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_1 = (!(!(!__pyx_t_6)));
     if (unlikely(__pyx_t_1)) {
 
-      /* "cytriangle/cytriangle.pyx":91
+      /* "cytriangle/cytriangle.pyx":90
  *         if "q" in opts:
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")             # <<<<<<<<<<<<<<
+ *             if not bool(re.search(r'q[\d.*.]+\d.*', opts)):
+ *                 raise ValueError("""When using 'q' flag for minimum angles, an angle             # <<<<<<<<<<<<<<
+ *                                  must be provided""")
  * 
- *     # generic triangulation that accepts any switch
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 91, __pyx_L1_error)
+      __PYX_ERR(0, 90, __pyx_L1_error)
 
-      /* "cytriangle/cytriangle.pyx":90
+      /* "cytriangle/cytriangle.pyx":89
  *                                  constraint list (e.g. [3.0, 1.0]) must be provided""")
  *         if "q" in opts:
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):             # <<<<<<<<<<<<<<
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
- * 
+ *             if not bool(re.search(r'q[\d.*.]+\d.*', opts)):             # <<<<<<<<<<<<<<
+ *                 raise ValueError("""When using 'q' flag for minimum angles, an angle
+ *                                  must be provided""")
  */
     }
 
-    /* "cytriangle/cytriangle.pyx":89
+    /* "cytriangle/cytriangle.pyx":88
  *                                  area flag (e.g. a0.2), 'A' flag, or local triangle area
  *                                  constraint list (e.g. [3.0, 1.0]) must be provided""")
  *         if "q" in opts:             # <<<<<<<<<<<<<<
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")
+ *             if not bool(re.search(r'q[\d.*.]+\d.*', opts)):
+ *                 raise ValueError("""When using 'q' flag for minimum angles, an angle
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":76
+  /* "cytriangle/cytriangle.pyx":75
  *         return self._vorout.to_dict(opt)
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  */
 
   /* function exit code */
@@ -4639,13 +4639,21 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
   /* "cytriangle/cytriangle.pyx":124
  * 
  *         """
- *         if triflags: self.validate_input_flags(triflags)             # <<<<<<<<<<<<<<
+ *         if triflags:             # <<<<<<<<<<<<<<
+ *             self.validate_input_flags(triflags)
  *         opts = f"Qz{triflags}".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
  */
   __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_triflags); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
   if (__pyx_t_6) {
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_validate_input_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
+
+    /* "cytriangle/cytriangle.pyx":125
+ *         """
+ *         if triflags:
+ *             self.validate_input_flags(triflags)             # <<<<<<<<<<<<<<
+ *         opts = f"Qz{triflags}".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ */
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_validate_input_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = NULL;
     __pyx_t_5 = 0;
@@ -4665,76 +4673,100 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
       PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_triflags};
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "cytriangle/cytriangle.pyx":124
+ * 
+ *         """
+ *         if triflags:             # <<<<<<<<<<<<<<
+ *             self.validate_input_flags(triflags)
+ *         opts = f"Qz{triflags}".encode('utf-8')
+ */
   }
 
-  /* "cytriangle/cytriangle.pyx":125
- *         """
- *         if triflags: self.validate_input_flags(triflags)
+  /* "cytriangle/cytriangle.pyx":126
+ *         if triflags:
+ *             self.validate_input_flags(triflags)
  *         opts = f"Qz{triflags}".encode('utf-8')             # <<<<<<<<<<<<<<
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Triangulation failed')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  */
-  __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_triflags, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_triflags, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_n_u_Qz, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_n_u_Qz, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_AsUTF8String(((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_opts = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cytriangle/cytriangle.pyx":126
- *         if triflags: self.validate_input_flags(triflags)
+  /* "cytriangle/cytriangle.pyx":127
+ *             self.validate_input_flags(triflags)
  *         opts = f"Qz{triflags}".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError('Triangulation failed')
+ */
+  __pyx_t_7 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_7, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "cytriangle/cytriangle.pyx":128
+ *         opts = f"Qz{triflags}".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Triangulation failed')
  *         return self.out
  */
-  __pyx_t_7 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_7) && PyErr_Occurred())) __PYX_ERR(0, 126, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_7, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_6 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "cytriangle/cytriangle.pyx":127
+ *             self.validate_input_flags(triflags)
+ *         opts = f"Qz{triflags}".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError('Triangulation failed')
+ */
   if (unlikely(__pyx_t_6)) {
 
-    /* "cytriangle/cytriangle.pyx":127
- *         opts = f"Qz{triflags}".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+    /* "cytriangle/cytriangle.pyx":129
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  *             raise RuntimeError('Triangulation failed')             # <<<<<<<<<<<<<<
  *         return self.out
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 127, __pyx_L1_error)
+    __PYX_ERR(0, 129, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":126
- *         if triflags: self.validate_input_flags(triflags)
+    /* "cytriangle/cytriangle.pyx":127
+ *             self.validate_input_flags(triflags)
  *         opts = f"Qz{triflags}".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
  *             raise RuntimeError('Triangulation failed')
- *         return self.out
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":128
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+  /* "cytriangle/cytriangle.pyx":130
+ *                 is not None:
  *             raise RuntimeError('Triangulation failed')
  *         return self.out             # <<<<<<<<<<<<<<
  * 
  *     cpdef delaunay(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4892,12 +4924,12 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_10triangulate(s
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":130
+/* "cytriangle/cytriangle.pyx":132
  *         return self.out
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
  *         """
- *         Run the main triangulation method on the in_ object with *only* -Qz flags enabled.
+ *         Run the main triangulation method on the in_ object with *only* -Qz
  */
 
 static PyObject *__pyx_pw_10cytriangle_10cytriangle_10CyTriangle_13delaunay(PyObject *__pyx_v_self, 
@@ -4931,7 +4963,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_delaunay); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_delaunay); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10cytriangle_10cytriangle_10CyTriangle_13delaunay)) {
         __Pyx_XDECREF(__pyx_r);
@@ -4954,7 +4986,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
           PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -4976,72 +5008,88 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":139
+  /* "cytriangle/cytriangle.pyx":142
  * 
  *         """
  *         opts = "Qz".encode('utf-8')             # <<<<<<<<<<<<<<
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation failed')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  */
   __Pyx_INCREF(__pyx_n_b_Qz);
   __pyx_v_opts = __pyx_n_b_Qz;
 
-  /* "cytriangle/cytriangle.pyx":140
+  /* "cytriangle/cytriangle.pyx":143
  *         """
  *         opts = "Qz".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError('Delaunay triangulation failed')
+ */
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "cytriangle/cytriangle.pyx":144
+ *         opts = "Qz".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Delaunay triangulation failed')
  *         return self.out
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_7 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "cytriangle/cytriangle.pyx":143
+ *         """
+ *         opts = "Qz".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError('Delaunay triangulation failed')
+ */
   if (unlikely(__pyx_t_7)) {
 
-    /* "cytriangle/cytriangle.pyx":141
- *         opts = "Qz".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+    /* "cytriangle/cytriangle.pyx":145
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  *             raise RuntimeError('Delaunay triangulation failed')             # <<<<<<<<<<<<<<
  *         return self.out
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 141, __pyx_L1_error)
+    __PYX_ERR(0, 145, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":140
+    /* "cytriangle/cytriangle.pyx":143
  *         """
  *         opts = "Qz".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
  *             raise RuntimeError('Delaunay triangulation failed')
- *         return self.out
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":142
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+  /* "cytriangle/cytriangle.pyx":146
+ *                 is not None:
  *             raise RuntimeError('Delaunay triangulation failed')
  *         return self.out             # <<<<<<<<<<<<<<
  * 
  *     cpdef convex_hull(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":130
+  /* "cytriangle/cytriangle.pyx":132
  *         return self.out
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
  *         """
- *         Run the main triangulation method on the in_ object with *only* -Qz flags enabled.
+ *         Run the main triangulation method on the in_ object with *only* -Qz
  */
 
   /* function exit code */
@@ -5067,7 +5115,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10cytriangle_10cytriangle_10CyTriangle_12delaunay, "\n        Run the main triangulation method on the in_ object with *only* -Qz flags enabled.\n\n        - Q Quiet: suppresses all output messages from Triangle library\n\n        - z Numbers all items starting from zero (zero-indexed) rather than one.\n\n        ");
+PyDoc_STRVAR(__pyx_doc_10cytriangle_10cytriangle_10CyTriangle_12delaunay, "\n        Run the main triangulation method on the in_ object with *only* -Qz\n        flags enabled.\n\n        - Q Quiet: suppresses all output messages from Triangle library\n\n        - z Numbers all items starting from zero (zero-indexed) rather than one.\n\n        ");
 static PyMethodDef __pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_13delaunay = {"delaunay", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10cytriangle_10cytriangle_10CyTriangle_13delaunay, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10cytriangle_10cytriangle_10CyTriangle_12delaunay};
 static PyObject *__pyx_pw_10cytriangle_10cytriangle_10CyTriangle_13delaunay(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
@@ -5110,7 +5158,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_12delaunay(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("delaunay", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5127,7 +5175,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_12delaunay(stru
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":144
+/* "cytriangle/cytriangle.pyx":148
  *         return self.out
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
@@ -5166,7 +5214,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_convex_hull); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_convex_hull); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10cytriangle_10cytriangle_10CyTriangle_15convex_hull)) {
         __Pyx_XDECREF(__pyx_r);
@@ -5189,7 +5237,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
           PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -5211,67 +5259,83 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":155
+  /* "cytriangle/cytriangle.pyx":159
  * 
  *         """
- *         opts = f"Qzc".encode('utf-8')             # <<<<<<<<<<<<<<
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and convex hull construction failed')
+ *         opts = "Qzc".encode('utf-8')             # <<<<<<<<<<<<<<
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  */
   __Pyx_INCREF(__pyx_n_b_Qzc);
   __pyx_v_opts = __pyx_n_b_Qzc;
 
-  /* "cytriangle/cytriangle.pyx":156
+  /* "cytriangle/cytriangle.pyx":160
  *         """
- *         opts = f"Qzc".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
- *             raise RuntimeError('Delaunay triangulation and convex hull construction failed')
- *         return self.out
+ *         opts = "Qzc".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and convex hull
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+
+  /* "cytriangle/cytriangle.pyx":161
+ *         opts = "Qzc".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("""Delaunay triangulation and convex hull
+ *                                construction failed""")
+ */
   __pyx_t_7 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "cytriangle/cytriangle.pyx":160
+ *         """
+ *         opts = "Qzc".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and convex hull
+ */
   if (unlikely(__pyx_t_7)) {
 
-    /* "cytriangle/cytriangle.pyx":157
- *         opts = f"Qzc".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and convex hull construction failed')             # <<<<<<<<<<<<<<
+    /* "cytriangle/cytriangle.pyx":162
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and convex hull             # <<<<<<<<<<<<<<
+ *                                construction failed""")
  *         return self.out
- * 
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 157, __pyx_L1_error)
+    __PYX_ERR(0, 162, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":156
+    /* "cytriangle/cytriangle.pyx":160
  *         """
- *         opts = f"Qzc".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
- *             raise RuntimeError('Delaunay triangulation and convex hull construction failed')
- *         return self.out
+ *         opts = "Qzc".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and convex hull
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":158
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and convex hull construction failed')
+  /* "cytriangle/cytriangle.pyx":164
+ *             raise RuntimeError("""Delaunay triangulation and convex hull
+ *                                construction failed""")
  *         return self.out             # <<<<<<<<<<<<<<
  * 
  *     cpdef voronoi(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":144
+  /* "cytriangle/cytriangle.pyx":148
  *         return self.out
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
@@ -5345,7 +5409,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_14convex_hull(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("convex_hull", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5362,7 +5426,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_14convex_hull(s
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":160
+/* "cytriangle/cytriangle.pyx":166
  *         return self.out
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
@@ -5401,7 +5465,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_voronoi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_voronoi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10cytriangle_10cytriangle_10CyTriangle_17voronoi)) {
         __Pyx_XDECREF(__pyx_r);
@@ -5424,7 +5488,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
           PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -5446,67 +5510,83 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
     #endif
   }
 
-  /* "cytriangle/cytriangle.pyx":171
+  /* "cytriangle/cytriangle.pyx":177
  * 
  *         """
- *         opts = f"Qzv".encode('utf-8')             # <<<<<<<<<<<<<<
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and generation of voronoi diagram failed')
+ *         opts = "Qzv".encode('utf-8')             # <<<<<<<<<<<<<<
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  */
   __Pyx_INCREF(__pyx_n_b_Qzv);
   __pyx_v_opts = __pyx_n_b_Qzv;
 
-  /* "cytriangle/cytriangle.pyx":172
+  /* "cytriangle/cytriangle.pyx":178
  *         """
- *         opts = f"Qzv".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
- *             raise RuntimeError('Delaunay triangulation and generation of voronoi diagram failed')
- *         return self.out
+ *         opts = "Qzv".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and generation of
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_opts); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(triangulate(__pyx_t_6, __pyx_v_self->_in->_io, __pyx_v_self->_out->_io, __pyx_v_self->_vorout->_io)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+
+  /* "cytriangle/cytriangle.pyx":179
+ *         opts = "Qzv".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("""Delaunay triangulation and generation of
+ *                                voronoi diagram failed""")
+ */
   __pyx_t_7 = (__pyx_t_1 != Py_None);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "cytriangle/cytriangle.pyx":178
+ *         """
+ *         opts = "Qzv".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and generation of
+ */
   if (unlikely(__pyx_t_7)) {
 
-    /* "cytriangle/cytriangle.pyx":173
- *         opts = f"Qzv".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and generation of voronoi diagram failed')             # <<<<<<<<<<<<<<
+    /* "cytriangle/cytriangle.pyx":180
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and generation of             # <<<<<<<<<<<<<<
+ *                                voronoi diagram failed""")
  *         return self.out
- * 
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 173, __pyx_L1_error)
+    __PYX_ERR(0, 180, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":172
+    /* "cytriangle/cytriangle.pyx":178
  *         """
- *         opts = f"Qzv".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:             # <<<<<<<<<<<<<<
- *             raise RuntimeError('Delaunay triangulation and generation of voronoi diagram failed')
- *         return self.out
+ *         opts = "Qzv".encode('utf-8')
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and generation of
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":174
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and generation of voronoi diagram failed')
+  /* "cytriangle/cytriangle.pyx":182
+ *             raise RuntimeError("""Delaunay triangulation and generation of
+ *                                voronoi diagram failed""")
  *         return self.out             # <<<<<<<<<<<<<<
  * 
- * def triangulate(input_dict, flags):
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_out); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":160
+  /* "cytriangle/cytriangle.pyx":166
  *         return self.out
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
@@ -5580,7 +5660,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_16voronoi(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("voronoi", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6019,8 +6099,8 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_10CyTriangle_20__setstate_cy
   return __pyx_r;
 }
 
-/* "cytriangle/cytriangle.pyx":176
- *         return self.out
+/* "cytriangle/cytriangle.pyx":185
+ * 
  * 
  * def triangulate(input_dict, flags):             # <<<<<<<<<<<<<<
  *     """
@@ -6084,7 +6164,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -6092,14 +6172,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("triangulate", 1, 2, 2, 1); __PYX_ERR(0, 176, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("triangulate", 1, 2, 2, 1); __PYX_ERR(0, 185, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "triangulate") < 0)) __PYX_ERR(0, 176, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "triangulate") < 0)) __PYX_ERR(0, 185, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -6112,7 +6192,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("triangulate", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 176, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("triangulate", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 185, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6161,41 +6241,41 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("triangulate", 1);
 
-  /* "cytriangle/cytriangle.pyx":216
+  /* "cytriangle/cytriangle.pyx":225
  *     """
  *     # parse regions
  *     if "regions" in input_dict:             # <<<<<<<<<<<<<<
  *         raw_regions = input_dict["regions"]
  *         parsed_regions = []
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_regions, __pyx_v_input_dict, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_regions, __pyx_v_input_dict, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 225, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "cytriangle/cytriangle.pyx":217
+    /* "cytriangle/cytriangle.pyx":226
  *     # parse regions
  *     if "regions" in input_dict:
  *         raw_regions = input_dict["regions"]             # <<<<<<<<<<<<<<
  *         parsed_regions = []
  *         for region in raw_regions:
  */
-    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_input_dict, __pyx_n_u_regions); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_input_dict, __pyx_n_u_regions); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_raw_regions = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "cytriangle/cytriangle.pyx":218
+    /* "cytriangle/cytriangle.pyx":227
  *     if "regions" in input_dict:
  *         raw_regions = input_dict["regions"]
  *         parsed_regions = []             # <<<<<<<<<<<<<<
  *         for region in raw_regions:
  *             parsed_regions.append(
  */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_parsed_regions = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "cytriangle/cytriangle.pyx":219
+    /* "cytriangle/cytriangle.pyx":228
  *         raw_regions = input_dict["regions"]
  *         parsed_regions = []
  *         for region in raw_regions:             # <<<<<<<<<<<<<<
@@ -6207,9 +6287,9 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
       __pyx_t_3 = 0;
       __pyx_t_4 = NULL;
     } else {
-      __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_raw_regions); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_raw_regions); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_4)) {
@@ -6217,28 +6297,28 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 219, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
             #endif
             if (__pyx_t_3 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 219, __pyx_L1_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 219, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 219, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
             #endif
             if (__pyx_t_3 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 219, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 219, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -6248,7 +6328,7 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 219, __pyx_L1_error)
+            else __PYX_ERR(0, 228, __pyx_L1_error)
           }
           break;
         }
@@ -6257,68 +6337,68 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
       __Pyx_XDECREF_SET(__pyx_v_region, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "cytriangle/cytriangle.pyx":222
+      /* "cytriangle/cytriangle.pyx":231
  *             parsed_regions.append(
  *                 {
  *                     "vertex": [region[0], region[1]],             # <<<<<<<<<<<<<<
  *                     "marker": int(region[2]),
  *                     "max_area": region[3],
  */
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_region, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_region, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_region, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_region, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_6);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_6)) __PYX_ERR(0, 222, __pyx_L1_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_6)) __PYX_ERR(0, 231, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_7);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_7)) __PYX_ERR(0, 222, __pyx_L1_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_7)) __PYX_ERR(0, 231, __pyx_L1_error);
       __pyx_t_6 = 0;
       __pyx_t_7 = 0;
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_vertex, __pyx_t_8) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_vertex, __pyx_t_8) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "cytriangle/cytriangle.pyx":223
+      /* "cytriangle/cytriangle.pyx":232
  *                 {
  *                     "vertex": [region[0], region[1]],
  *                     "marker": int(region[2]),             # <<<<<<<<<<<<<<
  *                     "max_area": region[3],
  *                 }
  */
-      __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_region, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_region, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 232, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 232, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_marker, __pyx_t_7) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_marker, __pyx_t_7) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "cytriangle/cytriangle.pyx":224
+      /* "cytriangle/cytriangle.pyx":233
  *                     "vertex": [region[0], region[1]],
  *                     "marker": int(region[2]),
  *                     "max_area": region[3],             # <<<<<<<<<<<<<<
  *                 }
  *             )
  */
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_region, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_region, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_max_area, __pyx_t_7) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_max_area, __pyx_t_7) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "cytriangle/cytriangle.pyx":220
+      /* "cytriangle/cytriangle.pyx":229
  *         parsed_regions = []
  *         for region in raw_regions:
  *             parsed_regions.append(             # <<<<<<<<<<<<<<
  *                 {
  *                     "vertex": [region[0], region[1]],
  */
-      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_parsed_regions, __pyx_t_5); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 220, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_parsed_regions, __pyx_t_5); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 229, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "cytriangle/cytriangle.pyx":219
+      /* "cytriangle/cytriangle.pyx":228
  *         raw_regions = input_dict["regions"]
  *         parsed_regions = []
  *         for region in raw_regions:             # <<<<<<<<<<<<<<
@@ -6328,16 +6408,16 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "cytriangle/cytriangle.pyx":227
+    /* "cytriangle/cytriangle.pyx":236
  *                 }
  *             )
  *         input_dict["regions"] = parsed_regions             # <<<<<<<<<<<<<<
  *     triangle_obj = CyTriangle(input_dict)
  *     triangle_obj.triangulate(flags)
  */
-    if (unlikely((PyObject_SetItem(__pyx_v_input_dict, __pyx_n_u_regions, __pyx_v_parsed_regions) < 0))) __PYX_ERR(0, 227, __pyx_L1_error)
+    if (unlikely((PyObject_SetItem(__pyx_v_input_dict, __pyx_n_u_regions, __pyx_v_parsed_regions) < 0))) __PYX_ERR(0, 236, __pyx_L1_error)
 
-    /* "cytriangle/cytriangle.pyx":216
+    /* "cytriangle/cytriangle.pyx":225
  *     """
  *     # parse regions
  *     if "regions" in input_dict:             # <<<<<<<<<<<<<<
@@ -6346,19 +6426,19 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
  */
   }
 
-  /* "cytriangle/cytriangle.pyx":228
+  /* "cytriangle/cytriangle.pyx":237
  *             )
  *         input_dict["regions"] = parsed_regions
  *     triangle_obj = CyTriangle(input_dict)             # <<<<<<<<<<<<<<
  *     triangle_obj.triangulate(flags)
  *     return triangle_obj.out.to_dict(opt="np")
  */
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle), __pyx_v_input_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle), __pyx_v_input_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_triangle_obj = ((struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "cytriangle/cytriangle.pyx":229
+  /* "cytriangle/cytriangle.pyx":238
  *         input_dict["regions"] = parsed_regions
  *     triangle_obj = CyTriangle(input_dict)
  *     triangle_obj.triangulate(flags)             # <<<<<<<<<<<<<<
@@ -6366,25 +6446,25 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
  */
   __pyx_t_10.__pyx_n = 1;
   __pyx_t_10.triflags = __pyx_v_flags;
-  __pyx_t_2 = ((struct __pyx_vtabstruct_10cytriangle_10cytriangle_CyTriangle *)__pyx_v_triangle_obj->__pyx_vtab)->triangulate(__pyx_v_triangle_obj, 0, &__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_10cytriangle_10cytriangle_CyTriangle *)__pyx_v_triangle_obj->__pyx_vtab)->triangulate(__pyx_v_triangle_obj, 0, &__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cytriangle/cytriangle.pyx":230
+  /* "cytriangle/cytriangle.pyx":239
  *     triangle_obj = CyTriangle(input_dict)
  *     triangle_obj.triangulate(flags)
  *     return triangle_obj.out.to_dict(opt="np")             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_triangle_obj), __pyx_n_s_out); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_triangle_obj), __pyx_n_s_out); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_dict); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_dict); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_opt, __pyx_n_u_np) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_opt, __pyx_n_u_np) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6392,8 +6472,8 @@ static PyObject *__pyx_pf_10cytriangle_10cytriangle_triangulate(CYTHON_UNUSED Py
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "cytriangle/cytriangle.pyx":176
- *         return self.out
+  /* "cytriangle/cytriangle.pyx":185
+ * 
  * 
  * def triangulate(input_dict, flags):             # <<<<<<<<<<<<<<
  *     """
@@ -7219,8 +7299,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 79, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(0, 129, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -7231,91 +7311,91 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "cytriangle/cytriangle.pyx":79
+  /* "cytriangle/cytriangle.pyx":78
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  *                 raise ValueError("Triangle list must be provided when using 'r' flag")             # <<<<<<<<<<<<<<
  *         if "p" in opts:
- *             if not 'segments' in self._in.to_dict():
+ *             if 'segments' not in self._in.to_dict():
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_Triangle_list_must_be_provided_w); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_Triangle_list_must_be_provided_w); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "cytriangle/cytriangle.pyx":82
+  /* "cytriangle/cytriangle.pyx":81
  *         if "p" in opts:
- *             if not 'segments' in self._in.to_dict():
+ *             if 'segments' not in self._in.to_dict():
  *                 raise ValueError("Segment list must be provided when using 'p' flag")             # <<<<<<<<<<<<<<
  *         if "a" in opts:
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_Segment_list_must_be_provided_wh); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_Segment_list_must_be_provided_wh); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "cytriangle/cytriangle.pyx":86
+  /* "cytriangle/cytriangle.pyx":85
  *             if not ('triangle_max_area' in self._in.to_dict() or 'A'
- *                     in opts or bool(re.search('a[\d.*.]+\d.*', opts))):
- *                 raise ValueError(f"""When using 'a' flag for area constraints, a global             # <<<<<<<<<<<<<<
+ *                     in opts or bool(re.search(r'a[\d.*.]+\d.*', opts))):
+ *                 raise ValueError("""When using 'a' flag for area constraints, a global             # <<<<<<<<<<<<<<
  *                                  area flag (e.g. a0.2), 'A' flag, or local triangle area
  *                                  constraint list (e.g. [3.0, 1.0]) must be provided""")
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_u_When_using_a_flag_for_area_const); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_u_When_using_a_flag_for_area_const); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "cytriangle/cytriangle.pyx":91
+  /* "cytriangle/cytriangle.pyx":90
  *         if "q" in opts:
- *             if not bool(re.search('q[\d.*.]+\d.*', opts)):
- *                 raise ValueError("When using 'q' flag for minimum angles, an angle must be provided")             # <<<<<<<<<<<<<<
+ *             if not bool(re.search(r'q[\d.*.]+\d.*', opts)):
+ *                 raise ValueError("""When using 'q' flag for minimum angles, an angle             # <<<<<<<<<<<<<<
+ *                                  must be provided""")
  * 
- *     # generic triangulation that accepts any switch
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_When_using_q_flag_for_minimum_an); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_When_using_q_flag_for_minimum_an); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "cytriangle/cytriangle.pyx":127
- *         opts = f"Qz{triflags}".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+  /* "cytriangle/cytriangle.pyx":129
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  *             raise RuntimeError('Triangulation failed')             # <<<<<<<<<<<<<<
  *         return self.out
  * 
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_Triangulation_failed); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_Triangulation_failed); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "cytriangle/cytriangle.pyx":141
- *         opts = "Qz".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
+  /* "cytriangle/cytriangle.pyx":145
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
  *             raise RuntimeError('Delaunay triangulation failed')             # <<<<<<<<<<<<<<
  *         return self.out
  * 
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_Delaunay_triangulation_failed); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_Delaunay_triangulation_failed); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "cytriangle/cytriangle.pyx":157
- *         opts = f"Qzc".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and convex hull construction failed')             # <<<<<<<<<<<<<<
+  /* "cytriangle/cytriangle.pyx":162
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and convex hull             # <<<<<<<<<<<<<<
+ *                                construction failed""")
  *         return self.out
- * 
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_Delaunay_triangulation_and_conve); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_Delaunay_triangulation_and_conve); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "cytriangle/cytriangle.pyx":173
- *         opts = f"Qzv".encode('utf-8')
- *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) is not None:
- *             raise RuntimeError('Delaunay triangulation and generation of voronoi diagram failed')             # <<<<<<<<<<<<<<
+  /* "cytriangle/cytriangle.pyx":180
+ *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
+ *                 is not None:
+ *             raise RuntimeError("""Delaunay triangulation and generation of             # <<<<<<<<<<<<<<
+ *                                voronoi diagram failed""")
  *         return self.out
- * 
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_Delaunay_triangulation_and_gener); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_Delaunay_triangulation_and_gener); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 180, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
@@ -7330,50 +7410,50 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "cytriangle/cytriangle.pyx":67
+  /* "cytriangle/cytriangle.pyx":66
  *         return self._vorout
  * 
  *     def input_dict(self, opt=''):             # <<<<<<<<<<<<<<
  *         return self._in.to_dict(opt)
  * 
  */
-  __pyx_tuple__13 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_opt); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_opt); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_input_dict, 67, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_u_); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_input_dict, 66, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_u_); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "cytriangle/cytriangle.pyx":70
+  /* "cytriangle/cytriangle.pyx":69
  *         return self._in.to_dict(opt)
  * 
  *     def output_dict(self, opt=''):             # <<<<<<<<<<<<<<
  *         return self._out.to_dict(opt)
  * 
  */
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_output_dict, 70, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_output_dict, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 69, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":73
+  /* "cytriangle/cytriangle.pyx":72
  *         return self._out.to_dict(opt)
  * 
  *     def voronoi_dict(self, opt=''):             # <<<<<<<<<<<<<<
  *         return self._vorout.to_dict(opt)
  * 
  */
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_voronoi_dict, 73, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_voronoi_dict, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 72, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":76
+  /* "cytriangle/cytriangle.pyx":75
  *         return self._vorout.to_dict(opt)
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  */
-  __pyx_tuple__18 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_opts); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_opts); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_validate_input_flags, 76, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_validate_input_flags, 75, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 75, __pyx_L1_error)
 
   /* "cytriangle/cytriangle.pyx":94
  * 
@@ -7390,35 +7470,35 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "cytriangle/cytriangle.pyx":130
+  /* "cytriangle/cytriangle.pyx":132
  *         return self.out
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
  *         """
- *         Run the main triangulation method on the in_ object with *only* -Qz flags enabled.
+ *         Run the main triangulation method on the in_ object with *only* -Qz
  */
-  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_delaunay, 130, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_delaunay, 132, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 132, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":144
+  /* "cytriangle/cytriangle.pyx":148
  *         return self.out
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
  *         """
  *         Run the main triangulation method on the in_ object with -Qzc flags enabled.
  */
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_convex_hull, 144, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_convex_hull, 148, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 148, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":160
+  /* "cytriangle/cytriangle.pyx":166
  *         return self.out
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
  *         """
  *         Run the main triangulation method on the in_ object with -Qzv flags enabled.
  */
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_voronoi, 160, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_voronoi, 166, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 166, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -7441,17 +7521,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__29);
   __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(1, 16, __pyx_L1_error)
 
-  /* "cytriangle/cytriangle.pyx":176
- *         return self.out
+  /* "cytriangle/cytriangle.pyx":185
+ * 
  * 
  * def triangulate(input_dict, flags):             # <<<<<<<<<<<<<<
  *     """
  *     Triangulates an input dict with the following properties:
  */
-  __pyx_tuple__31 = PyTuple_Pack(6, __pyx_n_s_input_dict, __pyx_n_s_flags, __pyx_n_s_raw_regions, __pyx_n_s_parsed_regions, __pyx_n_s_region, __pyx_n_s_triangle_obj); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(6, __pyx_n_s_input_dict, __pyx_n_s_flags, __pyx_n_s_raw_regions, __pyx_n_s_parsed_regions, __pyx_n_s_region, __pyx_n_s_triangle_obj); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_triangulate, 176, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_cytriangle_cytriangle_pyx, __pyx_n_s_triangulate, 185, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 185, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_CyTriangle(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
@@ -7531,15 +7611,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_10cytriangle_10cytriangle_CyTriangle.convex_hull = (PyObject *(*)(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *, int __pyx_skip_dispatch))__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull;
   __pyx_vtable_10cytriangle_10cytriangle_CyTriangle.voronoi = (PyObject *(*)(struct __pyx_obj_10cytriangle_10cytriangle_CyTriangle *, int __pyx_skip_dispatch))__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_10cytriangle_10cytriangle_CyTriangle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, NULL); if (unlikely(!__pyx_ptype_10cytriangle_10cytriangle_CyTriangle)) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_ptype_10cytriangle_10cytriangle_CyTriangle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, NULL); if (unlikely(!__pyx_ptype_10cytriangle_10cytriangle_CyTriangle)) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10cytriangle_10cytriangle_CyTriangle_spec, __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #else
   __pyx_ptype_10cytriangle_10cytriangle_CyTriangle = &__pyx_type_10cytriangle_10cytriangle_CyTriangle;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_print = 0;
@@ -7549,13 +7629,13 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_10cytriangle_10cytriangle_CyTriangle->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_vtabptr_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_vtabptr_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CyTriangle, (PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CyTriangle, (PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10cytriangle_10cytriangle_CyTriangle) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   #endif
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -7878,70 +7958,70 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "cytriangle/cytriangle.pyx":4
+  /* "cytriangle/cytriangle.pyx":3
  * from cytriangle.ctriangle cimport triangulate as ctriangulate
  * from cytriangle.cytriangleio  cimport TriangleIO
  * import re             # <<<<<<<<<<<<<<
  * 
  * cdef class CyTriangle:
  */
-  __pyx_t_2 = __Pyx_ImportDottedModule(__pyx_n_s_re, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportDottedModule(__pyx_n_s_re, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cytriangle/cytriangle.pyx":67
+  /* "cytriangle/cytriangle.pyx":66
  *         return self._vorout
  * 
  *     def input_dict(self, opt=''):             # <<<<<<<<<<<<<<
  *         return self._in.to_dict(opt)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_3input_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_input_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_3input_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_input_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__15);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_input_dict, __pyx_t_2) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_input_dict, __pyx_t_2) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":70
+  /* "cytriangle/cytriangle.pyx":69
  *         return self._in.to_dict(opt)
  * 
  *     def output_dict(self, opt=''):             # <<<<<<<<<<<<<<
  *         return self._out.to_dict(opt)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_5output_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_output_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_5output_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_output_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__15);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_output_dict, __pyx_t_2) < 0) __PYX_ERR(0, 70, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_output_dict, __pyx_t_2) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":73
+  /* "cytriangle/cytriangle.pyx":72
  *         return self._out.to_dict(opt)
  * 
  *     def voronoi_dict(self, opt=''):             # <<<<<<<<<<<<<<
  *         return self._vorout.to_dict(opt)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_7voronoi_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_voronoi_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_7voronoi_dict, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_voronoi_dict, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__15);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_voronoi_dict, __pyx_t_2) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_voronoi_dict, __pyx_t_2) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":76
+  /* "cytriangle/cytriangle.pyx":75
  *         return self._vorout.to_dict(opt)
  * 
  *     def validate_input_flags(self, opts):             # <<<<<<<<<<<<<<
  *         if "r" in opts:
- *             if not 'triangles' in self._in.to_dict():
+ *             if 'triangles' not in self._in.to_dict():
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_9validate_input_flags, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_validate_input_flags, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_9validate_input_flags, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_validate_input_flags, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_validate_input_flags, __pyx_t_2) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_validate_input_flags, __pyx_t_2) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
@@ -7959,42 +8039,42 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":130
+  /* "cytriangle/cytriangle.pyx":132
  *         return self.out
  * 
  *     cpdef delaunay(self):             # <<<<<<<<<<<<<<
  *         """
- *         Run the main triangulation method on the in_ object with *only* -Qz flags enabled.
+ *         Run the main triangulation method on the in_ object with *only* -Qz
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_13delaunay, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_delaunay, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_13delaunay, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_delaunay, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_delaunay, __pyx_t_2) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_delaunay, __pyx_t_2) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":144
+  /* "cytriangle/cytriangle.pyx":148
  *         return self.out
  * 
  *     cpdef convex_hull(self):             # <<<<<<<<<<<<<<
  *         """
  *         Run the main triangulation method on the in_ object with -Qzc flags enabled.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_15convex_hull, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_convex_hull, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_15convex_hull, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_convex_hull, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_convex_hull, __pyx_t_2) < 0) __PYX_ERR(0, 144, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_convex_hull, __pyx_t_2) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":160
+  /* "cytriangle/cytriangle.pyx":166
  *         return self.out
  * 
  *     cpdef voronoi(self):             # <<<<<<<<<<<<<<
  *         """
  *         Run the main triangulation method on the in_ object with -Qzv flags enabled.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_17voronoi, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_voronoi, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_10CyTriangle_17voronoi, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CyTriangle_voronoi, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_voronoi, __pyx_t_2) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10cytriangle_10cytriangle_CyTriangle, __pyx_n_s_voronoi, __pyx_t_2) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
@@ -8021,16 +8101,16 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_10cytriangle_10cytriangle_CyTriangle);
 
-  /* "cytriangle/cytriangle.pyx":176
- *         return self.out
+  /* "cytriangle/cytriangle.pyx":185
+ * 
  * 
  * def triangulate(input_dict, flags):             # <<<<<<<<<<<<<<
  *     """
  *     Triangulates an input dict with the following properties:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_1triangulate, 0, __pyx_n_s_triangulate, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cytriangle_10cytriangle_1triangulate, 0, __pyx_n_s_triangulate, NULL, __pyx_n_s_cytriangle_cytriangle, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_triangulate, __pyx_t_2) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_triangulate, __pyx_t_2) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
@@ -8044,9 +8124,9 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "cytriangle/cytriangle.pyx":1
- * from cytriangle.ctriangle cimport triangulateio             # <<<<<<<<<<<<<<
- * from cytriangle.ctriangle cimport triangulate as ctriangulate
+ * from cytriangle.ctriangle cimport triangulate as ctriangulate             # <<<<<<<<<<<<<<
  * from cytriangle.cytriangleio  cimport TriangleIO
+ * import re
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
