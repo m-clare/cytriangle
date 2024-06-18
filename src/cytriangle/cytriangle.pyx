@@ -123,7 +123,7 @@ cdef class CyTriangle:
         """
         if triflags:
             self.validate_input_flags(triflags)
-        opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+        opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError('Triangulation failed')
@@ -139,7 +139,7 @@ cdef class CyTriangle:
         - z Numbers all items starting from zero (zero-indexed) rather than one.
 
         """
-        opts = f"{'Q' if not verbose else ''}z".encode('utf-8')
+        opts = f"{'Q' if not verbose else 'V'}z".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError('Delaunay triangulation failed')
@@ -156,7 +156,7 @@ cdef class CyTriangle:
         - c Encloses the convex hull with segments
 
         """
-        opts = f"{'Q' if not verbose else ''}zc".encode('utf-8')
+        opts = f"{'Q' if not verbose else 'V'}zc".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError("""Delaunay triangulation and convex hull
@@ -174,7 +174,7 @@ cdef class CyTriangle:
         - v Generates a Voronoi diagram.
 
         """
-        opts = f"{'Q' if not verbose else ''}zv".encode('utf-8')
+        opts = f"{'Q' if not verbose else 'V'}zv".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError("""Delaunay triangulation and generation of

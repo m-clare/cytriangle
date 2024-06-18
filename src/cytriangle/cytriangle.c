@@ -2399,6 +2399,7 @@ static PyObject *__pyx_builtin_RuntimeError;
 static const char __pyx_k_[] = "";
 static const char __pyx_k_A[] = "A";
 static const char __pyx_k_Q[] = "Q";
+static const char __pyx_k_V[] = "V";
 static const char __pyx_k_a[] = "a";
 static const char __pyx_k_p[] = "p";
 static const char __pyx_k_q[] = "q";
@@ -2579,6 +2580,7 @@ typedef struct {
   PyObject *__pyx_kp_u_Segment_list_must_be_provided_wh;
   PyObject *__pyx_kp_u_Triangle_list_must_be_provided_w;
   PyObject *__pyx_kp_u_Triangulation_failed;
+  PyObject *__pyx_n_u_V;
   PyObject *__pyx_n_s_ValueError;
   PyObject *__pyx_kp_u_When_using_a_flag_for_area_const;
   PyObject *__pyx_kp_u_When_using_q_flag_for_minimum_an;
@@ -2766,6 +2768,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_Segment_list_must_be_provided_wh);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Triangle_list_must_be_provided_w);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Triangulation_failed);
+  Py_CLEAR(clear_module_state->__pyx_n_u_V);
   Py_CLEAR(clear_module_state->__pyx_n_s_ValueError);
   Py_CLEAR(clear_module_state->__pyx_kp_u_When_using_a_flag_for_area_const);
   Py_CLEAR(clear_module_state->__pyx_kp_u_When_using_q_flag_for_minimum_an);
@@ -2931,6 +2934,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_Segment_list_must_be_provided_wh);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Triangle_list_must_be_provided_w);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Triangulation_failed);
+  Py_VISIT(traverse_module_state->__pyx_n_u_V);
   Py_VISIT(traverse_module_state->__pyx_n_s_ValueError);
   Py_VISIT(traverse_module_state->__pyx_kp_u_When_using_a_flag_for_area_const);
   Py_VISIT(traverse_module_state->__pyx_kp_u_When_using_q_flag_for_minimum_an);
@@ -3110,6 +3114,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_Segment_list_must_be_provided_wh __pyx_mstate_global->__pyx_kp_u_Segment_list_must_be_provided_wh
 #define __pyx_kp_u_Triangle_list_must_be_provided_w __pyx_mstate_global->__pyx_kp_u_Triangle_list_must_be_provided_w
 #define __pyx_kp_u_Triangulation_failed __pyx_mstate_global->__pyx_kp_u_Triangulation_failed
+#define __pyx_n_u_V __pyx_mstate_global->__pyx_n_u_V
 #define __pyx_n_s_ValueError __pyx_mstate_global->__pyx_n_s_ValueError
 #define __pyx_kp_u_When_using_a_flag_for_area_const __pyx_mstate_global->__pyx_kp_u_When_using_a_flag_for_area_const
 #define __pyx_kp_u_When_using_q_flag_for_minimum_an __pyx_mstate_global->__pyx_kp_u_When_using_q_flag_for_minimum_an
@@ -4736,7 +4741,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
  *         """
  *         if triflags:             # <<<<<<<<<<<<<<
  *             self.validate_input_flags(triflags)
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
  */
   __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_triflags); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
   if (__pyx_t_6) {
@@ -4745,7 +4750,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
  *         """
  *         if triflags:
  *             self.validate_input_flags(triflags)             # <<<<<<<<<<<<<<
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  */
     __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_validate_input_flags); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
@@ -4779,14 +4784,14 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
  *         """
  *         if triflags:             # <<<<<<<<<<<<<<
  *             self.validate_input_flags(triflags)
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
  */
   }
 
   /* "cytriangle/cytriangle.pyx":126
  *         if triflags:
  *             self.validate_input_flags(triflags)
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')             # <<<<<<<<<<<<<<
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')             # <<<<<<<<<<<<<<
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:
  */
@@ -4800,8 +4805,8 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
     __Pyx_INCREF(__pyx_n_u_Q);
     __pyx_t_2 = __pyx_n_u_Q;
   } else {
-    __Pyx_INCREF(__pyx_kp_u_);
-    __pyx_t_2 = __pyx_kp_u_;
+    __Pyx_INCREF(__pyx_n_u_V);
+    __pyx_t_2 = __pyx_n_u_V;
   }
   __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -4833,7 +4838,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
 
   /* "cytriangle/cytriangle.pyx":127
  *             self.validate_input_flags(triflags)
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError('Triangulation failed')
@@ -4843,7 +4848,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
   __Pyx_GOTREF(__pyx_t_1);
 
   /* "cytriangle/cytriangle.pyx":128
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Triangulation failed')
@@ -4854,7 +4859,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
 
   /* "cytriangle/cytriangle.pyx":127
  *             self.validate_input_flags(triflags)
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError('Triangulation failed')
@@ -4876,7 +4881,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_triangulate(stru
 
     /* "cytriangle/cytriangle.pyx":127
  *             self.validate_input_flags(triflags)
- *         opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError('Triangulation failed')
@@ -5158,7 +5163,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
   /* "cytriangle/cytriangle.pyx":142
  * 
  *         """
- *         opts = f"{'Q' if not verbose else ''}z".encode('utf-8')             # <<<<<<<<<<<<<<
+ *         opts = f"{'Q' if not verbose else 'V'}z".encode('utf-8')             # <<<<<<<<<<<<<<
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:
  */
@@ -5168,8 +5173,8 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
     __Pyx_INCREF(__pyx_n_u_Q);
     __pyx_t_1 = __pyx_n_u_Q;
   } else {
-    __Pyx_INCREF(__pyx_kp_u_);
-    __pyx_t_1 = __pyx_kp_u_;
+    __Pyx_INCREF(__pyx_n_u_V);
+    __pyx_t_1 = __pyx_n_u_V;
   }
   __pyx_t_2 = __Pyx_PyUnicode_Unicode(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -5185,7 +5190,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
 
   /* "cytriangle/cytriangle.pyx":143
  *         """
- *         opts = f"{'Q' if not verbose else ''}z".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError('Delaunay triangulation failed')
@@ -5195,7 +5200,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "cytriangle/cytriangle.pyx":144
- *         opts = f"{'Q' if not verbose else ''}z".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError('Delaunay triangulation failed')
@@ -5206,7 +5211,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
 
   /* "cytriangle/cytriangle.pyx":143
  *         """
- *         opts = f"{'Q' if not verbose else ''}z".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError('Delaunay triangulation failed')
@@ -5228,7 +5233,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_delaunay(struct 
 
     /* "cytriangle/cytriangle.pyx":143
  *         """
- *         opts = f"{'Q' if not verbose else ''}z".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}z".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError('Delaunay triangulation failed')
@@ -5495,7 +5500,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
   /* "cytriangle/cytriangle.pyx":159
  * 
  *         """
- *         opts = f"{'Q' if not verbose else ''}zc".encode('utf-8')             # <<<<<<<<<<<<<<
+ *         opts = f"{'Q' if not verbose else 'V'}zc".encode('utf-8')             # <<<<<<<<<<<<<<
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:
  */
@@ -5505,8 +5510,8 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
     __Pyx_INCREF(__pyx_n_u_Q);
     __pyx_t_1 = __pyx_n_u_Q;
   } else {
-    __Pyx_INCREF(__pyx_kp_u_);
-    __pyx_t_1 = __pyx_kp_u_;
+    __Pyx_INCREF(__pyx_n_u_V);
+    __pyx_t_1 = __pyx_n_u_V;
   }
   __pyx_t_2 = __Pyx_PyUnicode_Unicode(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -5522,7 +5527,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
 
   /* "cytriangle/cytriangle.pyx":160
  *         """
- *         opts = f"{'Q' if not verbose else ''}zc".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError("""Delaunay triangulation and convex hull
@@ -5532,7 +5537,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "cytriangle/cytriangle.pyx":161
- *         opts = f"{'Q' if not verbose else ''}zc".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError("""Delaunay triangulation and convex hull
@@ -5543,7 +5548,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
 
   /* "cytriangle/cytriangle.pyx":160
  *         """
- *         opts = f"{'Q' if not verbose else ''}zc".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError("""Delaunay triangulation and convex hull
@@ -5565,7 +5570,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_convex_hull(stru
 
     /* "cytriangle/cytriangle.pyx":160
  *         """
- *         opts = f"{'Q' if not verbose else ''}zc".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zc".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError("""Delaunay triangulation and convex hull
@@ -5832,7 +5837,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
   /* "cytriangle/cytriangle.pyx":177
  * 
  *         """
- *         opts = f"{'Q' if not verbose else ''}zv".encode('utf-8')             # <<<<<<<<<<<<<<
+ *         opts = f"{'Q' if not verbose else 'V'}zv".encode('utf-8')             # <<<<<<<<<<<<<<
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:
  */
@@ -5842,8 +5847,8 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
     __Pyx_INCREF(__pyx_n_u_Q);
     __pyx_t_1 = __pyx_n_u_Q;
   } else {
-    __Pyx_INCREF(__pyx_kp_u_);
-    __pyx_t_1 = __pyx_kp_u_;
+    __Pyx_INCREF(__pyx_n_u_V);
+    __pyx_t_1 = __pyx_n_u_V;
   }
   __pyx_t_2 = __Pyx_PyUnicode_Unicode(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -5859,7 +5864,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
 
   /* "cytriangle/cytriangle.pyx":178
  *         """
- *         opts = f"{'Q' if not verbose else ''}zv".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError("""Delaunay triangulation and generation of
@@ -5869,7 +5874,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "cytriangle/cytriangle.pyx":179
- *         opts = f"{'Q' if not verbose else ''}zv".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
  *                 is not None:             # <<<<<<<<<<<<<<
  *             raise RuntimeError("""Delaunay triangulation and generation of
@@ -5880,7 +5885,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
 
   /* "cytriangle/cytriangle.pyx":178
  *         """
- *         opts = f"{'Q' if not verbose else ''}zv".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError("""Delaunay triangulation and generation of
@@ -5902,7 +5907,7 @@ static PyObject *__pyx_f_10cytriangle_10cytriangle_10CyTriangle_voronoi(struct _
 
     /* "cytriangle/cytriangle.pyx":178
  *         """
- *         opts = f"{'Q' if not verbose else ''}zv".encode('utf-8')
+ *         opts = f"{'Q' if not verbose else 'V'}zv".encode('utf-8')
  *         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \             # <<<<<<<<<<<<<<
  *                 is not None:
  *             raise RuntimeError("""Delaunay triangulation and generation of
@@ -7612,6 +7617,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_Segment_list_must_be_provided_wh, __pyx_k_Segment_list_must_be_provided_wh, sizeof(__pyx_k_Segment_list_must_be_provided_wh), 0, 1, 0, 0},
     {&__pyx_kp_u_Triangle_list_must_be_provided_w, __pyx_k_Triangle_list_must_be_provided_w, sizeof(__pyx_k_Triangle_list_must_be_provided_w), 0, 1, 0, 0},
     {&__pyx_kp_u_Triangulation_failed, __pyx_k_Triangulation_failed, sizeof(__pyx_k_Triangulation_failed), 0, 1, 0, 0},
+    {&__pyx_n_u_V, __pyx_k_V, sizeof(__pyx_k_V), 0, 1, 0, 1},
     {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
     {&__pyx_kp_u_When_using_a_flag_for_area_const, __pyx_k_When_using_a_flag_for_area_const, sizeof(__pyx_k_When_using_a_flag_for_area_const), 0, 1, 0, 0},
     {&__pyx_kp_u_When_using_q_flag_for_minimum_an, __pyx_k_When_using_q_flag_for_minimum_an, sizeof(__pyx_k_When_using_q_flag_for_minimum_an), 0, 1, 0, 0},
