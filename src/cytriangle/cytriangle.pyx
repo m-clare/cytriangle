@@ -91,7 +91,7 @@ cdef class CyTriangle:
                                  must be provided""")
 
     # generic triangulation that accepts any switch
-    cpdef triangulate(self, triflags=''):
+    cpdef triangulate(self, triflags='', verbose=False):
         """
         Runs the main triangulation method on the in_ object with any additional
         user flags input as triflags.
@@ -123,13 +123,13 @@ cdef class CyTriangle:
         """
         if triflags:
             self.validate_input_flags(triflags)
-        opts = f"Qz{triflags}".encode('utf-8')
+        opts = f"{'Q' if not verbose else ''}z{triflags}".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError('Triangulation failed')
         return self.out
 
-    cpdef delaunay(self):
+    cpdef delaunay(self, verbose=False):
         """
         Run the main triangulation method on the in_ object with *only* -Qz
         flags enabled.
@@ -139,13 +139,13 @@ cdef class CyTriangle:
         - z Numbers all items starting from zero (zero-indexed) rather than one.
 
         """
-        opts = "Qz".encode('utf-8')
+        opts = f"{'Q' if not verbose else ''}z".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError('Delaunay triangulation failed')
         return self.out
 
-    cpdef convex_hull(self):
+    cpdef convex_hull(self, verbose=False):
         """
         Run the main triangulation method on the in_ object with -Qzc flags enabled.
 
@@ -156,14 +156,14 @@ cdef class CyTriangle:
         - c Encloses the convex hull with segments
 
         """
-        opts = "Qzc".encode('utf-8')
+        opts = f"{'Q' if not verbose else ''}zc".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError("""Delaunay triangulation and convex hull
                                construction failed""")
         return self.out
 
-    cpdef voronoi(self):
+    cpdef voronoi(self, verbose=False):
         """
         Run the main triangulation method on the in_ object with -Qzv flags enabled.
 
@@ -174,7 +174,7 @@ cdef class CyTriangle:
         - v Generates a Voronoi diagram.
 
         """
-        opts = "Qzv".encode('utf-8')
+        opts = f"{'Q' if not verbose else ''}zv".encode('utf-8')
         if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
                 is not None:
             raise RuntimeError("""Delaunay triangulation and generation of
