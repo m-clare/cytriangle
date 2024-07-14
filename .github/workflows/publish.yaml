@@ -77,7 +77,7 @@ jobs:
           path: dist/*.whl
 
   publish:
-    needs: build
+    needs: [build_sdist, build_wheels]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
