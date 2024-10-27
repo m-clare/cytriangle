@@ -40,7 +40,7 @@ script = "build_ext.py"
 generate-setup-file = true
 
 [tool.poetry.dependencies]
-python = ">=3.9"
+python = ">=3.10"
 numpy = ">=2.1.2"
 
 [tool.poetry.group.dev.dependencies]
