@@ -70,7 +70,14 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
+          pattern: python-*
           path: dist/
+          merge-multiple: true
+
+      - name: Move wheels to dist root
+        run: |
+          find dist -type f -name "*.whl" -exec mv {} dist/ \;
+          find dist -type f -name "*.tar.gz" -exec mv {} dist/ \;
 
       - name: Install uv and set the python version
         uses: astral-sh/setup-uv@v5
