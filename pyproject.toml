@@ -37,7 +37,7 @@ dependencies = ["numpy>=2.1.2"]
 [project.optional-dependencies]
 dev = [
       "pytest>=7.4.2",
-      "black>=23.9.1"
+      "black>=23.9.1",
       "cibuildwheel>=2.23.3"
       ]
 
