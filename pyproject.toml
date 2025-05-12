@@ -38,7 +38,6 @@ dependencies = ["numpy>=2.1.2"]
 dev = [
       "pytest>=7.4.2",
       "black>=23.9.1",
-      "cibuildwheel>=2.23.3"
       ]
 
 [tool.cython-lint]
@@ -46,5 +45,9 @@ max-line-length = 88
 ignore = ['E503', 'E504']
 
 [tool.cibuildwheel]
-build-frontend = "build[uv]"
+build-frontend = "build"
 manylinux-x86_64-image = "manylinux2014"
+skip = "pp* cp27* cp34* cp35* cp36* cp37* cp38* cp39*"
+before-build = "pip install -U setuptools wheel build Cython>=3.1 numpy>=2.1.2"
+test-requires = "pytest"
+test-command = "pytest {package}/tests -vv"
