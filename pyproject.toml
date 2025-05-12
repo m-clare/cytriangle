@@ -38,6 +38,7 @@ dependencies = ["numpy>=2.1.2"]
 dev = [
       "pytest>=7.4.2",
       "black>=23.9.1"
+      "cibuildwheels>=2.23.3"
       ]
 
 [tool.cython-lint]
@@ -46,3 +47,4 @@ ignore = ['E503', 'E504']
 
 [tool.cibuildwheel]
 build-frontend = "build[uv]"
+manylinux-x86_64-image = "manylinux2014"
