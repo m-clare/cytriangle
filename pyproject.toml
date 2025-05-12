@@ -1,17 +1,15 @@
-[build-system]
-requires = ["setuptools", "Cython>=3.1", "wheel", "numpy>=2.1.2"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "cytriangle"
 version = "2.0.1"
 description = "Object-oriented Cython wrapper of Shewchuk's Triangle Library"
-authors = [{name = "Maryanne Wachter", email = "mclare@utsv.net"}]
+authors = ["Maryanne Wachter <mclare@utsv.net>"]
 maintainers = [
-{name = "Maryanne Wachter", email = "mclare@utsv.net"},
-{name = "Connor Ferster", email = "connorferster@gmail.com"}
+  "Maryanne Wachter <mclare@utsv.net>",
+  "Connor Ferster <connorferster@gmail.com>",
 ]
-license = {text = "LGPL 3.0"}
+license = "LGPL 3.0"
+homepage = "https://github.com/m-clare/cytriangle"
+repository = "https://github.com/m-clare/cytriangle"
 readme = "README.md"
 keywords = [
   "finite-element-analysis",
@@ -31,15 +29,24 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13"
 ]
-requires-python = ">=3.10"
-dependencies = ["numpy>=2.1.2"]
-
-[project.optional-dependencies]
-dev = [
-      "pytest>=7.4.2",
-      "black>=23.9.1"
-      ]
+include = ["*.pyx", "*.pxd", "*.c", "src/c/*"]
 
 [tool.cython-lint]
 max-line-length = 88
 ignore = ['E503', 'E504']
+
+[tool.poetry.build]
+script = "build_ext.py"
+generate-setup-file = true
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+numpy = ">=2.1.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.4.2"
+black = ">=23.9.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "Cython>=3.1", "setuptools", "numpy"]
+build-backend = "poetry.core.masonry.api"
