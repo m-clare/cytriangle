@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cytriangle"
-version = "2.0.0"
+version = "2.0.1"
 description = "Object-oriented Cython wrapper of Shewchuk's Triangle Library"
 authors = ["Maryanne Wachter <mclare@utsv.net>"]
 maintainers = [
@@ -48,5 +48,5 @@ pytest = ">=7.4.2"
 black = ">=23.9.1"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "Cython>=3.0", "setuptools", "numpy"]
+requires = ["poetry-core>=1.0.0", "Cython>=3.1", "setuptools", "numpy"]
 build-backend = "poetry.core.masonry.api"
