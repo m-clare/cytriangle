@@ -38,7 +38,7 @@ dependencies = ["numpy>=2.1.2"]
 dev = [
       "pytest>=7.4.2",
       "black>=23.9.1"
-      "cibuildwheels>=2.23.3"
+      "cibuildwheel>=2.23.3"
       ]
 
 [tool.cython-lint]
