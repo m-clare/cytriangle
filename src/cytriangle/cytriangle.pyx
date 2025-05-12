@@ -10,13 +10,13 @@ cdef class CyTriangle:
     Attributes
     ----------
     in_ : TriangleIO
-        input object to be triangulated
+        input object to be triangulated.
     out : TriangleIO
         output object of the triangulation (null initially, and if no triangulation
-        is run)
+        is run).
     vorout: TriangleIO
         voronoi output object of triangulation (null initially, and if no triangulation
-        is run, and if -v switch is not included in triangulate options)
+        is run, and if -v switch is not included in triangulate options).
 
     Methods
     -------
