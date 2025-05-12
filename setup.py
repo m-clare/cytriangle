@@ -36,12 +36,10 @@ class BuildExt(build_ext):
             print(f"An exception occured: {type(e).__name__}: {e}")
 
 
-def build(setup_kwargs):
-    setup_kwargs.update(
-        dict(
-            cmdclass=dict(build_ext=BuildExt),
-            packages=["cytriangle"],
-            ext_modules=cythonize(extensions, language_level=3),
-            zip_safe=False,
-        )
-    )
+setuptools.setup(
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src"),
+    cmdclass=dict(build_ext=BuildExt),
+    ext_modules=cythonize(extensions, language_level=3),
+    zip_safe=False,
+)

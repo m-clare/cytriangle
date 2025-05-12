@@ -1,0 +1,4 @@
+include src/cytriangle/*.pyx
+include src/cytriangle/*.pxd
+include src/c/*.c
+include src/c/*.h
