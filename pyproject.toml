@@ -43,3 +43,6 @@ dev = [
 [tool.cython-lint]
 max-line-length = 88
 ignore = ['E503', 'E504']
+
+[tool.cibuildwheel]
+build-verbosity = 1
