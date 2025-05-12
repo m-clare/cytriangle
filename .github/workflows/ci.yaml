@@ -31,8 +31,14 @@ jobs:
       - name: Install the project
         run: uv sync --all-extras --dev
 
-      - name: Build the package
-        run: uv build
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.23.3
+        env:
+          CIBW_SKIP: pp* cp27* cp34* cp35* cp36* cp37* cp38* cp39*
+        with:
+          package-dir: .
+          output-dir: dist
+          config-file: "{package}/pyproject.toml"
 
       - name: Run tests
         run: pytest . -vv
