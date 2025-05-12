@@ -27,7 +27,7 @@ jobs:
       - name: Build wheels with cibuildwheel
         uses: pypa/cibuildwheel@2.23.2
         env:
-          CIBW_BUILD: cp${{ matrix.python-version//./ }}-*
+          CIBW_BUILD: cp${{ matrix.python-version == '3.10' && '310' || matrix.python-version == '3.11' && '311' || matrix.python-version == '3.12' && '312' || matrix.python-version == '3.13' && '313' }}-*
         with:
           output-dir: dist
 
