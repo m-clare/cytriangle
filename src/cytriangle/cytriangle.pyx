@@ -1,3 +1,4 @@
+# cython: freethreading_compatible = True
 from cytriangle.ctriangle cimport triangulate as ctriangulate
 from cytriangle.cytriangleio  cimport TriangleIO
 import re
