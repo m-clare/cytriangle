@@ -49,5 +49,5 @@ pytest = ">=7.4.2"
 black = ">=23.9.1"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "Cython>=3.1", "setuptools", "numpy"]
+requires = ["poetry-core>=1.0.0", "Cython>=3.2", "setuptools", "numpy"]
 build-backend = "poetry.core.masonry.api"
