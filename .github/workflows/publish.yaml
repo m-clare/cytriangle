@@ -82,7 +82,7 @@ jobs:
           path: dist/*.whl
 
   publish:
-    if: startsWith(github.ref, 'ref/tags/') # only publish to PyPI on tag pushes
+    if: startsWith(github.ref, 'refs/tags/') # only publish to PyPI on tag pushes
     needs: [build_sdist, build_wheels]
     runs-on: ubuntu-latest
     environment:
