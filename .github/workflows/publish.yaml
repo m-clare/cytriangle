@@ -94,6 +94,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v6
         with:
+          pattern: python-wheels-*
           path: dist/
           merge-multiple: true
 
