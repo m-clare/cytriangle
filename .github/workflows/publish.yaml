@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.11
+          python-version: "3.x"
 
       - name: Install dependencies
         run: |
@@ -28,7 +30,7 @@ jobs:
           poetry build -f sdist
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: python-sdist
           path: dist/*.tar.gz
@@ -36,14 +38,14 @@ jobs:
   build_wheels:
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13"] # Add more versions as needed
+        python-version: ["3.11", "3.12", "3.13", "3.14"] # Add more versions as needed
         os: [ubuntu-latest, macos-latest, windows-latest, macos-13]
 
     runs-on: ${{ matrix.os }}
 
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -72,35 +74,25 @@ jobs:
           CIBW_SKIP: pp* cp27* cp34* cp35* cp36* cp37* cp38* cp39*
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: python-wheels-${{ matrix.os }}-${{ matrix.python-version }}
           path: dist/*.whl
 
   publish:
+    if: startsWith(github.ref, 'ref/tags/') # only publish to PyPI on tag pushes
     needs: [build_sdist, build_wheels]
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/cytriangle
     permissions:
       id-token: write
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           path: dist/
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install twine
-
-      - name: Publish to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: |
-          twine upload dist/*/*.whl dist/*/*.tar.gz
+      - name: Publish distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
