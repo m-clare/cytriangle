@@ -264,6 +264,36 @@ def test_refine_output_fields():
     ]
 
 
-def test_memory_deallocation():
+def test_voronoi_norms_match_edges():
+    """Verify norms contain correct direction vectors for Voronoi edges.
+
+    The C library allocates normlist as 2 REALs per edge. A previous bug
+    read 4 REALs per edge (i*4 indexing), which returned wrong values for
+    ray directions (reading adjacent edges' data) and read past allocated
+    memory for later edges.
+
+    For a unit square, the Voronoi diagram has 5 edges: 4 infinite rays
+    pointing in the cardinal directions and 1 finite edge with zero normal.
+    The exact direction values are deterministic.
+    """
+    test = CyTriangle(input_dict=simple_input)
+    test.voronoi()
+    norms = test.vorout.norms
+    expected_directions = [
+        [-1.0, 0.0],
+        [0.0, -1.0],
+        [0.0, 0.0],
+        [1.0, 0.0],
+        [0.0, 1.0],
+    ]
+    assert len(norms) == len(expected_directions)
+    for i, expected in enumerate(expected_directions):
+        assert norms[i]['ray_direction'] == expected, (
+            f"Edge {i}: expected direction {expected}, "
+            f"got {norms[i]['ray_direction']}"
+        )
+
+
+
     test = CyTriangle(input_dict=simple_input)
     del test  # Deallocate memory without errors

@@ -453,10 +453,9 @@ cdef class TriangleIO:
         if self._io.normlist is not NULL:
             norm_list = []
             for i in range(self._io.numberofedges):
-                norm_list.append({'ray_origin': [self._io.normlist[i * 4],
-                                                 self._io.normlist[i * 4 + 1]],
-                                  'ray_direction': [self._io.normlist[i * 4 + 2],
-                                                    self._io.normlist[i * 4 + 3]]})
+                norm_list.append({'ray_origin': [0.0, 0.0],
+                                  'ray_direction': [self._io.normlist[i * 2],
+                                                    self._io.normlist[i * 2 + 1]]})
             return norm_list
 
     def set_vertices(self, vertices):
