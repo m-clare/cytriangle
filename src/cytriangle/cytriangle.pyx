@@ -1,6 +1,11 @@
+# cython: freethreading_compatible=True
+
 from cytriangle.ctriangle cimport triangulate as ctriangulate
 from cytriangle.cytriangleio  cimport TriangleIO
 import re
+import threading
+
+_triangle_lock = threading.Lock()
 
 cdef class CyTriangle:
     """
@@ -124,9 +129,9 @@ cdef class CyTriangle:
         if triflags:
             self.validate_input_flags(triflags)
         opts = f"{'Q' if not verbose else 'V'}z{triflags}".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
-                is not None:
-            raise RuntimeError('Triangulation failed')
+        with _triangle_lock:
+            if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) != 0:
+                raise RuntimeError('Triangulation failed')
         return self.out
 
     cpdef delaunay(self, verbose=False):
@@ -140,9 +145,9 @@ cdef class CyTriangle:
 
         """
         opts = f"{'Q' if not verbose else 'V'}z".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
-                is not None:
-            raise RuntimeError('Delaunay triangulation failed')
+        with _triangle_lock:
+            if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) != 0:
+                raise RuntimeError('Delaunay triangulation failed')
         return self.out
 
     cpdef convex_hull(self, verbose=False):
@@ -157,10 +162,10 @@ cdef class CyTriangle:
 
         """
         opts = f"{'Q' if not verbose else 'V'}zc".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
-                is not None:
-            raise RuntimeError("""Delaunay triangulation and convex hull
-                               construction failed""")
+        with _triangle_lock:
+            if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) != 0:
+                raise RuntimeError("""Delaunay triangulation and convex hull
+                                   construction failed""")
         return self.out
 
     cpdef voronoi(self, verbose=False):
@@ -175,10 +180,10 @@ cdef class CyTriangle:
 
         """
         opts = f"{'Q' if not verbose else 'V'}zv".encode('utf-8')
-        if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) \
-                is not None:
-            raise RuntimeError("""Delaunay triangulation and generation of
-                               voronoi diagram failed""")
+        with _triangle_lock:
+            if ctriangulate(opts, self._in._io, self._out._io, self._vorout._io) != 0:
+                raise RuntimeError("""Delaunay triangulation and generation of
+                                   voronoi diagram failed""")
         return self.out
 
 

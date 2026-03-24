@@ -1,3 +1,5 @@
+# cython: freethreading_compatible=True
+
 from libc.stdlib cimport free, malloc
 import numpy as np
 from cytriangle.ctriangle cimport triangulateio

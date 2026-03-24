@@ -31,7 +31,7 @@ cdef extern from "triangle.h":
         double *normlist
         int numberofedges
 
-    void triangulate(
+    int triangulate(
         char *triswitches,
         triangulateio *in_,
         triangulateio *out_,
